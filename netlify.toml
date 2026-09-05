@@ -2,8 +2,18 @@
   publish = "."
 
 [[redirects]]
+  from = "/"
+  to = "/creative-direction-v2.html"
+  status = 200
+
+[[redirects]]
   from = "/thank-you"
-  to = "/thank-you.html"
+  to = "/thank-you-v2.html"
+  status = 200
+
+[[redirects]]
+  from = "/v1"
+  to = "/index.html"
   status = 200
 
 [[headers]]
