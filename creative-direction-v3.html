@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Guided creative direction studio for Decisions, Decisions." />
+  <meta name="theme-color" content="#171923" />
+  <title>Decisions, Decisions — Creative Direction Studio</title>
+  <link rel="stylesheet" href="creative-direction-v3.css" />
+  <script src="creative-direction-v3.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#questionnaire">Skip to creative direction questions</a>
+
+  <header class="hero">
+    <div class="hero-stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="hero-shell">
+      <div>
+        <p class="eyebrow">DECISIONS, DECISIONS · CREATIVE DIRECTION</p>
+        <h1>Help us choose the world this game should live in.</h1>
+        <p class="hero-lede">Tanner, make the calls that matter. We will turn them into one coherent prototype family: <strong>identity, cards, box, iPhone screens, and marketing.</strong></p>
+      </div>
+      <div class="hero-meta">
+        <div><strong>5 phases</strong><span>One focused decision set at a time</span></div>
+        <div><strong>Autosaved</strong><span>Only Submit sends your response</span></div>
+        <p id="saveStatus" class="save-status" role="status" aria-live="polite">Answers save automatically on this device.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="journey-shell" id="journeyShell">
+    <div class="journey-progress" aria-hidden="true"><div class="journey-fill" id="journeyFill"></div></div>
+    <div class="journey-inner">
+      <div class="phase-context">
+        <span id="phaseCounter">Phase 1 of 5</span>
+        <strong id="phaseTitle">Set the Target</strong>
+      </div>
+      <nav class="phase-nav" aria-label="Creative direction phases">
+        <button type="button" class="phase-tab is-active" data-go-step="0"><span>1</span><b>Target</b><i data-step-state="0"></i></button>
+        <button type="button" class="phase-tab" data-go-step="1"><span>2</span><b>Look</b><i data-step-state="1"></i></button>
+        <button type="button" class="phase-tab" data-go-step="2"><span>3</span><b>Product</b><i data-step-state="2"></i></button>
+        <button type="button" class="phase-tab" data-go-step="3"><span>4</span><b>Sell It</b><i data-step-state="3"></i></button>
+        <button type="button" class="phase-tab" data-go-step="4"><span>5</span><b>Lock It</b><i data-step-state="4"></i></button>
+      </nav>
+    </div>
+  </div>
+
+  <main class="studio" id="studio">
+    <form
+      id="questionnaire"
+      class="questionnaire"
+      name="tanner-creative-direction-v3"
+      method="POST"
+      action="/thank-you"
+      enctype="multipart/form-data"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="tanner-creative-direction-v3" />
+      <input type="hidden" name="generated_brief" id="generatedBrief" value="" />
+      <input type="hidden" name="form_version" value="3.0" />
+      <p class="honeypot" aria-hidden="true"><label>Do not fill this out <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+      <section class="flow-step is-active" data-step="0" data-step-name="Set the Target" id="target" aria-labelledby="target-title">
+        <div class="phase-hero">
+          <p class="phase-kicker">PHASE 01 · SET THE TARGET</p>
+          <h2 id="target-title">Who should love this — and how should it feel?</h2>
+          <p>Start with instinct. These answers become the filter for every visual decision that follows.</p>
+        </div>
+
+        <div class="panel-block">
+          <div class="section-label"><span>A</span><div><h3>First instinct</h3><p>One sentence and one gut reaction.</p></div></div>
+          <div class="field-grid two-col">
+            <label class="field"><span>Name</span><input type="text" name="respondent_name" autocomplete="name" placeholder="Tanner" /></label>
+            <label class="field"><span>Date</span><input type="date" name="response_date" /></label>
+          </div>
+          <label class="field strong-field"><span>In one sentence, this game should feel…</span><textarea name="one_sentence_feel" rows="3" placeholder="Example: fast, clever, colorful, and polished — a game-night product people want to put on the table."></textarea></label>
+          <fieldset class="question key-question">
+            <legend>When somebody sees it for the first time, what do you most want them to think?</legend>
+            <div class="choice-grid three">
+              <label class="choice-card"><input type="radio" name="first_reaction" value="That looks fun" /><span><strong>“That looks fun.”</strong><small>Immediate energy and approachability.</small></span></label>
+              <label class="choice-card"><input type="radio" name="first_reaction" value="That is clever" /><span><strong>“That is clever.”</strong><small>The decision mechanic feels smart and distinctive.</small></span></label>
+              <label class="choice-card"><input type="radio" name="first_reaction" value="I want that" /><span><strong>“I want that.”</strong><small>Polished, giftable, commercially desirable.</small></span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="panel-block">
+          <div class="section-label"><span>B</span><div><h3>Audience & character</h3><p>Optimize for a real social setting, not everybody at once.</p></div></div>
+          <fieldset class="question">
+            <legend>Primary audience — choose up to <strong>3</strong>.</legend>
+            <div class="choice-grid" data-max-choices="3">
+              <label class="pill-choice"><input type="checkbox" name="audience" value="Families / mixed ages" /><span>Families / mixed ages</span></label>
+              <label class="pill-choice"><input type="checkbox" name="audience" value="Teens" /><span>Teens</span></label>
+              <label class="pill-choice"><input type="checkbox" name="audience" value="Adult friends" /><span>Adult friends</span></label>
+              <label class="pill-choice"><input type="checkbox" name="audience" value="Casual non-gamers" /><span>Casual non-gamers</span></label>
+              <label class="pill-choice"><input type="checkbox" name="audience" value="Party-game fans" /><span>Party-game fans</span></label>
+              <label class="pill-choice"><input type="checkbox" name="audience" value="Gift buyers" /><span>Gift buyers</span></label>
+            </div>
+            <p class="choice-help" data-choice-help></p>
+          </fieldset>
+          <fieldset class="question">
+            <legend>Brand personality — choose up to <strong>5</strong>.</legend>
+            <div class="choice-grid" data-max-choices="5">
+              <label class="pill-choice"><input type="checkbox" name="brand_words" value="Playful" /><span>Playful</span></label>
+              <label class="pill-choice"><input type="checkbox" name="brand_words" value="Clever" /><span>Clever</span></label>
+              <label class="pill-choice"><input type="checkbox" name="brand_words" value="Bold" /><span>Bold</span></label>
+              <label class="pill-choice"><input type="checkbox" name="brand_words" value="Modern" /><span>Modern</span></label>
+              <label class="pill-choice"><input type="checkbox" name="brand_words" value="Energetic" /><span>Energetic</span></label>
+              <label class="pill-choice"><input type="checkbox" name="brand_words" value="Funny" /><span>Funny</span></label>
+              <label class="pill-choice"><input type="checkbox" name="brand_words" value="Warm" /><span>Warm</span></label>
+              <label class="pill-choice"><input type="checkbox" name="brand_words" value="Distinctive" /><span>Distinctive</span></label>
+              <label class="pill-choice"><input type="checkbox" name="brand_words" value="Mischievous" /><span>Mischievous</span></label>
+              <label class="pill-choice"><input type="checkbox" name="brand_words" value="Polished" /><span>Polished</span></label>
+              <label class="pill-choice"><input type="checkbox" name="brand_words" value="Fast-paced" /><span>Fast-paced</span></label>
+              <label class="pill-choice"><input type="checkbox" name="brand_words" value="Commercially credible" /><span>Commercially credible</span></label>
+            </div>
+            <p class="choice-help" data-choice-help></p>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="flow-step" data-step="1" data-step-name="Choose the Look" id="look" aria-labelledby="look-title" hidden>
+        <div class="phase-hero">
+          <p class="phase-kicker">PHASE 02 · CHOOSE THE LOOK</p>
+          <h2 id="look-title">Pick a visual world, then tune the identity.</h2>
+          <p>Choose a primary territory first. Color, type, and logo choices should support that world rather than compete with it.</p>
+        </div>
+
+        <div class="panel-block">
+          <div class="section-label"><span>A</span><div><h3>Primary visual territory</h3><p>Choose one. The examples are strategies, not final designs.</p></div></div>
+          <fieldset class="question visual-picker">
+            <legend class="sr-only">Primary visual territory</legend>
+            <div class="visual-grid">
+              <label class="visual-card modern"><input type="radio" name="primary_visual_territory" value="Modern Playful" /><span class="visual-demo" aria-hidden="true"><b>PLAY</b><i></i><i></i><i></i></span><span class="visual-copy"><strong>Modern Playful</strong><small>Bright, clean, current. Broad commercial appeal without feeling generic.</small></span></label>
+              <label class="visual-card editorial"><input type="radio" name="primary_visual_territory" value="Premium Editorial" /><span class="visual-demo" aria-hidden="true"><b>DECIDE.</b><em>01 / 03</em></span><span class="visual-copy"><strong>Premium Editorial</strong><small>Sharper typography, restraint, more grown-up design voice.</small></span></label>
+              <label class="visual-card gameshow"><input type="radio" name="primary_visual_territory" value="Game Show Energy" /><span class="visual-demo" aria-hidden="true"><b>3</b><em>GO!</em></span><span class="visual-copy"><strong>Game-Show Energy</strong><small>Countdown pressure, celebration, punchy contrast.</small></span></label>
+              <label class="visual-card family"><input type="radio" name="primary_visual_territory" value="Family Bright" /><span class="visual-demo" aria-hidden="true"><b>FUN</b><i></i><i></i></span><span class="visual-copy"><strong>Family Bright</strong><small>Warm, friendly, colorful, easy across ages.</small></span></label>
+              <label class="visual-card tactical"><input type="radio" name="primary_visual_territory" value="Minimal Tactical" /><span class="visual-demo" aria-hidden="true"><b>CHOOSE</b><em>DRAW · MIME · SOUND</em></span><span class="visual-copy"><strong>Minimal Tactical</strong><small>Structured, clean, focused on choice and risk/reward.</small></span></label>
+              <label class="visual-card doodle"><input type="radio" name="primary_visual_territory" value="Handmade Character" /><span class="visual-demo" aria-hidden="true"><b>?</b><i></i><i></i><i></i></span><span class="visual-copy"><strong>Handmade Character</strong><small>Doodles, imperfection and personality. Human, not corporate.</small></span></label>
+            </div>
+          </fieldset>
+          <div class="field-grid two-col">
+            <label class="field"><span>Secondary influence <small>optional</small></span><input type="text" name="secondary_visual_influence" placeholder="Example: Modern Playful + a little Game Show" /></label>
+            <label class="field"><span>Absolutely not</span><input type="text" name="visual_anti_reference" placeholder="Example: childish, neon arcade, generic clip-art" /></label>
+          </div>
+        </div>
+
+        <div class="panel-block">
+          <div class="section-label"><span>B</span><div><h3>Color, type & logo</h3><p>Make the identity system prototype-ready.</p></div></div>
+          <fieldset class="question">
+            <legend>Color direction — choose up to <strong>3</strong>.</legend>
+            <div class="palette-grid" data-max-choices="3">
+              <label class="color-choice candy"><input type="checkbox" name="color_direction" value="Candy brights" /><span class="palette"><i></i><i></i><i></i><i></i><b>Candy brights</b></span></label>
+              <label class="color-choice primary"><input type="checkbox" name="color_direction" value="Confident primaries" /><span class="palette"><i></i><i></i><i></i><i></i><b>Confident primaries</b></span></label>
+              <label class="color-choice soft"><input type="checkbox" name="color_direction" value="Soft modern" /><span class="palette"><i></i><i></i><i></i><i></i><b>Soft modern</b></span></label>
+              <label class="color-choice inkaccent"><input type="checkbox" name="color_direction" value="Dark base plus accents" /><span class="palette"><i></i><i></i><i></i><i></i><b>Dark + accents</b></span></label>
+              <label class="color-choice warm"><input type="checkbox" name="color_direction" value="Warm optimistic" /><span class="palette"><i></i><i></i><i></i><i></i><b>Warm optimistic</b></span></label>
+              <label class="color-choice cool"><input type="checkbox" name="color_direction" value="Cool electric" /><span class="palette"><i></i><i></i><i></i><i></i><b>Cool electric</b></span></label>
+            </div>
+            <p class="choice-help" data-choice-help></p>
+          </fieldset>
+          <fieldset class="question">
+            <legend>Typography character — choose one.</legend>
+            <div class="choice-grid three">
+              <label class="choice-card type-chunky"><input type="radio" name="type_character" value="Chunky friendly sans" /><span><strong>Chunky friendly</strong><small>Big, approachable, party-game confidence.</small></span></label>
+              <label class="choice-card type-geo"><input type="radio" name="type_character" value="Clean geometric sans" /><span><strong>Clean geometric</strong><small>Modern, structured, product-system friendly.</small></span></label>
+              <label class="choice-card type-editorial"><input type="radio" name="type_character" value="Bold editorial contrast" /><span><strong>Bold editorial</strong><small>More distinctive, more design-led, less toy-like.</small></span></label>
+            </div>
+          </fieldset>
+          <fieldset class="question">
+            <legend>Logo direction — choose up to <strong>2</strong>.</legend>
+            <div class="choice-grid" data-max-choices="2">
+              <label class="pill-choice"><input type="checkbox" name="logo_direction" value="Wordmark first" /><span>Wordmark first</span></label>
+              <label class="pill-choice"><input type="checkbox" name="logo_direction" value="Wordmark plus icon" /><span>Wordmark + icon</span></label>
+              <label class="pill-choice"><input type="checkbox" name="logo_direction" value="Strong app icon" /><span>Strong app icon</span></label>
+              <label class="pill-choice"><input type="checkbox" name="logo_direction" value="Slightly weird / memorable" /><span>Slightly weird / memorable</span></label>
+              <label class="pill-choice"><input type="checkbox" name="logo_direction" value="Retail polished" /><span>Retail polished</span></label>
+              <label class="pill-choice"><input type="checkbox" name="logo_direction" value="Mascot potential" /><span>Mascot potential</span></label>
+            </div>
+            <p class="choice-help" data-choice-help></p>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="flow-step" data-step="2" data-step-name="Design the Product" id="product" aria-labelledby="product-title" hidden>
+        <div class="phase-hero">
+          <p class="phase-kicker">PHASE 03 · DESIGN THE PRODUCT</p>
+          <h2 id="product-title">Make the mechanic obvious on cards, box, and phone.</h2>
+          <p>This is where the visual direction has to explain the actual game: one prompt, three methods, different risk/reward.</p>
+        </div>
+
+        <div class="panel-block">
+          <div class="section-label"><span>A</span><div><h3>Card system</h3><p>The prompt stays one word in the core deck. Decide how the choice should read around it.</p></div></div>
+          <fieldset class="question card-treatment-picker">
+            <legend>Which card treatment feels closest?</legend>
+            <div class="card-treatment-grid">
+              <label class="card-style-option"><input type="radio" name="card_treatment" value="Bold Method Tiles" /><span class="mini-card tile-card"><small>EASY</small><b>ROCKET</b><em><i>DRAW 1</i><i>MIME 2</i><i>SOUND 3</i></em></span><span class="option-copy"><strong>Bold Method Tiles</strong><small>Fastest scan and strongest method separation.</small></span></label>
+              <label class="card-style-option"><input type="radio" name="card_treatment" value="Editorial Minimal" /><span class="mini-card editorial-card"><small>01 · EASY</small><b>ROCKET</b><em>DRAW 1 · MIME 2 · SOUND 3</em></span><span class="option-copy"><strong>Editorial Minimal</strong><small>Prompt-first, quieter, more premium.</small></span></label>
+              <label class="card-style-option"><input type="radio" name="card_treatment" value="Game Show" /><span class="mini-card show-card"><small>MAKE THE CALL</small><b>ROCKET</b><em><i>1</i><i>2</i><i>3</i></em></span><span class="option-copy"><strong>Game-Show</strong><small>Highest energy and risk/reward drama.</small></span></label>
+            </div>
+          </fieldset>
+          <fieldset class="question">
+            <legend>Card priorities — choose up to <strong>4</strong>.</legend>
+            <div class="choice-grid" data-max-choices="4">
+              <label class="pill-choice"><input type="checkbox" name="card_priorities" value="Prompt dominates" /><span>Prompt dominates</span></label>
+              <label class="pill-choice"><input type="checkbox" name="card_priorities" value="Methods obvious" /><span>Methods obvious</span></label>
+              <label class="pill-choice"><input type="checkbox" name="card_priorities" value="Points impossible to miss" /><span>Points impossible to miss</span></label>
+              <label class="pill-choice"><input type="checkbox" name="card_priorities" value="Difficulty obvious" /><span>Difficulty obvious</span></label>
+              <label class="pill-choice"><input type="checkbox" name="card_priorities" value="Very sparse" /><span>Very sparse</span></label>
+              <label class="pill-choice"><input type="checkbox" name="card_priorities" value="Tactile button-like methods" /><span>Tactile method tiles</span></label>
+            </div>
+            <p class="choice-help" data-choice-help></p>
+          </fieldset>
+          <fieldset class="question key-question">
+            <legend>Third method label — make the call for the next prototype.</legend>
+            <div class="choice-grid three">
+              <label class="choice-card"><input type="radio" name="third_method_label" value="HUM" /><span><strong>HUM</strong><small>Charming and musical, but narrower content.</small></span></label>
+              <label class="choice-card"><input type="radio" name="third_method_label" value="SOUND IT" /><span><strong>SOUND IT</strong><small>Broader: humming, rhythm, non-word sounds.</small></span></label>
+              <label class="choice-card"><input type="radio" name="third_method_label" value="Prototype both" /><span><strong>Prototype both</strong><small>Keep the decision open until side-by-side testing.</small></span></label>
+            </div>
+          </fieldset>
+          <label class="field"><span>Describe the ideal card in your own words <small>optional</small></span><textarea name="ideal_card_description" rows="3" placeholder="What should feel big, small, bold, quiet, playful, premium, etc.?"></textarea></label>
+        </div>
+
+        <div class="panel-block split-block">
+          <div>
+            <div class="section-label"><span>B</span><div><h3>Box story</h3><p>What sells the game from six feet away?</p></div></div>
+            <fieldset class="question">
+              <legend>Primary front-of-box story — choose one.</legend>
+              <div class="stacked-options">
+                <label class="choice-card"><input type="radio" name="box_story" value="One prompt. Three ways to play." /><span><strong>One prompt. Three ways to play.</strong><small>Mechanic-first and clearest.</small></span></label>
+                <label class="choice-card"><input type="radio" name="box_story" value="Choose your risk." /><span><strong>Choose your risk.</strong><small>More tactical, focuses on points and confidence.</small></span></label>
+                <label class="choice-card"><input type="radio" name="box_story" value="Bad at drawing? Don’t draw." /><span><strong>Bad at drawing? Don’t draw.</strong><small>Personality-first and highly relatable.</small></span></label>
+              </div>
+            </fieldset>
+            <fieldset class="question">
+              <legend>Box front — choose up to <strong>4</strong>.</legend>
+              <div class="choice-grid two" data-max-choices="4">
+                <label class="pill-choice"><input type="checkbox" name="box_front_priorities" value="Big logo" /><span>Big logo</span></label>
+                <label class="pill-choice"><input type="checkbox" name="box_front_priorities" value="Method icons" /><span>Method icons</span></label>
+                <label class="pill-choice"><input type="checkbox" name="box_front_priorities" value="Sample card" /><span>Sample card</span></label>
+                <label class="pill-choice"><input type="checkbox" name="box_front_priorities" value="People / reactions" /><span>People / reactions</span></label>
+                <label class="pill-choice"><input type="checkbox" name="box_front_priorities" value="Strong tagline" /><span>Strong tagline</span></label>
+                <label class="pill-choice"><input type="checkbox" name="box_front_priorities" value="Giftable polish" /><span>Giftable polish</span></label>
+              </div>
+              <p class="choice-help" data-choice-help></p>
+            </fieldset>
+          </div>
+
+          <div>
+            <div class="section-label"><span>C</span><div><h3>iPhone experience</h3><p>Same brand, but optimized for fast pass-and-play.</p></div></div>
+            <fieldset class="question">
+              <legend>App feel — choose up to <strong>4</strong>.</legend>
+              <div class="choice-grid two" data-max-choices="4">
+                <label class="pill-choice"><input type="checkbox" name="app_feel" value="Card-deck tactile" /><span>Card-deck tactile</span></label>
+                <label class="pill-choice"><input type="checkbox" name="app_feel" value="Minimal and clean" /><span>Minimal & clean</span></label>
+                <label class="pill-choice"><input type="checkbox" name="app_feel" value="Bright and playful" /><span>Bright & playful</span></label>
+                <label class="pill-choice"><input type="checkbox" name="app_feel" value="Premium" /><span>Premium</span></label>
+                <label class="pill-choice"><input type="checkbox" name="app_feel" value="Game-show energy" /><span>Game-show energy</span></label>
+                <label class="pill-choice"><input type="checkbox" name="app_feel" value="Strong timer emphasis" /><span>Strong timer emphasis</span></label>
+              </div>
+              <p class="choice-help" data-choice-help></p>
+            </fieldset>
+            <fieldset class="question">
+              <legend>Prototype screens — choose up to <strong>3</strong>.</legend>
+              <div class="choice-grid two" data-max-choices="3">
+                <label class="pill-choice"><input type="checkbox" name="prototype_screens" value="Home" /><span>Home</span></label>
+                <label class="pill-choice"><input type="checkbox" name="prototype_screens" value="Handoff / reveal" /><span>Handoff / reveal</span></label>
+                <label class="pill-choice"><input type="checkbox" name="prototype_screens" value="Gameplay card" /><span>Gameplay card</span></label>
+                <label class="pill-choice"><input type="checkbox" name="prototype_screens" value="Draw canvas" /><span>Draw canvas</span></label>
+                <label class="pill-choice"><input type="checkbox" name="prototype_screens" value="Round summary" /><span>Round summary</span></label>
+                <label class="pill-choice"><input type="checkbox" name="prototype_screens" value="Final result" /><span>Final result</span></label>
+              </div>
+              <p class="choice-help" data-choice-help></p>
+            </fieldset>
+            <label class="field"><span>Main gameplay screen should feel… <small>optional</small></span><textarea name="gameplay_screen_description" rows="3" placeholder="Example: one big word, three obvious choices, timer always visible, almost nothing else."></textarea></label>
+          </div>
+        </div>
+      </section>
+
+      <section class="flow-step" data-step="3" data-step-name="Make It Sell" id="sell" aria-labelledby="sell-title" hidden>
+        <div class="phase-hero">
+          <p class="phase-kicker">PHASE 04 · MAKE IT SELL</p>
+          <h2 id="sell-title">What should people remember — and what should we reference?</h2>
+          <p>Marketing direction and references keep the prototype from becoming generic or disconnected from your taste.</p>
+        </div>
+
+        <div class="panel-block">
+          <div class="section-label"><span>A</span><div><h3>Marketing hook</h3><p>Choose the message that deserves the biggest visual idea.</p></div></div>
+          <fieldset class="question key-question">
+            <legend>Primary marketing message — choose one.</legend>
+            <div class="choice-grid two">
+              <label class="choice-card"><input type="radio" name="primary_marketing_message" value="One prompt. Three ways to play." /><span><strong>One prompt. Three ways to play.</strong><small>Explains the mechanic fastest.</small></span></label>
+              <label class="choice-card"><input type="radio" name="primary_marketing_message" value="Bad at drawing? Don’t draw." /><span><strong>Bad at drawing? Don’t draw.</strong><small>Relatable escape-route promise.</small></span></label>
+              <label class="choice-card"><input type="radio" name="primary_marketing_message" value="Choose the easy point — or risk it for three." /><span><strong>Choose the easy point — or risk it for three.</strong><small>Risk/reward and decision pressure.</small></span></label>
+              <label class="choice-card"><input type="radio" name="primary_marketing_message" value="Don’t finish last." /><span><strong>Don’t finish last.</strong><small>Brand personality and social hook.</small></span></label>
+            </div>
+          </fieldset>
+          <fieldset class="question">
+            <legend>First marketing assets — choose up to <strong>3</strong>.</legend>
+            <div class="choice-grid" data-max-choices="3">
+              <label class="pill-choice"><input type="checkbox" name="marketing_assets" value="Kickstarter hero" /><span>Kickstarter hero</span></label>
+              <label class="pill-choice"><input type="checkbox" name="marketing_assets" value="Retail box shot" /><span>Retail box shot</span></label>
+              <label class="pill-choice"><input type="checkbox" name="marketing_assets" value="Social ad" /><span>Social ad</span></label>
+              <label class="pill-choice"><input type="checkbox" name="marketing_assets" value="App Store image" /><span>App Store image</span></label>
+              <label class="pill-choice"><input type="checkbox" name="marketing_assets" value="Explainer infographic" /><span>Explainer infographic</span></label>
+              <label class="pill-choice"><input type="checkbox" name="marketing_assets" value="Lifestyle scene" /><span>Lifestyle scene</span></label>
+            </div>
+            <p class="choice-help" data-choice-help></p>
+          </fieldset>
+          <label class="field"><span>If you had to pitch the game in one or two short lines… <small>optional</small></span><textarea name="marketing_pitch" rows="3" placeholder="Write it naturally. We can polish the copy later."></textarea></label>
+        </div>
+
+        <div class="panel-block">
+          <div class="section-label"><span>B</span><div><h3>References & anti-references</h3><p>Show us taste, not just categories. Links and screenshots are especially useful.</p></div></div>
+          <div class="field-grid two-col">
+            <label class="field"><span>Reference link 1 <small>optional</small></span><input type="url" name="reference_url_1" placeholder="https://…" /></label>
+            <label class="field"><span>Reference link 2 <small>optional</small></span><input type="url" name="reference_url_2" placeholder="https://…" /></label>
+          </div>
+          <div class="field-grid two-col">
+            <label class="field"><span>Things that feel right</span><textarea name="positive_references" rows="4" placeholder="Games, brands, packaging, apps, ads, typography, stores, anything."></textarea></label>
+            <label class="field"><span>Things to avoid</span><textarea name="negative_references" rows="4" placeholder="Cheap novelty styling, kids-toy look, sterile tech product, clutter, etc."></textarea></label>
+          </div>
+          <div class="upload-area">
+            <div><strong>Optional reference images</strong><p>Up to three images. Keep all attachments under 7 MB total.</p></div>
+            <div class="upload-grid">
+              <label class="upload-control"><span>Image 1</span><input type="file" name="reference_image_1" accept="image/png,image/jpeg,image/webp" /></label>
+              <label class="upload-control"><span>Image 2</span><input type="file" name="reference_image_2" accept="image/png,image/jpeg,image/webp" /></label>
+              <label class="upload-control"><span>Image 3</span><input type="file" name="reference_image_3" accept="image/png,image/jpeg,image/webp" /></label>
+            </div>
+            <p class="file-status" id="fileStatus">No images attached.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="flow-step" data-step="4" data-step-name="Lock the Brief" id="lock" aria-labelledby="lock-title" hidden>
+        <div class="phase-hero">
+          <p class="phase-kicker">PHASE 05 · LOCK THE BRIEF</p>
+          <h2 id="lock-title">Force the final calls, review the signal, then send it.</h2>
+          <p>This is the handoff. The goal is not perfect certainty — it is enough clarity to make the first coherent prototype set.</p>
+        </div>
+
+        <div class="panel-block">
+          <div class="section-label"><span>A</span><div><h3>Prototype order</h3><p>Choose the route and the first thing we should make.</p></div></div>
+          <fieldset class="question">
+            <legend>Overall prototype route — choose one.</legend>
+            <div class="choice-grid three">
+              <label class="choice-card"><input type="radio" name="prototype_route" value="Safest commercial" /><span><strong>Safest commercial</strong><small>Broad, polished, easiest to sell.</small></span></label>
+              <label class="choice-card"><input type="radio" name="prototype_route" value="More distinctive" /><span><strong>More distinctive</strong><small>Stronger ownable personality.</small></span></label>
+              <label class="choice-card"><input type="radio" name="prototype_route" value="Experimental" /><span><strong>Experimental</strong><small>Higher risk, more visual attitude.</small></span></label>
+            </div>
+          </fieldset>
+          <fieldset class="question">
+            <legend>First deliverable — choose one.</legend>
+            <div class="choice-grid">
+              <label class="pill-choice radio-pill"><input type="radio" name="first_deliverable" value="Card" /><span>Card</span></label>
+              <label class="pill-choice radio-pill"><input type="radio" name="first_deliverable" value="Box" /><span>Box</span></label>
+              <label class="pill-choice radio-pill"><input type="radio" name="first_deliverable" value="Logo / identity" /><span>Logo / identity</span></label>
+              <label class="pill-choice radio-pill"><input type="radio" name="first_deliverable" value="iPhone gameplay screen" /><span>iPhone screen</span></label>
+              <label class="pill-choice radio-pill"><input type="radio" name="first_deliverable" value="Marketing hero" /><span>Marketing hero</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="question">
+            <legend>Top priorities — choose up to <strong>5</strong>.</legend>
+            <div class="choice-grid" data-max-choices="5">
+              <label class="pill-choice"><input type="checkbox" name="top_priorities" value="Mechanic instantly understandable" /><span>Mechanic instantly understandable</span></label>
+              <label class="pill-choice"><input type="checkbox" name="top_priorities" value="Modern and polished" /><span>Modern & polished</span></label>
+              <label class="pill-choice"><input type="checkbox" name="top_priorities" value="Stand out on shelf / feed" /><span>Stand out on shelf / feed</span></label>
+              <label class="pill-choice"><input type="checkbox" name="top_priorities" value="Fun, not childish" /><span>Fun, not childish</span></label>
+              <label class="pill-choice"><input type="checkbox" name="top_priorities" value="Super-readable cards" /><span>Super-readable cards</span></label>
+              <label class="pill-choice"><input type="checkbox" name="top_priorities" value="Reusable pack system" /><span>Reusable pack system</span></label>
+              <label class="pill-choice"><input type="checkbox" name="top_priorities" value="Premium app feel" /><span>Premium app feel</span></label>
+              <label class="pill-choice"><input type="checkbox" name="top_priorities" value="Clear risk / reward" /><span>Clear risk / reward</span></label>
+              <label class="pill-choice"><input type="checkbox" name="top_priorities" value="Party energy" /><span>Party energy</span></label>
+              <label class="pill-choice"><input type="checkbox" name="top_priorities" value="Ownable brand personality" /><span>Ownable brand personality</span></label>
+            </div>
+            <p class="choice-help" data-choice-help></p>
+          </fieldset>
+        </div>
+
+        <div class="panel-block">
+          <div class="section-label"><span>B</span><div><h3>Review the brief</h3><p>These are the signals we will use to generate the prototype family.</p></div></div>
+          <div class="review-grid" id="reviewGrid" aria-live="polite"></div>
+          <div class="missing-signals" id="missingSignals" hidden></div>
+        </div>
+
+        <div class="panel-block final-block">
+          <div class="section-label"><span>C</span><div><h3>Last word</h3><p>What must survive, what can change, and what should the designer know?</p></div></div>
+          <label class="field"><span>Five words or short phrases that define the target direction</span><input type="text" name="five_direction_words" placeholder="Example: bold, clever, modern, tactile, not childish" /></label>
+          <div class="field-grid two-col">
+            <label class="field"><span>Must survive</span><textarea name="must_survive" rows="4" placeholder="What should we protect no matter how the art direction changes?"></textarea></label>
+            <label class="field"><span>Free to change</span><textarea name="free_to_change" rows="4" placeholder="What current ideas should we feel free to replace or rethink?"></textarea></label>
+          </div>
+          <label class="field strong-field"><span>Final creative-direction note</span><textarea name="final_creative_brief" rows="6" placeholder="If you were art-directing the designer for one day, what would you tell them to make?"></textarea></label>
+          <label class="field"><span>Anything else? <small>optional</small></span><textarea name="anything_else" rows="3"></textarea></label>
+        </div>
+
+        <div class="submit-panel">
+          <div>
+            <p class="mini-label">READY WHEN YOU ARE</p>
+            <h3>Send Tanner’s creative direction</h3>
+            <p>Submitting sends the answers and any attached reference images to the project owner through Netlify Forms.</p>
+          </div>
+          <button type="submit" class="button button-primary" id="submitButton">Submit creative direction</button>
+        </div>
+      </section>
+
+      <div class="flow-actions" id="flowActions" aria-label="Phase navigation">
+        <button type="button" class="button button-ghost" id="backButton">Back</button>
+        <div class="flow-status"><span id="stepCompletion">0 of 4 key calls made</span></div>
+        <button type="button" class="button button-primary" id="nextButton">Continue</button>
+      </div>
+    </form>
+
+    <aside class="brief-rail" aria-label="Live prototype brief">
+      <div class="brief-card">
+        <div class="brief-head">
+          <div><p class="mini-label">LIVE OUTPUT</p><h2>Prototype Brief</h2></div>
+          <span class="signal-score" id="signalScore">0%</span>
+        </div>
+        <p class="brief-intro">Updates as you answer. This is the compact handoff behind the first prototype set.</p>
+        <dl class="brief-list">
+          <div><dt>World</dt><dd data-brief="territory">Open</dd></div>
+          <div><dt>Audience</dt><dd data-brief="audience">Open</dd></div>
+          <div><dt>Character</dt><dd data-brief="brand">Open</dd></div>
+          <div><dt>Identity</dt><dd data-brief="identity">Open</dd></div>
+          <div><dt>Card</dt><dd data-brief="card">Open</dd></div>
+          <div><dt>Method</dt><dd data-brief="method">Open</dd></div>
+          <div><dt>Box</dt><dd data-brief="box">Open</dd></div>
+          <div><dt>App</dt><dd data-brief="app">Open</dd></div>
+          <div><dt>Hook</dt><dd data-brief="marketing">Open</dd></div>
+          <div><dt>First build</dt><dd data-brief="prototype">Open</dd></div>
+        </dl>
+        <div class="brief-actions">
+          <button type="button" class="button button-secondary" id="downloadBriefButton">Download brief</button>
+          <button type="button" class="text-button" id="printButton">Print / PDF</button>
+          <button type="button" class="text-button danger" id="clearButton">Clear answers</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer"><p>Decisions, Decisions · Creative Direction Studio v3</p><p>One prompt. Multiple ways to play. Different risk / reward.</p></footer>
+</body>
+</html>
