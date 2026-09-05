@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Creative direction questionnaire for Decisions, Decisions." />
+  <title>Decisions, Decisions — Creative Direction</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#questionnaire">Skip to questionnaire</a>
+
+  <header class="hero">
+    <div class="brand-band" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="hero-inner">
+      <p class="eyebrow">DECISIONS, DECISIONS · CREATIVE DIRECTION</p>
+      <h1>Tanner, help define what this game should look and feel like.</h1>
+      <p class="lede">
+        This is not a final design review. It is a direction-finding brief. Your answers should give us enough clarity to create
+        strong image prototypes for the <strong>logo, cards, box, iPhone screens, and marketing</strong> without guessing at your taste.
+      </p>
+      <div class="hero-actions" aria-label="Questionnaire tools">
+        <button type="button" class="button button-secondary" id="saveJsonButton">Save answers file</button>
+        <button type="button" class="button button-secondary" id="printButton">Print / Save PDF</button>
+        <button type="button" class="button button-ghost" id="clearButton">Clear saved answers</button>
+      </div>
+      <div class="save-status" id="saveStatus" role="status" aria-live="polite">Answers save automatically on this device.</div>
+    </div>
+  </header>
+
+  <div class="progress-wrap" aria-hidden="true">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <main id="questionnaire" class="layout">
+    <aside class="side-nav" aria-label="Questionnaire sections">
+      <div class="side-card">
+        <p class="side-title">Sections</p>
+        <nav>
+          <a href="#north-star">1. North Star</a>
+          <a href="#audience">2. Audience</a>
+          <a href="#visual">3. Visual Territory</a>
+          <a href="#identity">4. Logo & Identity</a>
+          <a href="#cards">5. Card System</a>
+          <a href="#box">6. Box & Physical</a>
+          <a href="#app">7. iPhone App</a>
+          <a href="#marketing">8. Marketing</a>
+          <a href="#packs">9. Pack System</a>
+          <a href="#references">10. References</a>
+          <a href="#decisions">11. Forced Choices</a>
+          <a href="#final-brief">12. Final Brief</a>
+        </nav>
+      </div>
+    </aside>
+
+    <form
+      id="creativeDirectionForm"
+      class="questionnaire"
+      name="tanner-creative-direction"
+      method="POST"
+      action="/thank-you"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="tanner-creative-direction" />
+      <p class="honeypot" aria-hidden="true">
+        <label>Do not fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+      </p>
+
+      <section class="panel intro-panel" aria-labelledby="intro-heading">
+        <div class="section-heading">
+          <span class="section-number">START</span>
+          <div>
+            <h2 id="intro-heading">A few basics</h2>
+            <p>Check as many answers as useful unless a question says to choose one or limit your picks.</p>
+          </div>
+        </div>
+        <div class="grid two">
+          <label class="field">
+            <span>Name</span>
+            <input type="text" name="respondent_name" autocomplete="name" placeholder="Tanner" />
+          </label>
+          <label class="field">
+            <span>Date</span>
+            <input type="date" name="response_date" />
+          </label>
+        </div>
+        <label class="field">
+          <span>In one sentence, what should this game feel like?</span>
+          <textarea name="one_sentence_feel" rows="3" placeholder="Example: A smart, fast, colorful party game that feels polished enough to buy as a gift but never takes itself too seriously."></textarea>
+        </label>
+      </section>
+
+      <section class="panel" id="north-star" aria-labelledby="north-star-heading">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <div>
+            <h2 id="north-star-heading">Brand North Star</h2>
+            <p>Define the emotional target before we choose colors, fonts, or illustration.</p>
+          </div>
+        </div>
+
+        <fieldset class="question">
+          <legend>Choose up to <strong>5</strong> words that should define the brand.</legend>
+          <div class="choice-grid" data-max-choices="5">
+            <label class="choice"><input type="checkbox" name="brand_words" value="Playful" /> <span>Playful</span></label>
+            <label class="choice"><input type="checkbox" name="brand_words" value="Clever" /> <span>Clever</span></label>
+            <label class="choice"><input type="checkbox" name="brand_words" value="Bold" /> <span>Bold</span></label>
+            <label class="choice"><input type="checkbox" name="brand_words" value="Modern" /> <span>Modern</span></label>
+            <label class="choice"><input type="checkbox" name="brand_words" value="Energetic" /> <span>Energetic</span></label>
+            <label class="choice"><input type="checkbox" name="brand_words" value="Funny" /> <span>Funny</span></label>
+            <label class="choice"><input type="checkbox" name="brand_words" value="Warm" /> <span>Warm</span></label>
+            <label class="choice"><input type="checkbox" name="brand_words" value="Distinctive" /> <span>Distinctive</span></label>
+            <label class="choice"><input type="checkbox" name="brand_words" value="Mischievous" /> <span>Slightly mischievous</span></label>
+            <label class="choice"><input type="checkbox" name="brand_words" value="Polished" /> <span>Polished</span></label>
+            <label class="choice"><input type="checkbox" name="brand_words" value="Fast-paced" /> <span>Fast-paced</span></label>
+            <label class="choice"><input type="checkbox" name="brand_words" value="Commercial" /> <span>Commercially credible</span></label>
+          </div>
+          <p class="choice-help" data-choice-help></p>
+        </fieldset>
+
+        <div class="grid two">
+          <fieldset class="question compact">
+            <legend>Overall tone</legend>
+            <label class="radio"><input type="radio" name="tone" value="Clean and calm" /> <span>Clean / calm</span></label>
+            <label class="radio"><input type="radio" name="tone" value="Balanced" /> <span>Balanced</span></label>
+            <label class="radio"><input type="radio" name="tone" value="Chaotic and loud" /> <span>Chaotic / loud</span></label>
+          </fieldset>
+          <fieldset class="question compact">
+            <legend>Humor level</legend>
+            <label class="radio"><input type="radio" name="humor_level" value="Subtle" /> <span>Subtle</span></label>
+            <label class="radio"><input type="radio" name="humor_level" value="Balanced" /> <span>Balanced</span></label>
+            <label class="radio"><input type="radio" name="humor_level" value="Very playful" /> <span>Very playful</span></label>
+          </fieldset>
+        </div>
+
+        <label class="field">
+          <span>What must the visuals communicate within about five seconds?</span>
+          <textarea name="five_second_message" rows="3" placeholder="What should someone understand immediately from the box, card, or ad?"></textarea>
+        </label>
+      </section>
+
+      <section class="panel" id="audience" aria-labelledby="audience-heading">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <div>
+            <h2 id="audience-heading">Audience & Occasion</h2>
+            <p>Who are we designing for first, and where should the product fit socially?</p>
+          </div>
+        </div>
+
+        <fieldset class="question">
+          <legend>Which audiences should the core product feel most natural for? Choose up to <strong>4</strong>.</legend>
+          <div class="choice-grid" data-max-choices="4">
+            <label class="choice"><input type="checkbox" name="audience" value="Families with mixed ages" /> <span>Families with mixed ages</span></label>
+            <label class="choice"><input type="checkbox" name="audience" value="Teens" /> <span>Teens / high-school groups</span></label>
+            <label class="choice"><input type="checkbox" name="audience" value="Adult friends" /> <span>Adult friend groups</span></label>
+            <label class="choice"><input type="checkbox" name="audience" value="Casual non-gamers" /> <span>Casual non-gamers</span></label>
+            <label class="choice"><input type="checkbox" name="audience" value="Party-game fans" /> <span>Existing party-game fans</span></label>
+            <label class="choice"><input type="checkbox" name="audience" value="Mixed-skill groups" /> <span>Mixed-skill groups</span></label>
+            <label class="choice"><input type="checkbox" name="audience" value="Gift buyers" /> <span>Gift buyers</span></label>
+            <label class="choice"><input type="checkbox" name="audience" value="Holiday gatherings" /> <span>Holiday / reunion groups</span></label>
+          </div>
+          <p class="choice-help" data-choice-help></p>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>What should the core game <em>not</em> feel targeted toward?</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="not_targeted" value="Very young kids" /> <span>Very young kids</span></label>
+            <label class="choice"><input type="checkbox" name="not_targeted" value="Hardcore strategy gamers" /> <span>Hardcore strategy gamers</span></label>
+            <label class="choice"><input type="checkbox" name="not_targeted" value="College drinking game" /> <span>College drinking-game vibe</span></label>
+            <label class="choice"><input type="checkbox" name="not_targeted" value="Corporate training" /> <span>Corporate / training-game vibe</span></label>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="panel" id="visual" aria-labelledby="visual-heading">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <div>
+            <h2 id="visual-heading">Visual Territory</h2>
+            <p>Choose one primary route. You can name a secondary influence too.</p>
+          </div>
+        </div>
+
+        <fieldset class="question direction-picker">
+          <legend>Primary visual territory — choose <strong>one</strong>.</legend>
+          <div class="direction-grid">
+            <label class="direction-card">
+              <input type="radio" name="primary_visual_territory" value="Modern Playful" />
+              <span class="swatch swatch-modern" aria-hidden="true"></span>
+              <strong>Modern Playful</strong>
+              <small>Bright, clean, current, broad commercial appeal.</small>
+            </label>
+            <label class="direction-card">
+              <input type="radio" name="primary_visual_territory" value="Premium Editorial" />
+              <span class="swatch swatch-editorial" aria-hidden="true"></span>
+              <strong>Premium Editorial</strong>
+              <small>Sharper type, more restraint, sophisticated but still fun.</small>
+            </label>
+            <label class="direction-card">
+              <input type="radio" name="primary_visual_territory" value="Game Show Energy" />
+              <span class="swatch swatch-show" aria-hidden="true"></span>
+              <strong>Game-Show Energy</strong>
+              <small>Big impact, pressure, countdown, celebration.</small>
+            </label>
+            <label class="direction-card">
+              <input type="radio" name="primary_visual_territory" value="Family Bright" />
+              <span class="swatch swatch-family" aria-hidden="true"></span>
+              <strong>Family Bright</strong>
+              <small>Warm, colorful, accessible, friendly across ages.</small>
+            </label>
+            <label class="direction-card">
+              <input type="radio" name="primary_visual_territory" value="Minimal Tactical" />
+              <span class="swatch swatch-tactical" aria-hidden="true"></span>
+              <strong>Minimal Tactical</strong>
+              <small>Structured, clear, decision-first, less decorative noise.</small>
+            </label>
+            <label class="direction-card">
+              <input type="radio" name="primary_visual_territory" value="Handmade Doodle" />
+              <span class="swatch swatch-doodle" aria-hidden="true"></span>
+              <strong>Handmade / Doodle</strong>
+              <small>Casual charm, hand-drawn energy, expressive imperfection.</small>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="grid two">
+          <label class="field">
+            <span>Secondary influence, if any</span>
+            <input type="text" name="secondary_visual_influence" placeholder="Example: Modern Playful with a little Game-Show Energy" />
+          </label>
+          <label class="field">
+            <span>What should this absolutely not look like?</span>
+            <input type="text" name="visual_anti_reference" placeholder="Example: cheap kids' flash cards" />
+          </label>
+        </div>
+
+        <fieldset class="question">
+          <legend>Specific visual ingredients you like</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="visual_ingredients" value="Rounded shapes" /> <span>Rounded shapes</span></label>
+            <label class="choice"><input type="checkbox" name="visual_ingredients" value="Geometric shapes" /> <span>Geometric shapes</span></label>
+            <label class="choice"><input type="checkbox" name="visual_ingredients" value="Simple flat illustration" /> <span>Simple flat illustration</span></label>
+            <label class="choice"><input type="checkbox" name="visual_ingredients" value="Doodle accents" /> <span>Doodle accents</span></label>
+            <label class="choice"><input type="checkbox" name="visual_ingredients" value="Texture or grain" /> <span>Texture / grain</span></label>
+            <label class="choice"><input type="checkbox" name="visual_ingredients" value="Very clean vector" /> <span>Very clean vector look</span></label>
+            <label class="choice"><input type="checkbox" name="visual_ingredients" value="Large whitespace" /> <span>High whitespace</span></label>
+            <label class="choice"><input type="checkbox" name="visual_ingredients" value="Decorative framing" /> <span>Decorative frame system</span></label>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="panel" id="identity" aria-labelledby="identity-heading">
+        <div class="section-heading">
+          <span class="section-number">04</span>
+          <div>
+            <h2 id="identity-heading">Logo, Color & Typography</h2>
+            <p>Enough direction to prototype a real identity instead of a random wordmark.</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <fieldset class="question compact">
+            <legend>Color intensity</legend>
+            <label class="radio"><input type="radio" name="color_intensity" value="Soft" /> <span>Soft / restrained</span></label>
+            <label class="radio"><input type="radio" name="color_intensity" value="Balanced" /> <span>Balanced</span></label>
+            <label class="radio"><input type="radio" name="color_intensity" value="Bright" /> <span>Bright / loud</span></label>
+          </fieldset>
+          <fieldset class="question compact">
+            <legend>Typography character</legend>
+            <label class="radio"><input type="radio" name="type_character" value="Clean geometric" /> <span>Clean geometric</span></label>
+            <label class="radio"><input type="radio" name="type_character" value="Chunky playful" /> <span>Chunky playful</span></label>
+            <label class="radio"><input type="radio" name="type_character" value="Editorial refined" /> <span>Editorial / refined</span></label>
+          </fieldset>
+        </div>
+
+        <fieldset class="question">
+          <legend>Color directions worth exploring</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="color_direction" value="Candy brights" /> <span>Candy brights</span></label>
+            <label class="choice"><input type="checkbox" name="color_direction" value="Strong primaries" /> <span>Strong primaries</span></label>
+            <label class="choice"><input type="checkbox" name="color_direction" value="Pastels" /> <span>Pastels</span></label>
+            <label class="choice"><input type="checkbox" name="color_direction" value="Neon accents" /> <span>Neon accents</span></label>
+            <label class="choice"><input type="checkbox" name="color_direction" value="Black and white with accents" /> <span>Black/white + accents</span></label>
+            <label class="choice"><input type="checkbox" name="color_direction" value="Current pink yellow teal purple" /> <span>Current pink / yellow / teal / purple family</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>Logo direction</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="logo_direction" value="Wordmark first" /> <span>Wordmark-first</span></label>
+            <label class="choice"><input type="checkbox" name="logo_direction" value="Wordmark and icon" /> <span>Wordmark + icon</span></label>
+            <label class="choice"><input type="checkbox" name="logo_direction" value="Potential character" /> <span>Potential mascot / character</span></label>
+            <label class="choice"><input type="checkbox" name="logo_direction" value="App icon friendly" /> <span>App-icon friendly</span></label>
+            <label class="choice"><input type="checkbox" name="logo_direction" value="Retail brand first" /> <span>Retail-brand first</span></label>
+            <label class="choice"><input type="checkbox" name="logo_direction" value="Weird and memorable" /> <span>Can get weird / memorable</span></label>
+          </div>
+        </fieldset>
+
+        <label class="field">
+          <span>Any colors, fonts, symbols, or visual clichés you strongly dislike?</span>
+          <textarea name="identity_dislikes" rows="3"></textarea>
+        </label>
+      </section>
+
+      <section class="panel" id="cards" aria-labelledby="cards-heading">
+        <div class="section-heading">
+          <span class="section-number">05</span>
+          <div>
+            <h2 id="cards-heading">Card System</h2>
+            <p>Protect the key mechanic: one prompt, three methods, different risk/reward.</p>
+          </div>
+        </div>
+
+        <fieldset class="question">
+          <legend>What should visually dominate a card? Rank by picking the <strong>single most important</strong>.</legend>
+          <div class="radio-grid">
+            <label class="radio-card"><input type="radio" name="card_dominant_element" value="Prompt" /> <span><strong>Prompt</strong><small>The word itself is the hero.</small></span></label>
+            <label class="radio-card"><input type="radio" name="card_dominant_element" value="Method choices" /> <span><strong>Method choices</strong><small>Draw / Mime / Hum or Sound are immediately obvious.</small></span></label>
+            <label class="radio-card"><input type="radio" name="card_dominant_element" value="Points" /> <span><strong>Risk / reward</strong><small>The 1 / 2 / 3-point decision drives the design.</small></span></label>
+            <label class="radio-card"><input type="radio" name="card_dominant_element" value="Difficulty side" /> <span><strong>Easy / Hard</strong><small>The card side is unmistakable first.</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>Card design priorities</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="card_priorities" value="Prompt dominates" /> <span>Prompt dominates</span></label>
+            <label class="choice"><input type="checkbox" name="card_priorities" value="Large icons" /> <span>Large simple icons</span></label>
+            <label class="choice"><input type="checkbox" name="card_priorities" value="Point values obvious" /> <span>Point values impossible to miss</span></label>
+            <label class="choice"><input type="checkbox" name="card_priorities" value="Difficulty visible" /> <span>Difficulty visible from arm's length</span></label>
+            <label class="choice"><input type="checkbox" name="card_priorities" value="Sparse layout" /> <span>Very sparse layout</span></label>
+            <label class="choice"><input type="checkbox" name="card_priorities" value="Button-like methods" /> <span>Tactile / button-like method tiles</span></label>
+            <label class="choice"><input type="checkbox" name="card_priorities" value="Fixed method colors" /> <span>Fixed color per method</span></label>
+            <label class="choice"><input type="checkbox" name="card_priorities" value="Easy hard pairing" /> <span>Easy / Hard sides feel like a pair</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>Third method label — which direction feels strongest right now?</legend>
+          <div class="radio-grid">
+            <label class="radio-card"><input type="radio" name="third_method_label" value="HUM" /> <span><strong>HUM</strong><small>Charming and musical, but narrow.</small></span></label>
+            <label class="radio-card"><input type="radio" name="third_method_label" value="SOUND IT" /> <span><strong>SOUND IT</strong><small>Broader: humming, rhythm, sound effects.</small></span></label>
+            <label class="radio-card"><input type="radio" name="third_method_label" value="TUNE" /> <span><strong>TUNE</strong><small>Clear musical signal, still constrained.</small></span></label>
+            <label class="radio-card"><input type="radio" name="third_method_label" value="Test both" /> <span><strong>Test both</strong><small>Prototype HUM and SOUND IT side by side.</small></span></label>
+          </div>
+        </fieldset>
+
+        <label class="field">
+          <span>Describe the card you would be excited to hold in your hand.</span>
+          <textarea name="ideal_card_description" rows="4" placeholder="Shape, color, information density, icon style, anything that matters."></textarea>
+        </label>
+      </section>
+
+      <section class="panel" id="box" aria-labelledby="box-heading">
+        <div class="section-heading">
+          <span class="section-number">06</span>
+          <div>
+            <h2 id="box-heading">Box & Physical Product</h2>
+            <p>What should a retail or Kickstarter image communicate before someone reads the fine print?</p>
+          </div>
+        </div>
+
+        <fieldset class="question">
+          <legend>Front-of-box priorities — choose up to <strong>5</strong>.</legend>
+          <div class="choice-grid" data-max-choices="5">
+            <label class="choice"><input type="checkbox" name="box_front_priorities" value="Logo prominent" /> <span>Logo prominent</span></label>
+            <label class="choice"><input type="checkbox" name="box_front_priorities" value="Mechanic explained" /> <span>Choice mechanic explained instantly</span></label>
+            <label class="choice"><input type="checkbox" name="box_front_priorities" value="Sample card shown" /> <span>Show a sample card</span></label>
+            <label class="choice"><input type="checkbox" name="box_front_priorities" value="Method icons shown" /> <span>Show the three method icons</span></label>
+            <label class="choice"><input type="checkbox" name="box_front_priorities" value="Strong tagline" /> <span>Strong tagline</span></label>
+            <label class="choice"><input type="checkbox" name="box_front_priorities" value="People reactions" /> <span>People / reactions</span></label>
+            <label class="choice"><input type="checkbox" name="box_front_priorities" value="Product beauty" /> <span>Product beauty / design-led</span></label>
+            <label class="choice"><input type="checkbox" name="box_front_priorities" value="Giftable" /> <span>Looks giftable / shelf-ready</span></label>
+          </div>
+          <p class="choice-help" data-choice-help></p>
+        </fieldset>
+
+        <div class="grid two">
+          <fieldset class="question compact">
+            <legend>Table presence</legend>
+            <label class="radio"><input type="radio" name="table_presence" value="Calm" /> <span>Calm / clean</span></label>
+            <label class="radio"><input type="radio" name="table_presence" value="Balanced" /> <span>Balanced</span></label>
+            <label class="radio"><input type="radio" name="table_presence" value="Lively" /> <span>Lively / colorful</span></label>
+          </fieldset>
+          <fieldset class="question compact">
+            <legend>Visual age feel</legend>
+            <label class="radio"><input type="radio" name="visual_age" value="Family" /> <span>All-ages family</span></label>
+            <label class="radio"><input type="radio" name="visual_age" value="Balanced" /> <span>Broad / balanced</span></label>
+            <label class="radio"><input type="radio" name="visual_age" value="Adult" /> <span>Older / party-night lean</span></label>
+          </fieldset>
+        </div>
+
+        <label class="field">
+          <span>What absolutely needs to appear in the first box prototype?</span>
+          <textarea name="box_must_show" rows="3"></textarea>
+        </label>
+      </section>
+
+      <section class="panel" id="app" aria-labelledby="app-heading">
+        <div class="section-heading">
+          <span class="section-number">07</span>
+          <div>
+            <h2 id="app-heading">iPhone App Direction</h2>
+            <p>The app should feel like the same product, not a separate software project.</p>
+          </div>
+        </div>
+
+        <fieldset class="question">
+          <legend>Overall UI feel</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="app_feel" value="Card deck tactile" /> <span>Card-deck / tactile</span></label>
+            <label class="choice"><input type="checkbox" name="app_feel" value="Minimal clean" /> <span>Minimal / clean</span></label>
+            <label class="choice"><input type="checkbox" name="app_feel" value="Bright playful" /> <span>Bright / playful</span></label>
+            <label class="choice"><input type="checkbox" name="app_feel" value="Premium" /> <span>Polished / premium</span></label>
+            <label class="choice"><input type="checkbox" name="app_feel" value="Game show" /> <span>Game-show energy</span></label>
+            <label class="choice"><input type="checkbox" name="app_feel" value="Matches physical" /> <span>Closely matches physical product</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>Which screens should we prototype first? Choose up to <strong>4</strong>.</legend>
+          <div class="choice-grid" data-max-choices="4">
+            <label class="choice"><input type="checkbox" name="prototype_screens" value="App icon and splash" /> <span>App icon / splash</span></label>
+            <label class="choice"><input type="checkbox" name="prototype_screens" value="Home" /> <span>Home screen</span></label>
+            <label class="choice"><input type="checkbox" name="prototype_screens" value="Pack picker" /> <span>Pack picker</span></label>
+            <label class="choice"><input type="checkbox" name="prototype_screens" value="Handoff reveal" /> <span>Handoff / reveal</span></label>
+            <label class="choice"><input type="checkbox" name="prototype_screens" value="Gameplay card" /> <span>Main gameplay card</span></label>
+            <label class="choice"><input type="checkbox" name="prototype_screens" value="Drawing canvas" /> <span>Drawing canvas</span></label>
+            <label class="choice"><input type="checkbox" name="prototype_screens" value="Round summary" /> <span>Round summary</span></label>
+            <label class="choice"><input type="checkbox" name="prototype_screens" value="Final results" /> <span>Final results</span></label>
+          </div>
+          <p class="choice-help" data-choice-help></p>
+        </fieldset>
+
+        <div class="grid two">
+          <fieldset class="question compact">
+            <legend>Animation style</legend>
+            <label class="radio"><input type="radio" name="animation_style" value="Subtle" /> <span>Subtle / restrained</span></label>
+            <label class="radio"><input type="radio" name="animation_style" value="Balanced" /> <span>Balanced</span></label>
+            <label class="radio"><input type="radio" name="animation_style" value="Punchy" /> <span>Punchy / lively</span></label>
+          </fieldset>
+          <fieldset class="question compact">
+            <legend>Information density</legend>
+            <label class="radio"><input type="radio" name="app_density" value="Very simple" /> <span>Very simple</span></label>
+            <label class="radio"><input type="radio" name="app_density" value="Balanced" /> <span>Balanced</span></label>
+            <label class="radio"><input type="radio" name="app_density" value="Richer" /> <span>Richer / more gamey</span></label>
+          </fieldset>
+        </div>
+
+        <label class="field">
+          <span>Describe the ideal main gameplay screen in one or two sentences.</span>
+          <textarea name="gameplay_screen_description" rows="4"></textarea>
+        </label>
+      </section>
+
+      <section class="panel" id="marketing" aria-labelledby="marketing-heading">
+        <div class="section-heading">
+          <span class="section-number">08</span>
+          <div>
+            <h2 id="marketing-heading">Marketing Direction</h2>
+            <p>What should we show people when we are trying to make them stop scrolling or pick up the box?</p>
+          </div>
+        </div>
+
+        <fieldset class="question">
+          <legend>Which marketing prototypes should we create first? Choose up to <strong>4</strong>.</legend>
+          <div class="choice-grid" data-max-choices="4">
+            <label class="choice"><input type="checkbox" name="marketing_assets" value="Kickstarter hero" /> <span>Kickstarter hero image</span></label>
+            <label class="choice"><input type="checkbox" name="marketing_assets" value="Retail box shot" /> <span>Retail-style box shot</span></label>
+            <label class="choice"><input type="checkbox" name="marketing_assets" value="Social ad" /> <span>Social ad</span></label>
+            <label class="choice"><input type="checkbox" name="marketing_assets" value="App Store promo" /> <span>App Store / mobile promo</span></label>
+            <label class="choice"><input type="checkbox" name="marketing_assets" value="Sell sheet" /> <span>Sell-sheet / one-pager</span></label>
+            <label class="choice"><input type="checkbox" name="marketing_assets" value="Explainer infographic" /> <span>Explainer infographic</span></label>
+            <label class="choice"><input type="checkbox" name="marketing_assets" value="Lifestyle reaction image" /> <span>Lifestyle / reaction image</span></label>
+            <label class="choice"><input type="checkbox" name="marketing_assets" value="Component spread" /> <span>Cards + components spread</span></label>
+          </div>
+          <p class="choice-help" data-choice-help></p>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>Primary marketing message — choose <strong>one</strong>.</legend>
+          <div class="radio-grid">
+            <label class="radio-card"><input type="radio" name="primary_marketing_message" value="Choice mechanic" /> <span><strong>The 3-way choice</strong><small>One prompt. Three ways to play.</small></span></label>
+            <label class="radio-card"><input type="radio" name="primary_marketing_message" value="Risk reward" /> <span><strong>Risk / reward</strong><small>Take the safe point or chase three.</small></span></label>
+            <label class="radio-card"><input type="radio" name="primary_marketing_message" value="Different personalities" /> <span><strong>Different personalities</strong><small>Bad at drawing? Don't draw.</small></span></label>
+            <label class="radio-card"><input type="radio" name="primary_marketing_message" value="Reaction and laughter" /> <span><strong>Reaction / laughter</strong><small>Sell the social moment first.</small></span></label>
+          </div>
+        </fieldset>
+
+        <label class="field">
+          <span>If you had to pitch the game in one or two short marketing lines, what would you say?</span>
+          <textarea name="marketing_pitch" rows="4"></textarea>
+        </label>
+      </section>
+
+      <section class="panel" id="packs" aria-labelledby="packs-heading">
+        <div class="section-heading">
+          <span class="section-number">09</span>
+          <div>
+            <h2 id="packs-heading">Expansion Pack System</h2>
+            <p>The game should be able to grow through content without redesigning the whole brand every time.</p>
+          </div>
+        </div>
+
+        <fieldset class="question">
+          <legend>How distinct should expansion packs look?</legend>
+          <div class="radio-grid">
+            <label class="radio-card"><input type="radio" name="pack_system_style" value="Subtle variations" /> <span><strong>Subtle variations</strong><small>Master brand dominates; packs change lightly.</small></span></label>
+            <label class="radio-card"><input type="radio" name="pack_system_style" value="Strong color coding" /> <span><strong>Strong color coding</strong><small>Same system, clearly different pack palettes.</small></span></label>
+            <label class="radio-card"><input type="radio" name="pack_system_style" value="Mini identities" /> <span><strong>Mini-identities</strong><small>Each pack can have more personality.</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>Which pack should we visualize first after the core?</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="pack_interest" value="Kids Family Jr" /> <span>Kids / Family Jr.</span></label>
+            <label class="choice"><input type="checkbox" name="pack_interest" value="Music" /> <span>Music</span></label>
+            <label class="choice"><input type="checkbox" name="pack_interest" value="Sports" /> <span>Sports</span></label>
+            <label class="choice"><input type="checkbox" name="pack_interest" value="Movies and TV" /> <span>Movies & TV</span></label>
+            <label class="choice"><input type="checkbox" name="pack_interest" value="Decades" /> <span>Decades / nostalgia</span></label>
+            <label class="choice"><input type="checkbox" name="pack_interest" value="Holiday" /> <span>Holiday</span></label>
+            <label class="choice"><input type="checkbox" name="pack_interest" value="After Dark" /> <span>After Dark / 18+</span></label>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="panel" id="references" aria-labelledby="references-heading">
+        <div class="section-heading">
+          <span class="section-number">10</span>
+          <div>
+            <h2 id="references-heading">References & Inspiration</h2>
+            <p>Real references are more useful than abstract adjectives. List anything that gets us closer.</p>
+          </div>
+        </div>
+
+        <label class="field">
+          <span>Games, brands, packaging, apps, websites, or products that feel directionally right</span>
+          <textarea name="positive_references" rows="5" placeholder="Names or links are both useful. Tell us what you like about them if you can."></textarea>
+        </label>
+        <label class="field">
+          <span>References that feel wrong for this product</span>
+          <textarea name="negative_references" rows="4" placeholder="Anything that feels too childish, too generic, too loud, too corporate, etc."></textarea>
+        </label>
+        <label class="field">
+          <span>Anything visual you already have in your head that we have not captured?</span>
+          <textarea name="unspoken_visual_idea" rows="5"></textarea>
+        </label>
+      </section>
+
+      <section class="panel" id="decisions" aria-labelledby="decisions-heading">
+        <div class="section-heading">
+          <span class="section-number">11</span>
+          <div>
+            <h2 id="decisions-heading">Forced Choices</h2>
+            <p>These answers prevent the next prototype round from trying to be everything at once.</p>
+          </div>
+        </div>
+
+        <fieldset class="question">
+          <legend>Which overall prototype route should we build first?</legend>
+          <div class="direction-grid compact-directions">
+            <label class="direction-card">
+              <input type="radio" name="prototype_route" value="Safest commercial" />
+              <strong>Safest / strongest commercial</strong>
+              <small>Broadest sellability, clearest retail proposition.</small>
+            </label>
+            <label class="direction-card">
+              <input type="radio" name="prototype_route" value="Distinctive" />
+              <strong>More distinctive</strong>
+              <small>More ownable and memorable, slightly more design risk.</small>
+            </label>
+            <label class="direction-card">
+              <input type="radio" name="prototype_route" value="Experimental" />
+              <strong>Experimental / higher-risk</strong>
+              <small>Push personality and see how far the concept can go.</small>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>Choose up to <strong>5</strong> things that matter most in the next image prototypes.</legend>
+          <div class="choice-grid" data-max-choices="5">
+            <label class="choice"><input type="checkbox" name="top_priorities" value="Mechanic understandable" /> <span>Mechanic instantly understandable</span></label>
+            <label class="choice"><input type="checkbox" name="top_priorities" value="Modern polished" /> <span>Modern and polished</span></label>
+            <label class="choice"><input type="checkbox" name="top_priorities" value="Stand out" /> <span>Stand out on a shelf / feed</span></label>
+            <label class="choice"><input type="checkbox" name="top_priorities" value="Not childish" /> <span>Fun without feeling childish</span></label>
+            <label class="choice"><input type="checkbox" name="top_priorities" value="Readable cards" /> <span>Super-readable cards</span></label>
+            <label class="choice"><input type="checkbox" name="top_priorities" value="Pack system" /> <span>Reusable pack system</span></label>
+            <label class="choice"><input type="checkbox" name="top_priorities" value="Premium app" /> <span>Clean, premium app UI</span></label>
+            <label class="choice"><input type="checkbox" name="top_priorities" value="Risk reward" /> <span>Clear risk / reward</span></label>
+            <label class="choice"><input type="checkbox" name="top_priorities" value="Party energy" /> <span>Fast-paced party energy</span></label>
+            <label class="choice"><input type="checkbox" name="top_priorities" value="Anti last place personality" /> <span>“Don't finish last” personality</span></label>
+          </div>
+          <p class="choice-help" data-choice-help></p>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>Which deliverable should we prototype first?</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="first_deliverable" value="Logo identity" /> <span>Logo + identity</span></label>
+            <label class="choice"><input type="radio" name="first_deliverable" value="Card system" /> <span>Card system</span></label>
+            <label class="choice"><input type="radio" name="first_deliverable" value="Game box" /> <span>Game box</span></label>
+            <label class="choice"><input type="radio" name="first_deliverable" value="App screens" /> <span>iPhone screens</span></label>
+            <label class="choice"><input type="radio" name="first_deliverable" value="Marketing key art" /> <span>Marketing key art</span></label>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="panel final-panel" id="final-brief" aria-labelledby="final-brief-heading">
+        <div class="section-heading">
+          <span class="section-number">12</span>
+          <div>
+            <h2 id="final-brief-heading">Final Art-Direction Brief</h2>
+            <p>This is the most useful page. Write it as if you were handing direction directly to the designer making the next prototype.</p>
+          </div>
+        </div>
+
+        <label class="field">
+          <span>Five words or short phrases that summarize the target direction</span>
+          <input type="text" name="five_direction_words" placeholder="Example: bold, clever, clean, tactile, mischievous" />
+        </label>
+
+        <label class="field">
+          <span>What must survive from the current concept?</span>
+          <textarea name="must_survive" rows="4" placeholder="Mechanic, colors, humor, name, ice cream hook, icon idea, etc."></textarea>
+        </label>
+
+        <label class="field">
+          <span>What should we feel free to replace or radically improve?</span>
+          <textarea name="free_to_change" rows="4"></textarea>
+        </label>
+
+        <label class="field">
+          <span>Your final creative-direction brief</span>
+          <textarea name="final_creative_brief" rows="8" placeholder="Describe the product you want to see. Include the feel, look, audience, colors, level of humor, card/box/app relationship, and anything else you want the next prototypes to honor."></textarea>
+        </label>
+
+        <label class="field">
+          <span>Anything else?</span>
+          <textarea name="anything_else" rows="5"></textarea>
+        </label>
+      </section>
+
+      <section class="submit-panel" aria-labelledby="submit-heading">
+        <div>
+          <h2 id="submit-heading">Send the direction</h2>
+          <p>Submitting sends the answers into the project's Netlify Forms inbox. You can also save a local copy first.</p>
+        </div>
+        <button type="submit" class="button button-primary">Submit creative direction</button>
+      </section>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p><strong>Decisions, Decisions</strong> · Working creative-direction brief · September 2026</p>
+    <p>One prompt. Multiple ways to play. Different risk / reward.</p>
+  </footer>
+</body>
+</html>
