@@ -1,0 +1,16 @@
+{
+  "id": "/play.html",
+  "name": "GET THE POINT — Playtest",
+  "short_name": "Get the Point",
+  "description": "One prompt. Three ways to play. Offline pass-and-play party-game prototype.",
+  "start_url": "/play.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#101112",
+  "theme_color": "#101112",
+  "orientation": "portrait",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
