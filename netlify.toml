@@ -3,7 +3,17 @@
 
 [[redirects]]
   from = "/"
-  to = "/creative-direction-v3.html"
+  to = "/creative-direction-round2.html"
+  status = 200
+
+[[redirects]]
+  from = "/round2"
+  to = "/creative-direction-round2.html"
+  status = 200
+
+[[redirects]]
+  from = "/v4"
+  to = "/creative-direction-round2.html"
   status = 200
 
 [[redirects]]
@@ -24,6 +34,11 @@
 [[redirects]]
   from = "/thank-you"
   to = "/thank-you-v3.html"
+  status = 200
+
+[[redirects]]
+  from = "/round2-thank-you"
+  to = "/round2-thank-you.html"
   status = 200
 
 [[headers]]
