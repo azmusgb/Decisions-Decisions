@@ -34,10 +34,10 @@ export default async (req: Request, context: any) => {
 
   let html = await response.text();
   if (!html.includes("/css/navigation.css")) {
-    html = html.replace("</head>", '<link rel="stylesheet" href="/css/navigation.css?v=8"></head>');
+    html = html.replace("</head>", '<link rel="stylesheet" href="/css/navigation.css?v=9"></head>');
   }
   if (!html.includes("/site-nav.js")) {
-    html = html.replace("</body>", '<script src="/site-nav.js?v=8" defer></script></body>');
+    html = html.replace("</body>", '<script src="/site-nav.js?v=9" defer></script></body>');
   }
 
   const path = new URL(req.url).pathname;
