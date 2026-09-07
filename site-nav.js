@@ -32,9 +32,10 @@
   }
 
   function drawerMarkup() {
-    const privateArea = location.pathname.startsWith('/play') || location.pathname.startsWith('/diagnostics');
+    const privatePaths = ['/play','/diagnostics','/analysis','/feedback'];
+    const privateArea = privatePaths.some(path => location.pathname.startsWith(path));
     const demoTools = privateArea
-      ? '<span class="site-drawer-label">PLAYTEST TOOLS</span><a href="/diagnostics">Device diagnostics</a><a href="/demo-access?logout=1">Lock demo on this device</a>'
+      ? '<span class="site-drawer-label">PLAYTEST TOOLS</span><a href="/play">Play demo</a><a href="/diagnostics">Device diagnostics</a><a href="/analysis">Analyze telemetry</a><a href="/feedback">Session feedback</a><a href="/demo-access?logout=1">Lock demo on this device</a>'
       : '';
     return `<div class="site-drawer-backdrop" data-site-drawer-backdrop hidden></div><aside class="site-drawer" data-site-drawer aria-hidden="true"><div class="site-drawer-head"><a class="brand" href="/">GET THE POINT</a><button class="site-drawer-close" type="button" aria-label="Close menu">×</button></div><nav aria-label="Site menu"><span class="site-drawer-label">PLAY + LEARN</span>${PRIMARY.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}<span class="site-drawer-label">PROJECT + BUSINESS</span>${MORE.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}<a class="site-drawer-feature" href="/playtest">Join a playtest</a>${demoTools}</nav><div class="site-drawer-foot"><span>ONE PROMPT. THREE WAYS TO PLAY.</span></div></aside>`;
   }
