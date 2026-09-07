@@ -1,6 +1,6 @@
 'use strict';
-const CACHE = 'gtp-pwa-v7';
-const CORE = ['/play.html','/play.css?v=6','/play-polish.css?v=6','/play-performance.css?v=6','/play-runtime.js?v=6','/play.js?v=6','/manifest.webmanifest','/icon.svg'];
+const CACHE = 'gtp-pwa-v8';
+const CORE = ['/play.html','/css/tokens.css?v=7','/css/game.css?v=7','/play-runtime.js?v=7','/play.js?v=7','/manifest.webmanifest','/icon.svg'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
