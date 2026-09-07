@@ -43,7 +43,7 @@
   border-radius: 10px;
   color: var(--gtp-cream-2, #f6eddc);
   font-size: .86rem;
-  font-weight: 750;
+  font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -399,6 +399,19 @@ body:has(.game) .game-site-menu {
 .demo-access-page--embed .site-drawer,
 .demo-access-page--embed .site-drawer-backdrop {
   display: none !important;
+}
+
+/* Site-wide contrast guard for choice callouts used on warm light surfaces. */
+.section--cream .choice-callout {
+  border-color: var(--gtp-dark-line, #d9cfbf);
+}
+
+.section--cream .choice-callout strong {
+  color: var(--gtp-teal-dark, #0b756f);
+}
+
+.section--cream .choice-callout p {
+  color: var(--gtp-text-on-light, #202224);
 }
 
 @media (max-width: 960px) {
