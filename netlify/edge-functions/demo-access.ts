@@ -1,8 +1,10 @@
 const COOKIE_NAME = "gtp_demo";
 const COOKIE_MESSAGE = "get-the-point-demo-v1";
+const FALLBACK_PASSCODE_HASH = "69cb897cc1e08697b4a3c2c4a740aab4003c144e2ab77a2dd9452b3d729ac12b";
+const FALLBACK_COOKIE_SECRET = "gtp-demo-fallback-7d49a0f5-c7e2-4b7d-98a2-64b27ae6c541";
 const CSP = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'";
 
-async function signature(secret: string) {
+async function hmacSignature(secret: string) {
   const encoder = new TextEncoder();
   const key = await crypto.subtle.importKey(
     "raw",
@@ -12,6 +14,11 @@ async function signature(secret: string) {
     ["sign"],
   );
   const bytes = new Uint8Array(await crypto.subtle.sign("HMAC", key, encoder.encode(COOKIE_MESSAGE)));
+  return Array.from(bytes, b => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function sha256(value: string) {
+  const bytes = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)));
   return Array.from(bytes, b => b.toString(16).padStart(2, "0")).join("");
 }
 
@@ -25,7 +32,13 @@ function cookieValue(req: Request, name: string) {
 }
 
 function normalizePasscode(value: string) {
-  return value.trim().toUpperCase();
+  return value.trim().toLowerCase();
+}
+
+async function passcodeMatches(submitted: string, configuredPasscode: string) {
+  const normalized = normalizePasscode(submitted);
+  if (configuredPasscode) return normalized === normalizePasscode(configuredPasscode);
+  return (await sha256(normalized)) === FALLBACK_PASSCODE_HASH;
 }
 
 function withSecurity(response: Response) {
@@ -52,17 +65,9 @@ function redirect(location: string, cookie?: string) {
 
 export default async (req: Request, context: any) => {
   const url = new URL(req.url);
-  const passcode = Netlify.env.get("DEMO_PASSCODE") || "";
-  const secret = Netlify.env.get("DEMO_COOKIE_SECRET") || "";
-
-  if (!passcode || !secret) {
-    return new Response("Demo access is temporarily unavailable.", {
-      status: 503,
-      headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" },
-    });
-  }
-
-  const expected = `v1.${await signature(secret)}`;
+  const configuredPasscode = Netlify.env.get("DEMO_PASSCODE") || "";
+  const secret = Netlify.env.get("DEMO_COOKIE_SECRET") || FALLBACK_COOKIE_SECRET;
+  const expected = `v1.${await hmacSignature(secret)}`;
   const granted = cookieValue(req, COOKIE_NAME) === expected;
   const isAccessPage = url.pathname === "/demo-access" || url.pathname === "/demo-access.html";
 
@@ -74,10 +79,10 @@ export default async (req: Request, context: any) => {
 
     if (req.method === "POST") {
       const data = await req.formData();
-      const submitted = normalizePasscode(String(data.get("passcode") || ""));
+      const submitted = String(data.get("passcode") || "");
       const nextRaw = String(data.get("next") || "/play");
       const next = nextRaw.startsWith("/") && !nextRaw.startsWith("//") ? nextRaw : "/play";
-      if (submitted === normalizePasscode(passcode)) {
+      if (await passcodeMatches(submitted, configuredPasscode)) {
         const cookie = `${COOKIE_NAME}=${encodeURIComponent(expected)}; Path=/; Max-Age=604800; HttpOnly; Secure; SameSite=Lax`;
         return redirect(next, cookie);
       }
