@@ -26,6 +26,12 @@
     return prompts[index % prompts.length];
   }
 
+  function setNextState(committed) {
+    if (!(next instanceof HTMLButtonElement)) return;
+    next.textContent = committed ? 'Next prompt' : 'New prompt';
+    next.classList.toggle('is-ready', committed);
+  }
+
   function paint(reset = true) {
     const item = current();
     promptNode.textContent = item.prompt;
@@ -46,24 +52,42 @@
     });
     if (reset) {
       card.classList.remove('is-committed');
+      card.removeAttribute('data-selected-route');
       status.innerHTML = '<span>PICK ONE</span><strong>TAP A WAY AND GO</strong>';
+      setNextState(false);
     }
   }
 
+  function commit(button) {
+    const route = button.dataset.route;
+    if (!route || card.classList.contains('is-committed')) return;
+    const points = current()[route];
+    card.classList.add('is-committed');
+    card.dataset.selectedRoute = route;
+    methodButtons.forEach(item => {
+      const selected = item === button;
+      item.classList.toggle('is-selected', selected);
+      item.setAttribute('aria-pressed', String(selected));
+      item.setAttribute('aria-disabled', 'true');
+      if (!selected) item.setAttribute('tabindex', '-1');
+    });
+    status.innerHTML = `<span>${label[route]} · ${points} ${points === 1 ? 'PT' : 'PTS'}</span><strong>NOW GET THEM TO GUESS</strong>`;
+    setNextState(true);
+  }
+
   methodButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const route = button.dataset.route;
-      if (!route || card.classList.contains('is-committed')) return;
-      const points = current()[route];
-      card.classList.add('is-committed');
-      methodButtons.forEach(item => {
-        const selected = item === button;
-        item.classList.toggle('is-selected', selected);
-        item.setAttribute('aria-pressed', String(selected));
-        item.setAttribute('aria-disabled', 'true');
-        if (!selected) item.setAttribute('tabindex', '-1');
-      });
-      status.innerHTML = `<span>${label[route]} · ${points} ${points === 1 ? 'PT' : 'PTS'}</span><strong>NOW GET THEM TO GUESS</strong>`;
+    button.addEventListener('click', () => commit(button));
+    button.addEventListener('keydown', event => {
+      if (card.classList.contains('is-committed')) return;
+      const currentIndex = methodButtons.indexOf(button);
+      let targetIndex = null;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') targetIndex = (currentIndex + 1) % methodButtons.length;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') targetIndex = (currentIndex - 1 + methodButtons.length) % methodButtons.length;
+      if (event.key === 'Home') targetIndex = 0;
+      if (event.key === 'End') targetIndex = methodButtons.length - 1;
+      if (targetIndex === null) return;
+      event.preventDefault();
+      methodButtons[targetIndex]?.focus();
     });
   });
 
