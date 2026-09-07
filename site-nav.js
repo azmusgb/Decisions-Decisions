@@ -16,13 +16,12 @@
     ['Manufacturing','/manufacturing'],
     ['Contact','/contact']
   ];
-  const ALL_LINKS = [...PRIMARY, ...MORE];
 
   function ensureStyles() {
     if (document.querySelector('link[href*="navigation.css"]')) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/css/navigation.css?v=9';
+    link.href = '/css/navigation.css?v=10';
     document.head.appendChild(link);
   }
 
@@ -33,10 +32,11 @@
   }
 
   function drawerMarkup() {
-    const demoControl = location.pathname.startsWith('/play')
-      ? '<a href="/demo-access?logout=1">Lock demo on this device</a>'
+    const privateArea = location.pathname.startsWith('/play') || location.pathname.startsWith('/diagnostics');
+    const demoTools = privateArea
+      ? '<span class="site-drawer-label">PLAYTEST TOOLS</span><a href="/diagnostics">Device diagnostics</a><a href="/demo-access?logout=1">Lock demo on this device</a>'
       : '';
-    return `<div class="site-drawer-backdrop" data-site-drawer-backdrop hidden></div><aside class="site-drawer" data-site-drawer aria-hidden="true"><div class="site-drawer-head"><a class="brand" href="/">GET THE POINT</a><button class="site-drawer-close" type="button" aria-label="Close menu">×</button></div><nav aria-label="Site menu"><span class="site-drawer-label">PLAY + LEARN</span>${PRIMARY.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}<span class="site-drawer-label">PROJECT + BUSINESS</span>${MORE.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}<a class="site-drawer-feature" href="/playtest">Join a playtest</a>${demoControl}</nav><div class="site-drawer-foot"><span>ONE PROMPT. THREE WAYS TO PLAY.</span></div></aside>`;
+    return `<div class="site-drawer-backdrop" data-site-drawer-backdrop hidden></div><aside class="site-drawer" data-site-drawer aria-hidden="true"><div class="site-drawer-head"><a class="brand" href="/">GET THE POINT</a><button class="site-drawer-close" type="button" aria-label="Close menu">×</button></div><nav aria-label="Site menu"><span class="site-drawer-label">PLAY + LEARN</span>${PRIMARY.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}<span class="site-drawer-label">PROJECT + BUSINESS</span>${MORE.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}<a class="site-drawer-feature" href="/playtest">Join a playtest</a>${demoTools}</nav><div class="site-drawer-foot"><span>ONE PROMPT. THREE WAYS TO PLAY.</span></div></aside>`;
   }
 
   function setupHeader() {
