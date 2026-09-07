@@ -78,6 +78,7 @@ ok(/Private demo/.test(siteNav) && /Join a playtest/.test(siteNav), 'navigation 
 ok(/overflow-y:\s*auto/.test(navCss) && /setAttribute\('inert'/.test(siteNav), 'mobile drawer is scrollable and backgrounds become inert');
 ok(/--gtp-teal-dark:\s*#0b756f/i.test(tokens), 'accessible dark teal token exists for light surfaces');
 ok(/section--cream \.eyebrow/.test(siteCss) && /var\(--gtp-teal-dark\)/.test(siteCss), 'light surfaces use the accessible teal variant');
+ok(/section--cream \.choice-callout/.test(navCss) && /gtp-text-on-light/.test(navCss), 'light-surface choice callouts preserve readable contrast');
 ok(!publicPages.includes('◒'), 'active public pages do not expose the stale MIME placeholder icon');
 ok(!publicPages.includes('WORKING COMMERCIAL TITLE'), 'consumer pages avoid internal working-title jargon in primary presentation');
 ok(!home.includes('CURRENT v2.1 CHALLENGER'), 'homepage avoids version-register language in the main consumer flow');
@@ -100,8 +101,9 @@ const analysisJs = read('analysis.js');
 const enhancement = read('playtest-enhancements.js');
 
 ok(/playtest-enhancements\.js\?v=11/.test(play), 'play shell references current enhancement asset');
-ok(/site-nav\.js\?v=11|site-nav\.js\?v=12/.test(play), 'play shell references supported navigation asset');
-ok(/gtp-pwa-v13-telemetry-compat/.test(sw), 'service-worker cache generation is current');
+ok(/site-nav\.js\?v=12/.test(play) && /navigation\.css\?v=12/.test(play), 'play shell references shared navigation v12 assets');
+ok(/gtp-pwa-v14-public-site-v2/.test(sw), 'service-worker cache generation is current');
+ok(/site-nav\.js\?v=12/.test(sw) && /navigation\.css\?v=12/.test(sw), 'service worker caches shared navigation v12 assets');
 ok(/playtest-enhancements\.js\?v=11/.test(sw), 'service worker caches current enhancement asset');
 ok(!/['"]\/play(?:\.html)?['"]/.test(sw.split('const CORE =')[1]?.split('];')[0] || ''), 'protected play HTML is not precached');
 ok(/event\.request\.mode === 'navigate'/.test(sw) && /fetch\(event\.request\)/.test(sw), 'navigation reaches network/edge access gate');
