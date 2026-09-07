@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'gtp-pwa-v14-public-site-v2';
+const CACHE = 'gtp-pwa-v15-nav-accessibility';
 const CORE = [
   '/css/tokens.css?v=10',
   '/css/game.css?v=10',
