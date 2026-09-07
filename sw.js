@@ -1,10 +1,10 @@
 'use strict';
-const CACHE = 'gtp-pwa-v9-private-demo';
+const CACHE = 'gtp-pwa-v10-private-demo';
 const CORE = [
   '/css/tokens.css?v=8',
   '/css/game.css?v=8',
-  '/css/navigation.css?v=8',
-  '/site-nav.js?v=8',
+  '/css/navigation.css?v=9',
+  '/site-nav.js?v=9',
   '/play-runtime.js?v=8',
   '/play.js?v=8',
   '/manifest.webmanifest',
