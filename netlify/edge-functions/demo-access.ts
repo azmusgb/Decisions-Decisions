@@ -24,6 +24,10 @@ function cookieValue(req: Request, name: string) {
   return "";
 }
 
+function normalizePasscode(value: string) {
+  return value.trim().toUpperCase();
+}
+
 function withSecurity(response: Response) {
   const headers = new Headers(response.headers);
   headers.set("Content-Security-Policy", CSP);
@@ -70,10 +74,10 @@ export default async (req: Request, context: any) => {
 
     if (req.method === "POST") {
       const data = await req.formData();
-      const submitted = String(data.get("passcode") || "");
+      const submitted = normalizePasscode(String(data.get("passcode") || ""));
       const nextRaw = String(data.get("next") || "/play");
       const next = nextRaw.startsWith("/") && !nextRaw.startsWith("//") ? nextRaw : "/play";
-      if (submitted === passcode) {
+      if (submitted === normalizePasscode(passcode)) {
         const cookie = `${COOKIE_NAME}=${encodeURIComponent(expected)}; Path=/; Max-Age=604800; HttpOnly; Secure; SameSite=Lax`;
         return redirect(next, cookie);
       }
