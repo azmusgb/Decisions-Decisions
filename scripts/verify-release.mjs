@@ -48,10 +48,11 @@ console.log('GET THE POINT — release verification\n');
 const requiredFiles = [
   'home.html','how.html','playtest.html','about.html','faq.html','press.html','partners.html','retail.html','manufacturing.html','launch.html','contact.html','privacy.html','thanks.html',
   'public-demo.js','css/tokens.css','css/site.css','css/navigation.css','site-nav.js',
-  'play.html','play.js','play-runtime.js','playtest-enhancements.js','sw.js','manifest.webmanifest',
+  'play.html','play.js','play-runtime.js','playtest-enhancements.js','play-smart-card.js','css/game.css','css/game-smart-card.css','sw.js','manifest.webmanifest',
   'demo-access.html','diagnostics.html','diagnostics.js','analysis.html','analysis.js','feedback.html',
   'netlify.toml','netlify/edge-functions/demo-access.ts','netlify/edge-functions/site-shell.ts',
   'PLAYTEST_ACCEPTANCE_v0.6.md','BLIND_TEST_PROTOCOL_v0.6.md','PLAYTEST_EVIDENCE_SCHEMA_v0.6.md',
+  'PRODUCT_TRUTH.md','CSS_ARCHITECTURE_v7.md',
   'content/prompt-candidates-v0.6.csv','content/README.md'
 ];
 requiredFiles.forEach(file => ok(exists(file), `required file exists: ${file}`));
@@ -95,6 +96,9 @@ ok(/THE CHOICE IS THE GAME/.test(how), 'how-it-works page leads with the differe
 
 const play = read('play.html');
 const game = read('play.js');
+const smartCard = read('play-smart-card.js');
+const smartCardCss = read('css/game-smart-card.css');
+const productTruth = read('PRODUCT_TRUTH.md');
 const sw = read('sw.js');
 const nav = read('site-nav.js');
 const edge = read('netlify/edge-functions/demo-access.ts');
@@ -106,11 +110,19 @@ const enhancement = read('playtest-enhancements.js');
 
 ok(/playtest-enhancements\.js\?v=11/.test(play), 'play shell references current enhancement asset');
 ok(/site-nav\.js\?v=12/.test(play) && /navigation\.css\?v=12/.test(play), 'play shell references shared navigation v12 assets');
-ok(/gtp-pwa-v15-nav-accessibility/.test(sw), 'service-worker cache generation is current');
+ok(/game-smart-card\.css\?v=1/.test(play) && /play-smart-card\.js\?v=1/.test(play), 'play shell loads the isolated smart-card challenger assets');
+ok(/gtp-pwa-v16-smart-card/.test(sw), 'service-worker cache generation is current');
 ok(/site-nav\.js\?v=12/.test(sw) && /navigation\.css\?v=12/.test(sw), 'service worker caches shared navigation v12 assets');
 ok(/playtest-enhancements\.js\?v=11/.test(sw), 'service worker caches current enhancement asset');
+ok(/game-smart-card\.css\?v=1/.test(sw) && /play-smart-card\.js\?v=1/.test(sw), 'service worker caches smart-card challenger assets');
 ok(!/['"]\/play(?:\.html)?['"]/.test(sw.split('const CORE =')[1]?.split('];')[0] || ''), 'protected play HTML is not precached');
 ok(/event\.request\.mode === 'navigate'/.test(sw) && /fetch\(event\.request\)/.test(sw), 'navigation reaches network/edge access gate');
+
+ok(/document\.getElementById\('correct'\)/.test(smartCard) && /correct\.click\(\)/.test(smartCard), 'swipe-to-score delegates to the canonical Correct action');
+ok(/canvas/.test(smartCard) && /canvas-toolbar/.test(smartCard), 'smart-card gesture guard excludes drawing canvas and tools');
+ok(/prefers-reduced-motion:\s*reduce/.test(smartCardCss), 'smart-card challenger respects reduced motion');
+ok(/SMART-CARD UX CHALLENGER — PROPOSED \/ NEEDS PLAYTESTING/.test(productTruth), 'repository product truth keeps smart-card UX explicitly test-only');
+ok(/Commitment is irreversible once clueing begins/.test(productTruth), 'repository product truth preserves irreversible commitment');
 
 ['/play','/diagnostics','/analysis','/feedback'].forEach(route => {
   ok(edge.includes(`"${route}"`) || edge.includes(`'${route}'`), `edge gate protects ${route}`);
