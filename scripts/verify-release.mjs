@@ -55,12 +55,14 @@ const requiredFiles = [
 requiredFiles.forEach(file => ok(exists(file), `required file exists: ${file}`));
 
 const play = read('play.html');
+const game = read('play.js');
 const sw = read('sw.js');
 const nav = read('site-nav.js');
 const edge = read('netlify/edge-functions/demo-access.ts');
 const config = read('netlify.toml');
 const feedback = read('feedback.html');
 const analysis = read('analysis.html');
+const analysisJs = read('analysis.js');
 const enhancement = read('playtest-enhancements.js');
 
 ok(/playtest-enhancements\.js\?v=11/.test(play), 'play shell references current enhancement asset');
@@ -86,6 +88,17 @@ ok(/netlify-honeypot="bot-field"/.test(feedback) && /name="bot-field"/.test(feed
 ok(/name="session_validity"/.test(feedback), 'feedback captures session validity');
 ok(/name="points_influenced_choice"/.test(feedback), 'feedback captures point-value influence');
 ok(/files are not uploaded/i.test(analysis), 'analysis page explicitly states local-only file processing');
+
+// Keep the analyzer compatible with the telemetry fields emitted by the current game build.
+ok(/decisionMs/.test(game) && /elapsedMs/.test(game), 'game telemetry emits decision and elapsed timing fields');
+ok(/pointValue/.test(game), 'game telemetry emits displayed point value');
+ok(/sessionConfig/.test(game) && /passMode/.test(game), 'game export envelope carries experimental session configuration');
+ok(/row\.decisionMs/.test(analysisJs), 'analysis consumes current decisionMs timing field');
+ok(/row\.elapsedMs/.test(analysisJs) && /elapsedMs - choiceMs/.test(analysisJs), 'analysis derives guess time from current elapsed/decision timing');
+ok(/row\.pointValue/.test(analysisJs), 'analysis consumes current pointValue field');
+ok(/context\.passMode/.test(analysisJs) && /sessionConfig/.test(analysisJs), 'analysis inherits pass mode from export sessionConfig');
+const appVersionMatch = game.match(/const APP_VERSION\s*=\s*['"]([^'"]+)['"]/);
+warn(Boolean(appVersionMatch && /^0\.6\./.test(appVersionMatch[1])), `telemetry app version identifies v0.6 (${appVersionMatch?.[1] || 'not found'})`);
 
 const csvText = read('content/prompt-candidates-v0.6.csv').trim();
 const lines = csvText.split(/\r?\n/);
