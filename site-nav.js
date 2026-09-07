@@ -20,12 +20,29 @@
 
   const MOBILE_PRIMARY = [['Home', '/'], ...PRIMARY];
 
+  function normalizePath(pathname = location.pathname) {
+    const normalized = (pathname.replace(/\.html$/, '') || '/').replace(/\/$/, '');
+    return normalized || '/';
+  }
+
   function ensureStyles() {
     if (document.querySelector('link[href*="navigation.css"]')) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = '/css/navigation.css?v=12';
     document.head.appendChild(link);
+  }
+
+  function setupSkipLink() {
+    const main = document.querySelector('main');
+    if (!(main instanceof HTMLElement)) return;
+    if (!main.id) main.id = 'main-content';
+    if (document.querySelector('.skip-link')) return;
+    const skip = document.createElement('a');
+    skip.className = 'skip-link';
+    skip.href = `#${main.id}`;
+    skip.textContent = 'Skip to main content';
+    document.body.prepend(skip);
   }
 
   function moreMarkup() {
@@ -38,7 +55,7 @@
 
   function drawerMarkup() {
     const privatePaths = new Set(['/play', '/diagnostics', '/analysis', '/feedback']);
-    const currentPath = (location.pathname.replace(/\.html$/, '') || '/').replace(/\/$/, '') || '/';
+    const currentPath = normalizePath();
     const privateArea = privatePaths.has(currentPath);
     const demoTools = privateArea
       ? '<span class="site-drawer-label">PLAYTEST TOOLS</span><a href="/play">Play demo</a><a href="/diagnostics">Device diagnostics</a><a href="/analysis">Analyze telemetry</a><a href="/feedback">Session feedback</a><a class="site-drawer-private" href="/demo-access?logout=1">Lock demo on this device</a>'
@@ -61,7 +78,6 @@
       nav.appendChild(links);
     }
 
-    // Keep every public page on the same consumer-first navigation, including older static markup.
     links.innerHTML = navMarkup();
 
     if (!nav.querySelector('.site-menu-toggle')) {
@@ -108,8 +124,7 @@
     const setBackgroundInert = inert => {
       [header, main, footer].filter(Boolean).forEach(node => {
         if (node === drawer || node.contains(drawer)) return;
-        if (inert) node.setAttribute('inert', '');
-        else node.removeAttribute('inert');
+        node.toggleAttribute('inert', inert);
       });
     };
 
@@ -160,20 +175,28 @@
     document.addEventListener('click', event => {
       if (more.open && !more.contains(event.target)) more.removeAttribute('open');
     });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && more.open) {
+        more.removeAttribute('open');
+        more.querySelector('summary')?.focus();
+      }
+    });
     more.querySelectorAll('a').forEach(a => a.addEventListener('click', () => more.removeAttribute('open')));
   }
 
   function markCurrent() {
-    const path = location.pathname.replace(/\.html$/, '') || '/';
+    const path = normalizePath();
     document.querySelectorAll('.site-nav-primary a,.site-drawer a').forEach(a => {
-      const target = new URL(a.href, location.origin).pathname.replace(/\.html$/, '') || '/';
+      const target = normalizePath(new URL(a.href, location.origin).pathname);
       if (target === path) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
     });
-    if (MORE.some(([, href]) => href === path)) document.querySelector('.site-more summary')?.classList.add('is-current');
+    if (MORE.some(([, href]) => normalizePath(href) === path)) document.querySelector('.site-more summary')?.classList.add('is-current');
   }
 
   window.addEventListener('DOMContentLoaded', () => {
     ensureStyles();
+    setupSkipLink();
     setupHeader();
     setupGameMenu();
     setupDrawer();

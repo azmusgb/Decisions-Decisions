@@ -60,6 +60,7 @@ requiredFiles.forEach(file => ok(exists(file), `required file exists: ${file}`))
 const home = read('home.html');
 const how = read('how.html');
 const playtest = read('playtest.html');
+const faq = read('faq.html');
 const publicPages = ['home.html','how.html','playtest.html','about.html','faq.html','press.html','partners.html','retail.html','manufacturing.html','launch.html','contact.html','privacy.html']
   .map(read)
   .join('\n');
@@ -72,15 +73,18 @@ const shell = read('netlify/edge-functions/site-shell.ts');
 
 ok(/\/css\/tokens\.css\?v=12/.test(home) && /\/css\/site\.css\?v=12/.test(home) && /\/css\/navigation\.css\?v=12/.test(home), 'homepage loads direct public site v2 styles');
 ok(/public-demo\.js\?v=2/.test(home), 'homepage loads the current public mechanic teaser');
+ok(/public-demo\.js\?v=2/.test(how), 'how-it-works page uses the current public mechanic teaser');
 ok(!/<iframe[^>]+\/play(?:\.html)?/i.test(home), 'homepage does not embed the protected demo');
 ok(/data-public-demo/.test(home) && /data-route="hum"/.test(home) && /data-route="draw"/.test(home) && /data-route="mime"/.test(home), 'homepage visibly demonstrates the three-route choice');
 ok(/data-teaser-question/.test(home) && /role="status"/.test(home) && /aria-live="polite"/.test(home), 'public teaser keeps prompt copy and commitment status accessible');
 ok(/is-committed/.test(publicDemo) && /ONE TAP COMMITS/.test(publicDemo), 'public mechanic teaser demonstrates irreversible commitment');
 ok(/aria-pressed/.test(publicDemo) && /aria-disabled/.test(publicDemo), 'public teaser exposes committed route state to assistive technology');
+ok(/ArrowRight/.test(publicDemo) && /ArrowLeft/.test(publicDemo) && /setNextState/.test(publicDemo), 'public teaser supports keyboard route navigation and clear next-prompt state');
 ok(/prefers-reduced-motion/.test(publicDemo), 'public teaser respects reduced-motion preference');
 ok(/Private demo/.test(siteNav) && /Join a playtest/.test(siteNav), 'navigation distinguishes private demo from public playtest CTA');
-ok(/overflow-y:\s*auto/.test(navCss) && /setAttribute\('inert'/.test(siteNav), 'mobile drawer is scrollable and backgrounds become inert');
-ok(/aria-modal="true"/.test(siteNav) && /\sinert>/.test(siteNav) && /toggleAttribute\('inert'/.test(siteNav), 'closed drawer is removed from focus order and open drawer behaves as a modal');
+ok(/setupSkipLink/.test(siteNav) && /\.skip-link/.test(navCss), 'public navigation provides a keyboard skip link');
+ok(/overflow-y:\s*auto/.test(navCss) && /toggleAttribute\('inert'/.test(siteNav), 'mobile drawer is scrollable and backgrounds become inert');
+ok(/aria-modal="true"/.test(siteNav) && /\sinert>/.test(siteNav), 'closed drawer is removed from focus order and open drawer behaves as a modal');
 ok(/--gtp-teal-dark:\s*#0b756f/i.test(tokens), 'accessible dark teal token exists for light surfaces');
 ok(/section--cream \.eyebrow/.test(siteCss) && /var\(--gtp-teal-dark\)/.test(siteCss), 'light surfaces use the accessible teal variant');
 ok(/section--cream \.choice-callout/.test(navCss) && /gtp-text-on-light/.test(navCss), 'light-surface choice callouts preserve readable contrast');
@@ -90,9 +94,10 @@ ok(!home.includes('CURRENT v2.1 CHALLENGER'), 'homepage avoids version-register 
 ok(/NAV_VERSION = "12"/.test(shell), 'Edge site shell is aligned to navigation v12');
 ok(!/demo-access\?embed=1/.test(shell), 'Edge shell no longer replaces homepage gameplay with the passcode screen');
 ok(/#signup/.test(playtest), 'playtest page exposes a direct recruitment anchor');
-ok(/faq-group/.test(read('faq.html')), 'FAQ is grouped into scan-friendly categories');
+ok(/camera or microphone/i.test(playtest), 'playtest recruitment explains prototype permission/privacy behavior');
+ok(/faq-group/.test(faq) && /href="#playing"/.test(faq) && /href="#testing"/.test(faq), 'FAQ exposes scan-friendly grouped jump navigation');
 ok(/PROOF BEFORE PROMISES/.test(read('launch.html')), 'launch page uses positive milestone-based framing');
-ok(/THE CHOICE IS THE GAME/.test(how), 'how-it-works page leads with the differentiator');
+ok(/THE CHOICE IS THE GAME/.test(how) && /ONE TURN/.test(how), 'how-it-works page leads with the differentiator and shows an end-to-end turn');
 
 const play = read('play.html');
 const game = read('play.js');
@@ -111,7 +116,7 @@ const enhancement = read('playtest-enhancements.js');
 ok(/playtest-enhancements\.js\?v=11/.test(play), 'play shell references current enhancement asset');
 ok(/site-nav\.js\?v=12/.test(play) && /navigation\.css\?v=12/.test(play), 'play shell references shared navigation v12 assets');
 ok(/game-smart-card\.css\?v=1/.test(play) && /play-smart-card\.js\?v=1/.test(play), 'play shell loads the isolated smart-card challenger assets');
-ok(/gtp-pwa-v16-smart-card/.test(sw), 'service-worker cache generation is current');
+ok(/gtp-pwa-v17-ux-content-evolution/.test(sw), 'service-worker cache generation is current');
 ok(/site-nav\.js\?v=12/.test(sw) && /navigation\.css\?v=12/.test(sw), 'service worker caches shared navigation v12 assets');
 ok(/playtest-enhancements\.js\?v=11/.test(sw), 'service worker caches current enhancement asset');
 ok(/game-smart-card\.css\?v=1/.test(sw) && /play-smart-card\.js\?v=1/.test(sw), 'service worker caches smart-card challenger assets');
@@ -120,9 +125,13 @@ ok(/event\.request\.mode === 'navigate'/.test(sw) && /fetch\(event\.request\)/.t
 
 ok(/document\.getElementById\('correct'\)/.test(smartCard) && /correct\.click\(\)/.test(smartCard), 'swipe-to-score delegates to the canonical Correct action');
 ok(/canvas/.test(smartCard) && /canvas-toolbar/.test(smartCard), 'smart-card gesture guard excludes drawing canvas and tools');
+ok(/GUESSED IT\? SWIPE RIGHT/.test(smartCard) && /Correct button/.test(smartCard), 'smart-card gesture copy keeps the visible Correct fallback explicit');
 ok(/prefers-reduced-motion:\s*reduce/.test(smartCardCss), 'smart-card challenger respects reduced motion');
+ok(/touch-action:\s*manipulation/.test(smartCardCss), 'smart-card method and Correct controls are optimized for touch');
 ok(/SMART-CARD UX CHALLENGER — PROPOSED \/ NEEDS PLAYTESTING/.test(productTruth), 'repository product truth keeps smart-card UX explicitly test-only');
 ok(/Commitment is irreversible once clueing begins/.test(productTruth), 'repository product truth preserves irreversible commitment');
+ok(/PRIVATE PLAYTEST · v0\.6/.test(enhancement), 'participant-facing private build uses plain playtest language');
+ok(!/PROPOSED TEST VARIABLES ACTIVE/.test(enhancement), 'participant-facing private build does not prime players with internal experiment jargon');
 
 ['/play','/diagnostics','/analysis','/feedback'].forEach(route => {
   ok(edge.includes(`"${route}"`) || edge.includes(`'${route}'`), `edge gate protects ${route}`);

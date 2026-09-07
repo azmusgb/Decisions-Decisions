@@ -17,18 +17,15 @@
     });
   }
 
-  function markBlindTestCandidate(root = document) {
+  function keepParticipantCopyClean(root = document) {
     root.querySelectorAll('.home-screen .eyebrow').forEach(label => {
-      if (/performance ux|playtest build/i.test(label.textContent || '')) {
-        label.textContent = 'BLIND-TEST CANDIDATE · v0.6';
+      if (/performance ux|playtest build|blind-test candidate/i.test(label.textContent || '')) {
+        label.textContent = 'PRIVATE PLAYTEST · v0.6';
       }
     });
 
     root.querySelectorAll('.home-screen .version').forEach(version => {
-      if (!version.dataset.gtpCandidate) {
-        version.dataset.gtpCandidate = '1';
-        version.insertAdjacentHTML('beforeend', '<br><span style="display:inline-block;margin-top:4px;color:var(--gtp-yellow);font-size:.62rem;font-weight:900;letter-spacing:.1em">PROPOSED TEST VARIABLES ACTIVE</span>');
-      }
+      version.querySelectorAll('[data-gtp-candidate], [data-gtp-test-note]').forEach(node => node.remove());
     });
   }
 
@@ -40,7 +37,7 @@
       link.href = '/feedback';
       link.dataset.feedbackCta = '1';
       link.className = 'btn btn--teal btn--small';
-      link.textContent = 'Give session feedback';
+      link.textContent = 'Share session feedback';
       link.setAttribute('aria-label', 'Open structured post-game playtest feedback');
       actions.appendChild(link);
     });
@@ -48,7 +45,7 @@
 
   function enhance() {
     polishMimeIcons();
-    markBlindTestCandidate();
+    keepParticipantCopyClean();
     addFeedbackCta();
   }
 

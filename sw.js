@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'gtp-pwa-v16-smart-card';
+const CACHE = 'gtp-pwa-v17-ux-content-evolution';
 const CORE = [
   '/css/tokens.css?v=10',
   '/css/game.css?v=10',
