@@ -1,9 +1,9 @@
 {
-  "id": "/play.html",
-  "name": "GET THE POINT — Playtest",
+  "id": "/play",
+  "name": "GET THE POINT — Private Playtest",
   "short_name": "Get the Point",
-  "description": "One prompt. Three ways to play. Offline pass-and-play party-game prototype.",
-  "start_url": "/play.html",
+  "description": "Private pass-and-play prototype for GET THE POINT — one prompt, three ways to play.",
+  "start_url": "/play",
   "scope": "/",
   "display": "standalone",
   "background_color": "#101112",
