@@ -32,8 +32,9 @@
   }
 
   function drawerMarkup() {
-    const privatePaths = ['/play','/diagnostics','/analysis','/feedback'];
-    const privateArea = privatePaths.some(path => location.pathname.startsWith(path));
+    const privatePaths = new Set(['/play','/diagnostics','/analysis','/feedback']);
+    const currentPath = (location.pathname.replace(/\.html$/,'') || '/').replace(/\/$/,'') || '/';
+    const privateArea = privatePaths.has(currentPath);
     const demoTools = privateArea
       ? '<span class="site-drawer-label">PLAYTEST TOOLS</span><a href="/play">Play demo</a><a href="/diagnostics">Device diagnostics</a><a href="/analysis">Analyze telemetry</a><a href="/feedback">Session feedback</a><a href="/demo-access?logout=1">Lock demo on this device</a>'
       : '';
