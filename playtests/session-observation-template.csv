@@ -1,0 +1,2 @@
+session_id,date,build,condition_block,condition_cell,validity,invalid_reason,group_type,player_count,audio_condition,timer_start,skip_condition,timer_structure,time_to_meaningful_play_sec,rule_question_count,facilitator_rescue_count,risk_reward_understood,points_influenced_choice,mime_icon_understood,route_avoided,replay_interest,dead_or_unfair_prompts,strong_reactions,observer_notes
+EXAMPLE,YYYY-MM-DD,v0.6,A,A1,VALID,,Adult friends,4,HUM,Commit,1 pre-commit,60-30-15,,,,,,,,,,,,
