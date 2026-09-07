@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <rect width="512" height="512" rx="104" fill="#101112"/>
-  <path d="M72 70h112" stroke="#7FE3C6" stroke-width="20" stroke-linecap="round"/>
+  <path d="M72 70h112" stroke="#35CFC3" stroke-width="20" stroke-linecap="round"/>
   <path d="M200 70h112" stroke="#FFD93B" stroke-width="20" stroke-linecap="round"/>
-  <path d="M328 70h112" stroke="#F43C91" stroke-width="20" stroke-linecap="round"/>
+  <path d="M328 70h112" stroke="#8F5CE6" stroke-width="20" stroke-linecap="round"/>
   <text x="256" y="242" text-anchor="middle" fill="#FFF7E8" font-family="Arial,Helvetica,sans-serif" font-size="118" font-weight="900" letter-spacing="-8">GET</text>
   <text x="256" y="350" text-anchor="middle" fill="#FFF7E8" font-family="Arial,Helvetica,sans-serif" font-size="112" font-weight="900" letter-spacing="-8">POINT</text>
-  <circle cx="142" cy="424" r="30" fill="#7FE3C6"/><circle cx="256" cy="424" r="30" fill="#FFD93B"/><circle cx="370" cy="424" r="30" fill="#F43C91"/>
+  <circle cx="142" cy="424" r="30" fill="#35CFC3"/><circle cx="256" cy="424" r="30" fill="#FFD93B"/><circle cx="370" cy="424" r="30" fill="#8F5CE6"/>
 </svg>
