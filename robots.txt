@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /archive
+Disallow: /legacy/
+Disallow: /v1
+Disallow: /v2
+Disallow: /v3
+Disallow: /v4
+Disallow: /survey
+Disallow: /round2
+
+Sitemap: https://get-the-point.netlify.app/sitemap.xml
