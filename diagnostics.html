@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101112">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="GET THE POINT private playtest device diagnostics.">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/tokens.css?v=10">
+  <link rel="stylesheet" href="/css/site.css?v=10">
+  <link rel="stylesheet" href="/css/navigation.css?v=10">
+  <link rel="stylesheet" href="/css/diagnostics.css?v=10">
+  <title>Playtest Diagnostics — GET THE POINT</title>
+</head>
+<body>
+  <header class="site-header"><div class="wrap nav"><a class="brand" href="/">GET THE POINT</a><nav class="nav-links" aria-label="Main navigation"></nav></div></header>
+  <main class="diag-shell">
+    <section class="wrap diag-hero">
+      <div class="eyebrow">PRIVATE PLAYTEST · v0.6 CANDIDATE</div>
+      <h1>DEVICE<br>CHECK.</h1>
+      <p>Run this before a blind playtest when something feels wrong. It checks the browser features the current prototype actually depends on.</p>
+      <div class="diag-actions">
+        <button id="runTests" class="button button--primary" type="button">Run checks</button>
+        <button id="copyReport" class="button" type="button">Copy report</button>
+        <a class="button" href="/play">Open demo</a>
+      </div>
+    </section>
+    <section class="wrap diag-summary" aria-live="polite">
+      <div class="diag-score"><strong id="passCount">—</strong><span>PASS</span></div>
+      <div class="diag-score"><strong id="warnCount">—</strong><span>WARN</span></div>
+      <div class="diag-score"><strong id="failCount">—</strong><span>FAIL</span></div>
+    </section>
+    <section class="wrap diag-grid" id="results"></section>
+    <section class="wrap diag-device">
+      <div class="eyebrow">DEVICE SNAPSHOT</div>
+      <pre id="deviceInfo">Running…</pre>
+    </section>
+  </main>
+  <script src="/site-nav.js?v=10" defer></script>
+  <script src="/diagnostics.js?v=10" defer></script>
+</body>
+</html>
