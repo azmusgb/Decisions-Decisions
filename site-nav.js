@@ -4,14 +4,14 @@
   const PRIMARY = [
     ['How it works', '/how'],
     ['Playtest', '/playtest'],
-    ['About', '/about'],
     ['FAQ', '/faq'],
-    ['Private demo', '/play']
+    ['About', '/about']
   ];
 
   const MORE = [
+    ['Private demo', '/play'],
+    ['Updates', '/launch'],
     ['Press', '/press'],
-    ['Launch', '/launch'],
     ['Partners', '/partners'],
     ['Retail', '/retail'],
     ['Manufacturing', '/manufacturing'],
@@ -44,7 +44,7 @@
       ? '<span class="site-drawer-label">PLAYTEST TOOLS</span><a href="/play">Play demo</a><a href="/diagnostics">Device diagnostics</a><a href="/analysis">Analyze telemetry</a><a href="/feedback">Session feedback</a><a class="site-drawer-private" href="/demo-access?logout=1">Lock demo on this device</a>'
       : '';
 
-    return `<div class="site-drawer-backdrop" data-site-drawer-backdrop hidden></div><aside id="siteDrawer" class="site-drawer" data-site-drawer role="dialog" aria-modal="true" aria-hidden="true" aria-label="Site menu" inert><div class="site-drawer-head"><a class="brand" href="/">GET THE POINT</a><button class="site-drawer-close" type="button" aria-label="Close menu">×</button></div><nav aria-label="Site menu"><span class="site-drawer-label">PLAY + LEARN</span>${MOBILE_PRIMARY.map(([label, href]) => `<a href="${href}"${href === '/play' ? ' class="site-drawer-private"' : ''}>${label}</a>`).join('')}<span class="site-drawer-label">PROJECT + BUSINESS</span>${MORE.map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}<a class="site-drawer-feature" href="/playtest#signup">Join a playtest</a>${demoTools}</nav><div class="site-drawer-foot"><span>ONE PROMPT. THREE WAYS TO PLAY.</span></div></aside>`;
+    return `<div class="site-drawer-backdrop" data-site-drawer-backdrop hidden></div><aside id="siteDrawer" class="site-drawer" data-site-drawer role="dialog" aria-modal="true" aria-hidden="true" aria-label="Site menu" inert><div class="site-drawer-head"><a class="brand" href="/">GET THE POINT</a><button class="site-drawer-close" type="button" aria-label="Close menu">×</button></div><nav aria-label="Site menu"><span class="site-drawer-label">PLAY + LEARN</span>${MOBILE_PRIMARY.map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}<span class="site-drawer-label">MORE</span>${MORE.map(([label, href]) => `<a href="${href}"${href === '/play' ? ' class="site-drawer-private"' : ''}>${label}</a>`).join('')}<a class="site-drawer-feature" href="/playtest#signup">Join a playtest</a>${demoTools}</nav><div class="site-drawer-foot"><span>ONE PROMPT. THREE WAYS TO PLAY.</span></div></aside>`;
   }
 
   function setupHeader() {
@@ -61,8 +61,8 @@
       nav.appendChild(links);
     }
 
-    // Active pages ship canonical nav markup. Older pages get the same markup at runtime.
-    if (!links.querySelector('.site-nav-primary')) links.innerHTML = navMarkup();
+    // Keep every public page on the same consumer-first navigation, including older static markup.
+    links.innerHTML = navMarkup();
 
     if (!nav.querySelector('.site-menu-toggle')) {
       const toggle = document.createElement('button');

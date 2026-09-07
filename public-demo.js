@@ -1,6 +1,7 @@
 (() => {
   'use strict';
 
+  // Product invariant retained underneath the lighter public copy: ONE TAP COMMITS.
   const root = document.querySelector('[data-public-demo]');
   if (!root) return;
 
@@ -29,7 +30,7 @@
     const item = current();
     promptNode.textContent = item.prompt;
     if (question) {
-      question.textContent = `Would you hum ${item.prompt} for ${item.hum} ${item.hum === 1 ? 'point' : 'points'}—or draw it for ${item.draw}?`;
+      question.textContent = `HUM for ${item.hum}, DRAW for ${item.draw}, or MIME for ${item.mime}. What would you pick?`;
     }
     methodButtons.forEach(button => {
       const route = button.dataset.route;
@@ -45,7 +46,7 @@
     });
     if (reset) {
       card.classList.remove('is-committed');
-      status.innerHTML = '<span>TAP A ROUTE</span><strong>ONE TAP COMMITS</strong>';
+      status.innerHTML = '<span>PICK ONE</span><strong>TAP A WAY AND GO</strong>';
     }
   }
 
@@ -62,7 +63,7 @@
         item.setAttribute('aria-disabled', 'true');
         if (!selected) item.setAttribute('tabindex', '-1');
       });
-      status.innerHTML = `<span>${label[route]} COMMITTED</span><strong>+${points} ${points === 1 ? 'POINT' : 'POINTS'} IF THEY GUESS IT</strong>`;
+      status.innerHTML = `<span>${label[route]} · ${points} ${points === 1 ? 'PT' : 'PTS'}</span><strong>NOW GET THEM TO GUESS</strong>`;
     });
   });
 
