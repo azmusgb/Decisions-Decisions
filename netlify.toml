@@ -115,6 +115,7 @@
   to = "/round2-thank-you.html"
   status = 200
 
+# Active shell and CSS are intentionally no-cache while the prototype is iterating.
 [[headers]]
   for = "/"
   [headers.values]
@@ -136,7 +137,15 @@
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
 [[headers]]
-  for = "/play-polish.css"
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+[[headers]]
+  for = "/play-runtime.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+[[headers]]
+  for = "/play.js"
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
 [[headers]]
@@ -149,6 +158,8 @@
   [headers.values]
     Content-Type = "application/manifest+json; charset=utf-8"
     Cache-Control = "public, max-age=3600"
+
+# Historical/development surfaces stay out of search indexes.
 [[headers]]
   for = "/archive.html"
   [headers.values]
@@ -165,6 +176,7 @@
   for = "/thanks.html"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
 [[headers]]
   for = "/*"
   [headers.values]
