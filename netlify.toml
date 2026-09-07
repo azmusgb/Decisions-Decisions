@@ -17,6 +17,10 @@
   to = "/play.html"
   status = 200
 [[redirects]]
+  from = "/demo-access"
+  to = "/demo-access.html"
+  status = 200
+[[redirects]]
   from = "/playtest"
   to = "/playtest.html"
   status = 200
@@ -128,6 +132,12 @@
   for = "/play.html"
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
+    X-Robots-Tag = "noindex, nofollow"
+[[headers]]
+  for = "/demo-access.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    X-Robots-Tag = "noindex, nofollow"
 [[headers]]
   for = "/site.css"
   [headers.values]
@@ -138,6 +148,14 @@
     Cache-Control = "no-cache, no-store, must-revalidate"
 [[headers]]
   for = "/css/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+[[headers]]
+  for = "/site-nav.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+[[headers]]
+  for = "/demo-access.js"
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
 [[headers]]
