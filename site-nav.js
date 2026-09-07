@@ -44,7 +44,7 @@
       ? '<span class="site-drawer-label">PLAYTEST TOOLS</span><a href="/play">Play demo</a><a href="/diagnostics">Device diagnostics</a><a href="/analysis">Analyze telemetry</a><a href="/feedback">Session feedback</a><a class="site-drawer-private" href="/demo-access?logout=1">Lock demo on this device</a>'
       : '';
 
-    return `<div class="site-drawer-backdrop" data-site-drawer-backdrop hidden></div><aside class="site-drawer" data-site-drawer aria-hidden="true" aria-label="Site menu"><div class="site-drawer-head"><a class="brand" href="/">GET THE POINT</a><button class="site-drawer-close" type="button" aria-label="Close menu">×</button></div><nav aria-label="Site menu"><span class="site-drawer-label">PLAY + LEARN</span>${MOBILE_PRIMARY.map(([label, href]) => `<a href="${href}"${href === '/play' ? ' class="site-drawer-private"' : ''}>${label}</a>`).join('')}<span class="site-drawer-label">PROJECT + BUSINESS</span>${MORE.map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}<a class="site-drawer-feature" href="/playtest#signup">Join a playtest</a>${demoTools}</nav><div class="site-drawer-foot"><span>ONE PROMPT. THREE WAYS TO PLAY.</span></div></aside>`;
+    return `<div class="site-drawer-backdrop" data-site-drawer-backdrop hidden></div><aside id="siteDrawer" class="site-drawer" data-site-drawer role="dialog" aria-modal="true" aria-hidden="true" aria-label="Site menu" inert><div class="site-drawer-head"><a class="brand" href="/">GET THE POINT</a><button class="site-drawer-close" type="button" aria-label="Close menu">×</button></div><nav aria-label="Site menu"><span class="site-drawer-label">PLAY + LEARN</span>${MOBILE_PRIMARY.map(([label, href]) => `<a href="${href}"${href === '/play' ? ' class="site-drawer-private"' : ''}>${label}</a>`).join('')}<span class="site-drawer-label">PROJECT + BUSINESS</span>${MORE.map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}<a class="site-drawer-feature" href="/playtest#signup">Join a playtest</a>${demoTools}</nav><div class="site-drawer-foot"><span>ONE PROMPT. THREE WAYS TO PLAY.</span></div></aside>`;
   }
 
   function setupHeader() {
@@ -70,6 +70,7 @@
       toggle.className = 'site-menu-toggle';
       toggle.setAttribute('aria-label', 'Open site menu');
       toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-controls', 'siteDrawer');
       toggle.innerHTML = '<span></span><span></span><span></span>';
       nav.appendChild(toggle);
     }
@@ -83,6 +84,7 @@
     button.className = 'game-site-menu';
     button.setAttribute('aria-label', 'Open site menu');
     button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-controls', 'siteDrawer');
     button.innerHTML = '<span></span><span></span><span></span>';
     document.body.appendChild(button);
   }
@@ -116,6 +118,7 @@
       if (open) opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       drawer.classList.toggle('is-open', open);
       drawer.setAttribute('aria-hidden', String(!open));
+      drawer.toggleAttribute('inert', !open);
       backdrop.hidden = !open;
       document.body.classList.toggle('site-menu-open', open);
       toggles.forEach(btn => btn.setAttribute('aria-expanded', String(open)));
