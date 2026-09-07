@@ -14,9 +14,11 @@
   const label = { hum: 'HUM', draw: 'DRAW', mime: 'MIME' };
   const card = root.querySelector('[data-teaser-card]');
   const promptNode = root.querySelector('[data-teaser-prompt]');
+  const question = root.querySelector('[data-teaser-question]');
   const status = root.querySelector('[data-teaser-status]');
   const next = root.querySelector('[data-teaser-next]');
   const methodButtons = [...root.querySelectorAll('[data-route]')];
+  const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
   let index = 0;
 
   function current() {
@@ -26,12 +28,20 @@
   function paint(reset = true) {
     const item = current();
     promptNode.textContent = item.prompt;
+    if (question) {
+      question.textContent = `Would you hum ${item.prompt} for ${item.hum} ${item.hum === 1 ? 'point' : 'points'}—or draw it for ${item.draw}?`;
+    }
     methodButtons.forEach(button => {
       const route = button.dataset.route;
       const points = item[route];
       button.querySelector('[data-points]').textContent = points;
       button.setAttribute('aria-label', `${label[route]}, ${points} ${points === 1 ? 'point' : 'points'}`);
-      if (reset) button.classList.remove('is-selected');
+      if (reset) {
+        button.classList.remove('is-selected');
+        button.setAttribute('aria-pressed', 'false');
+        button.removeAttribute('aria-disabled');
+        button.removeAttribute('tabindex');
+      }
     });
     if (reset) {
       card.classList.remove('is-committed');
@@ -45,7 +55,13 @@
       if (!route || card.classList.contains('is-committed')) return;
       const points = current()[route];
       card.classList.add('is-committed');
-      methodButtons.forEach(item => item.classList.toggle('is-selected', item === button));
+      methodButtons.forEach(item => {
+        const selected = item === button;
+        item.classList.toggle('is-selected', selected);
+        item.setAttribute('aria-pressed', String(selected));
+        item.setAttribute('aria-disabled', 'true');
+        if (!selected) item.setAttribute('tabindex', '-1');
+      });
       status.innerHTML = `<span>${label[route]} COMMITTED</span><strong>+${points} ${points === 1 ? 'POINT' : 'POINTS'} IF THEY GUESS IT</strong>`;
     });
   });
@@ -53,7 +69,12 @@
   next?.addEventListener('click', () => {
     index = (index + 1) % prompts.length;
     paint(true);
-    promptNode.animate?.([{ opacity: .2, transform: 'translateY(4px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 160, easing: 'ease-out' });
+    if (!reduceMotion) {
+      promptNode.animate?.(
+        [{ opacity: .2, transform: 'translateY(4px)' }, { opacity: 1, transform: 'translateY(0)' }],
+        { duration: 160, easing: 'ease-out' }
+      );
+    }
   });
 
   paint(true);

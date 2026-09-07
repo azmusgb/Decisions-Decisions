@@ -70,12 +70,16 @@ const siteNav = read('site-nav.js');
 const shell = read('netlify/edge-functions/site-shell.ts');
 
 ok(/\/css\/tokens\.css\?v=12/.test(home) && /\/css\/site\.css\?v=12/.test(home) && /\/css\/navigation\.css\?v=12/.test(home), 'homepage loads direct public site v2 styles');
-ok(/public-demo\.js\?v=1/.test(home), 'homepage loads the public mechanic teaser');
+ok(/public-demo\.js\?v=2/.test(home), 'homepage loads the current public mechanic teaser');
 ok(!/<iframe[^>]+\/play(?:\.html)?/i.test(home), 'homepage does not embed the protected demo');
 ok(/data-public-demo/.test(home) && /data-route="hum"/.test(home) && /data-route="draw"/.test(home) && /data-route="mime"/.test(home), 'homepage visibly demonstrates the three-route choice');
+ok(/data-teaser-question/.test(home) && /role="status"/.test(home) && /aria-live="polite"/.test(home), 'public teaser keeps prompt copy and commitment status accessible');
 ok(/is-committed/.test(publicDemo) && /ONE TAP COMMITS/.test(publicDemo), 'public mechanic teaser demonstrates irreversible commitment');
+ok(/aria-pressed/.test(publicDemo) && /aria-disabled/.test(publicDemo), 'public teaser exposes committed route state to assistive technology');
+ok(/prefers-reduced-motion/.test(publicDemo), 'public teaser respects reduced-motion preference');
 ok(/Private demo/.test(siteNav) && /Join a playtest/.test(siteNav), 'navigation distinguishes private demo from public playtest CTA');
 ok(/overflow-y:\s*auto/.test(navCss) && /setAttribute\('inert'/.test(siteNav), 'mobile drawer is scrollable and backgrounds become inert');
+ok(/aria-modal="true"/.test(siteNav) && /\sinert>/.test(siteNav) && /toggleAttribute\('inert'/.test(siteNav), 'closed drawer is removed from focus order and open drawer behaves as a modal');
 ok(/--gtp-teal-dark:\s*#0b756f/i.test(tokens), 'accessible dark teal token exists for light surfaces');
 ok(/section--cream \.eyebrow/.test(siteCss) && /var\(--gtp-teal-dark\)/.test(siteCss), 'light surfaces use the accessible teal variant');
 ok(/section--cream \.choice-callout/.test(navCss) && /gtp-text-on-light/.test(navCss), 'light-surface choice callouts preserve readable contrast');
@@ -102,7 +106,7 @@ const enhancement = read('playtest-enhancements.js');
 
 ok(/playtest-enhancements\.js\?v=11/.test(play), 'play shell references current enhancement asset');
 ok(/site-nav\.js\?v=12/.test(play) && /navigation\.css\?v=12/.test(play), 'play shell references shared navigation v12 assets');
-ok(/gtp-pwa-v14-public-site-v2/.test(sw), 'service-worker cache generation is current');
+ok(/gtp-pwa-v15-nav-accessibility/.test(sw), 'service-worker cache generation is current');
 ok(/site-nav\.js\?v=12/.test(sw) && /navigation\.css\?v=12/.test(sw), 'service worker caches shared navigation v12 assets');
 ok(/playtest-enhancements\.js\?v=11/.test(sw), 'service worker caches current enhancement asset');
 ok(!/['"]\/play(?:\.html)?['"]/.test(sw.split('const CORE =')[1]?.split('];')[0] || ''), 'protected play HTML is not precached');
