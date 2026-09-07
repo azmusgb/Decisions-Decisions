@@ -101,5 +101,5 @@ export default async (req: Request, context: any) => {
 };
 
 export const config = {
-  path: ["/play", "/play.html", "/demo-access", "/demo-access.html"],
+  path: ["/play", "/play.html", "/diagnostics", "/diagnostics.html", "/demo-access", "/demo-access.html"],
 };
