@@ -1,34 +1,42 @@
 (() => {
   'use strict';
 
-  const LINKS = [
+  const PRIMARY = [
     ['Home','/'],
     ['How it works','/how'],
     ['Demo','/play'],
     ['About','/about'],
-    ['FAQ','/faq'],
+    ['FAQ','/faq']
+  ];
+  const MORE = [
     ['Press','/press'],
     ['Launch','/launch'],
+    ['Partners','/partners'],
+    ['Retail','/retail'],
+    ['Manufacturing','/manufacturing'],
     ['Contact','/contact']
   ];
+  const ALL_LINKS = [...PRIMARY, ...MORE];
 
   function ensureStyles() {
     if (document.querySelector('link[href*="navigation.css"]')) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/css/navigation.css?v=8';
+    link.href = '/css/navigation.css?v=9';
     document.head.appendChild(link);
   }
 
   function navMarkup() {
-    return `<div class="site-nav-primary">${LINKS.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}</div><a class="button button--primary site-nav-cta" href="/playtest">Join a playtest</a>`;
+    const primary = PRIMARY.map(([label,href])=>`<a href="${href}">${label}</a>`).join('');
+    const more = MORE.map(([label,href])=>`<a href="${href}">${label}</a>`).join('');
+    return `<div class="site-nav-primary">${primary}<details class="site-more"><summary>More</summary><div class="site-more-menu">${more}</div></details></div><a class="button button--primary site-nav-cta" href="/playtest">Join a playtest</a>`;
   }
 
   function drawerMarkup() {
     const demoControl = location.pathname.startsWith('/play')
       ? '<a href="/demo-access?logout=1">Lock demo on this device</a>'
       : '';
-    return `<div class="site-drawer-backdrop" data-site-drawer-backdrop hidden></div><aside class="site-drawer" data-site-drawer aria-hidden="true"><div class="site-drawer-head"><a class="brand" href="/">GET THE POINT</a><button class="site-drawer-close" type="button" aria-label="Close menu">×</button></div><nav aria-label="Site menu">${LINKS.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}<a class="site-drawer-feature" href="/playtest">Join a playtest</a>${demoControl}</nav><div class="site-drawer-foot"><span>ONE PROMPT. THREE WAYS TO PLAY.</span></div></aside>`;
+    return `<div class="site-drawer-backdrop" data-site-drawer-backdrop hidden></div><aside class="site-drawer" data-site-drawer aria-hidden="true"><div class="site-drawer-head"><a class="brand" href="/">GET THE POINT</a><button class="site-drawer-close" type="button" aria-label="Close menu">×</button></div><nav aria-label="Site menu"><span class="site-drawer-label">PLAY + LEARN</span>${PRIMARY.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}<span class="site-drawer-label">PROJECT + BUSINESS</span>${MORE.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}<a class="site-drawer-feature" href="/playtest">Join a playtest</a>${demoControl}</nav><div class="site-drawer-foot"><span>ONE PROMPT. THREE WAYS TO PLAY.</span></div></aside>`;
   }
 
   function setupHeader() {
@@ -89,12 +97,22 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
   }
 
+  function setupMoreMenu() {
+    const more = document.querySelector('.site-more');
+    if (!more) return;
+    document.addEventListener('click', event => {
+      if (more.open && !more.contains(event.target)) more.removeAttribute('open');
+    });
+    more.querySelectorAll('a').forEach(a => a.addEventListener('click', () => more.removeAttribute('open')));
+  }
+
   function markCurrent() {
     const path = location.pathname.replace(/\.html$/,'') || '/';
     document.querySelectorAll('.site-nav-primary a,.site-drawer a').forEach(a => {
       const target = new URL(a.href, location.origin).pathname.replace(/\.html$/,'') || '/';
       if (target === path) a.setAttribute('aria-current','page');
     });
+    if (MORE.some(([,href]) => href === path)) document.querySelector('.site-more summary')?.classList.add('is-current');
   }
 
   window.addEventListener('DOMContentLoaded', () => {
@@ -102,6 +120,7 @@
     setupHeader();
     setupGameMenu();
     setupDrawer();
+    setupMoreMenu();
     markCurrent();
   });
 })();
