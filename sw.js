@@ -3,12 +3,14 @@ const CACHE = 'gtp-pwa-v15-nav-accessibility';
 const CORE = [
   '/css/tokens.css?v=10',
   '/css/game.css?v=10',
+  '/css/game-smart-card.css?v=1',
   '/css/navigation.css?v=12',
   '/css/diagnostics.css?v=10',
   '/site-nav.js?v=12',
   '/play-runtime.js?v=10',
   '/play.js?v=12',
   '/playtest-enhancements.js?v=11',
+  '/play-smart-card.js?v=1',
   '/diagnostics.js?v=10',
   '/manifest.webmanifest',
   '/icon.svg'
