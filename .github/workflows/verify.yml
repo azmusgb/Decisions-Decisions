@@ -1,0 +1,31 @@
+name: Verify release
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax check browser JavaScript
+        run: |
+          node --check play.js
+          node --check play-runtime.js
+          node --check playtest-enhancements.js
+          node --check site-nav.js
+          node --check diagnostics.js
+          node --check analysis.js
+          node --check demo-access.js
+          node --check sw.js
+      - name: Verify product and release invariants
+        run: node scripts/verify-release.mjs
