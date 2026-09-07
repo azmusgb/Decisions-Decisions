@@ -12,38 +12,42 @@
   <title>FAQ — GET THE POINT</title>
 </head>
 <body>
-<header class="site-header"><div class="wrap nav"><a class="brand" href="/" aria-label="GET THE POINT home">GET THE POINT</a><nav class="nav-links" aria-label="Main navigation"><div class="site-nav-primary"><a href="/how">How it works</a><a href="/playtest">Playtest</a><a href="/faq">FAQ</a><a href="/about">About</a><details class="site-more"><summary>More</summary><div class="site-more-menu"><a href="/play">Private demo</a><a href="/launch">Updates</a><a href="/press">Press</a><a href="/partners">Partners</a><a href="/retail">Retail</a><a href="/manufacturing">Manufacturing</a><a href="/contact">Contact</a></div></details></div><a class="button button--primary site-nav-cta" href="/playtest#signup">Join a playtest</a></nav></div></header>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="/" aria-label="GET THE POINT home">GET THE POINT</a><nav class="nav-links" aria-label="Main navigation"></nav></div></header>
 
 <main>
-  <section class="hero hero--compact"><div class="wrap"><div class="eyebrow">FAQ</div><h1>QUESTIONS, ANSWERED.</h1><div class="accent-bars" aria-hidden="true"><span></span><span></span><span></span></div><p class="hero-lede">These answers reflect the current prototype. Anything still open is labeled as such instead of being presented as a final commercial rule.</p></div></section>
+  <section class="hero hero--compact"><div class="wrap"><div class="eyebrow">FAQ</div><h1>THE SHORT ANSWERS FIRST.</h1><div class="accent-bars" aria-hidden="true"><span></span><span></span><span></span></div><p class="hero-lede">The core game is simple. The prototype still has open decisions, and those are labeled instead of being presented as final commercial rules.</p></div></section>
+
+  <section class="section section--cream section--compact"><nav class="wrap link-grid" aria-label="FAQ sections"><a href="#playing"><b>Playing</b><span>Core loop, scoring, methods, commitment.</span></a><a href="#testing"><b>Prototype</b><span>Timer, passing, demo, data, testing.</span></a><a href="#product"><b>Product</b><span>Physical box, digital app, packs.</span></a><a href="#launch"><b>Name + launch</b><span>Naming, timing, prelaunch status.</span></a></nav></section>
 
   <section class="section"><div class="wrap faq">
-    <section class="faq-group"><div class="eyebrow">PLAYING THE GAME</div><h2>THE CORE LOOP</h2>
+    <section class="faq-group" id="playing"><div class="eyebrow">PLAYING THE GAME</div><h2>THE CORE LOOP</h2>
       <details open><summary>What is GET THE POINT?</summary><p>A social party game built around <strong>choice under time pressure</strong>. Each prompt gives you multiple ways to communicate it with different prompt-specific point values. You pick one, start clueing, and your teammates try to guess before time runs out.</p></details>
-      <details><summary>Is this just Pictionary, charades, and humming in one box?</summary><p>No. The differentiator is the decision before the performance: one prompt, multiple ways to play, different risk/reward, and the player chooses which one to take.</p></details>
-      <details><summary>How does scoring work?</summary><p>Every prompt has its own point values by method. A method is not permanently worth more. Correct earns the value attached to the method you picked for that prompt.</p></details>
-      <details><summary>Can I switch after I start?</summary><p>No. Once clueing begins, the chosen method stands. The digital prototype stores that choice immediately even though the player-facing UI avoids a separate “locked in” confirmation step.</p></details>
+      <details><summary>Is this just Pictionary, charades, and humming in one box?</summary><p>No. Those are clueing tools. The game mechanic is the decision before the clue: one prompt, multiple ways to play, different risk/reward, and the player chooses which route to take.</p></details>
+      <details><summary>How does scoring work?</summary><p>Every prompt has its own point values by method. A method is not permanently worth more. If your team gets the answer, you earn the value attached to the method you picked for that prompt.</p></details>
+      <details><summary>Can I switch after I start?</summary><p>No. Once clueing begins, the chosen method stands. The digital prototype uses one tap to choose and commit so there is no extra confirmation step slowing the turn down.</p></details>
       <details><summary>What are the current methods?</summary><p>The current challenger is <strong>HUM → DRAW → MIME</strong> using teal, yellow, and purple signals. These labels, order, colors, and the MIME icon remain <strong>PROPOSED / NEEDS PLAYTESTING</strong>.</p></details>
-      <details><summary>Why HUM instead of SOUND?</summary><p>HUM is the current challenger because it creates a clearer musical constraint. A broader SOUND method remains an active comparison condition.</p></details>
+      <details><summary>Why HUM instead of SOUND?</summary><p>HUM is the current challenger because it creates a tighter musical constraint. A broader SOUND method remains an active comparison condition.</p></details>
     </section>
 
-    <section class="faq-group"><div class="eyebrow">PROTOTYPE + PLAYTESTING</div><h2>WHAT IS STILL OPEN</h2>
+    <section class="faq-group" id="testing"><div class="eyebrow">PROTOTYPE + PLAYTESTING</div><h2>WHAT IS STILL OPEN</h2>
       <details><summary>What is the timer?</summary><p>The current baseline is 60 seconds, then 30, then 15, plus a 15-second tiebreak condition. These are test defaults, not final commercial rules.</p></details>
       <details><summary>Can players pass?</summary><p>Pass/skip behavior is unresolved. The current prototype compares one pre-choice skip against no skip. Ordinary post-choice passing is not part of the normal player flow in this test build.</p></details>
       <details><summary>Does the timer start when the prompt appears?</summary><p>This is still being tested. The prototype can compare timer-start-on-reveal versus timer-start-on-choice behavior.</p></details>
-      <details><summary>Why does the digital demo use swipe-to-score?</summary><p>That is a <strong>PROPOSED / NEEDS PLAYTESTING</strong> interaction intended to make the phone feel more like a smart stack of cards. The Correct button remains available as an accessible fallback.</p></details>
-      <details><summary>Can I play the current demo?</summary><p>The current build is a private playtest tool. Invited testers can <a href="/play"><strong>enter the private demo</strong></a>. Everyone else can use the public mechanic teaser or join the playtest pool.</p></details>
-      <details><summary>What is the current success milestone?</summary><p>Strangers understand the game, laugh, make meaningful choices, and want to play again. That proof comes before heavy manufacturing spend or a full commercial app.</p></details>
+      <details><summary>Why does the digital demo support swipe-to-score?</summary><p>That is a <strong>PROPOSED / NEEDS PLAYTESTING</strong> interaction intended to make the phone feel more like a smart deck of cards. The visible Correct button remains the accessible fallback and canonical scoring action.</p></details>
+      <details><summary>Does the browser demo use my camera or microphone?</summary><p>No. The current private prototype does not require camera or microphone access. Game state and telemetry stay local on the device unless a tester explicitly exports data or submits feedback.</p></details>
+      <details><summary>Can I play the current demo?</summary><p>The current build is a private playtest tool. Invited testers can <a href="/play"><strong>enter the private demo</strong></a>. Everyone else can use the public mechanic teaser or <a href="/playtest"><strong>join the playtest pool</strong></a>.</p></details>
+      <details><summary>What is the current success milestone?</summary><p>Strangers understand the game, laugh, make meaningful choices, finish cleanly, and want to play again. That proof comes before heavy manufacturing spend or a full commercial app.</p></details>
     </section>
 
-    <section class="faq-group"><div class="eyebrow">PHYSICAL + DIGITAL PRODUCT</div><h2>WHAT WE ARE BUILDING TOWARD</h2>
+    <section class="faq-group" id="product"><div class="eyebrow">PHYSICAL + DIGITAL PRODUCT</div><h2>WHAT WE ARE BUILDING TOWARD</h2>
       <details><summary>What will the physical game include?</summary><p>Current prototype direction is roughly 100 double-sided cards, a reusable drawing surface, dry-erase marker, quick-start rules, simple scoring, and a phone timer during development. Final materials, dimensions, dielines, and finishes require supplier validation.</p></details>
-      <details><summary>Is there an app?</summary><p>There is a working browser playtest prototype now. The preferred product direction is iPhone-first, offline, pass-and-play, with one canonical game state, local content, minimal permissions, and no unnecessary backend.</p></details>
+      <details><summary>Is there an app?</summary><p>There is a working browser playtest prototype now. The preferred product direction is iPhone-first, offline, pass-and-play, with local content, minimal permissions, and no unnecessary backend.</p></details>
       <details><summary>Will there be subscriptions?</summary><p>Not by default. The preferred model is a free or low-friction starter, a one-time Core unlock, optional one-time theme packs, and a separate physical edition.</p></details>
-      <details><summary>Will there be licensed packs?</summary><p>Possibly later, but launch economics will not depend on Disney/NFL/NBA/Marvel-style licensing. Rights safety is a content gate.</p></details>
+      <details><summary>How does new content expand the game?</summary><p>Prompts are the expansion engine. New packs should create new choices and situations without inventing new core mechanics every time.</p></details>
+      <details><summary>Will there be licensed packs?</summary><p>Possibly later, but launch economics will not depend on major licensed brands. Rights safety remains a content gate.</p></details>
     </section>
 
-    <section class="faq-group"><div class="eyebrow">NAME + LAUNCH</div><h2>COMMERCIAL STATUS</h2>
+    <section class="faq-group" id="launch"><div class="eyebrow">NAME + LAUNCH</div><h2>COMMERCIAL STATUS</h2>
       <details><summary>Is GET THE POINT the final commercial name?</summary><p>No. It is the current lead/name-to-beat. PICK YOUR POINT is the serious challenger, YOUR CALL is a wildcard, and POINT TAKEN is a control. Consumer preference and legal/trademark clearance are separate workstreams.</p></details>
       <details><summary>When will it launch?</summary><p>There is no locked launch date. The project should not move to Kickstarter or preorder until blind-play evidence, naming work, manufacturing economics, fulfillment, schedule contingency, and a credible prototype are in place.</p></details>
       <details><summary>How can I follow the project?</summary><p>Join the <a href="/launch"><strong>prelaunch list</strong></a> for meaningful milestones, or <a href="/playtest"><strong>join a playtest</strong></a> if you want to help validate the game directly.</p></details>
