@@ -36,11 +36,17 @@ The PWA currently includes:
 - HUM vs SOUND test condition
 - timer-start-on-commit vs timer-start-on-reveal test condition
 - provisional pre-commit skip/no-skip condition
-- HUM, DRAW, and MIME performance surfaces
-- drawing canvas with undo + clear
+- prompt-first **smart-card** active-turn challenger
+- deliberate right-swipe-to-score challenger after a correct guess
+- existing Correct control retained as an accessible/failsafe scoring path
+- drawing canvas with undo + clear; swipe scoring is guarded away from the drawing surface/tools
+- automatic score accumulation using the already-selected prompt-specific point value
 - local state recovery
 - local playtest telemetry + JSON export
-- reduced-motion support and no unnecessary permissions
+- keyboard fallback for scoring and reduced-motion support
+- no unnecessary permissions
+
+The smart-card presentation and swipe gesture are **PROPOSED / NEEDS PLAYTESTING**. They remove visible commitment ceremony, not the underlying irreversible commitment rule.
 
 Protected HTML always returns to the network/edge access gate rather than being served from the PWA cache.
 
@@ -98,13 +104,18 @@ No prompt receives `VALIDATED_CORE` from desk review alone.
 - timer start on reveal vs commitment
 - final team/round structure
 - prompt-specific point calibration
+- smart-card active-turn presentation
+- right-swipe-to-score gesture
+- hiding the live score during a timed turn
 
 Do not turn unresolved variables into permanent software assumptions.
 
 ## Repository structure
 
-- `play.html`, `play.js`, `css/game.css` — current PWA vertical slice
-- `playtest-enhancements.js` — v0.6 blind-test presentation/feedback bridge without changing core rule state
+- `play.html`, `play.js`, `css/game.css` — canonical PWA vertical slice and game state/UI
+- `play-smart-card.js`, `css/game-smart-card.css` — isolated smart-card UX challenger; **PROPOSED / NEEDS PLAYTESTING**
+- `play-runtime.js` — viewport/runtime resilience without game-rule ownership
+- `playtest-enhancements.js` — blind-test presentation/feedback bridge without changing core rule state
 - `diagnostics.html`, `diagnostics.js` — protected device diagnostics
 - `analysis.html`, `analysis.js` — protected local telemetry analysis
 - `feedback.html` — protected structured post-game Netlify form
