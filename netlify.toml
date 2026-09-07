@@ -1,25 +1,30 @@
 [build]
   publish = "."
 
+# Root must override the historical index.html file that is intentionally
+# retained for /legacy/v1 provenance. Netlify otherwise shadows this rewrite
+# with index.html and serves the old Tanner questionnaire at `/`.
 [[redirects]]
   from = "/"
   to = "/home.html"
   status = 200
+  force = true
+
 [[redirects]]
   from = "/how"
   to = "/how.html"
   status = 200
 [[redirects]]
-  from = "/about"
-  to = "/about.html"
-  status = 200
-[[redirects]]
-  from = "/partners"
-  to = "/partners.html"
-  status = 200
-[[redirects]]
   from = "/play"
   to = "/play.html"
+  status = 200
+[[redirects]]
+  from = "/playtest"
+  to = "/playtest.html"
+  status = 200
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
   status = 200
 [[redirects]]
   from = "/faq"
@@ -30,16 +35,8 @@
   to = "/press.html"
   status = 200
 [[redirects]]
-  from = "/contact"
-  to = "/contact.html"
-  status = 200
-[[redirects]]
-  from = "/thanks"
-  to = "/thanks.html"
-  status = 200
-[[redirects]]
-  from = "/playtest"
-  to = "/playtest.html"
+  from = "/partners"
+  to = "/partners.html"
   status = 200
 [[redirects]]
   from = "/retail"
@@ -54,8 +51,16 @@
   to = "/launch.html"
   status = 200
 [[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+[[redirects]]
   from = "/privacy"
   to = "/privacy.html"
+  status = 200
+[[redirects]]
+  from = "/thanks"
+  to = "/thanks.html"
   status = 200
 [[redirects]]
   from = "/archive"
@@ -112,6 +117,18 @@
   to = "/round2-thank-you.html"
   status = 200
 
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+[[headers]]
+  for = "/home.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+[[headers]]
+  for = "/site.css"
+  [headers.values]
+    Cache-Control = "no-cache, must-revalidate"
 [[headers]]
   for = "/sw.js"
   [headers.values]
