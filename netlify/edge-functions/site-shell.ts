@@ -21,6 +21,8 @@ function secureHeaders(headers: Headers) {
   headers.set("X-Content-Type-Options", "nosniff");
   headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  headers.delete("content-length");
+  headers.delete("content-encoding");
   return headers;
 }
 
