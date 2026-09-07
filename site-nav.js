@@ -12,12 +12,23 @@
     ['Contact','/contact']
   ];
 
+  function ensureStyles() {
+    if (document.querySelector('link[href*="navigation.css"]')) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/css/navigation.css?v=8';
+    document.head.appendChild(link);
+  }
+
   function navMarkup() {
     return `<div class="site-nav-primary">${LINKS.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}</div><a class="button button--primary site-nav-cta" href="/playtest">Join a playtest</a>`;
   }
 
   function drawerMarkup() {
-    return `<div class="site-drawer-backdrop" data-site-drawer-backdrop hidden></div><aside class="site-drawer" data-site-drawer aria-hidden="true"><div class="site-drawer-head"><a class="brand" href="/">GET THE POINT</a><button class="site-drawer-close" type="button" aria-label="Close menu">×</button></div><nav aria-label="Site menu">${LINKS.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}<a class="site-drawer-feature" href="/playtest">Join a playtest</a></nav><div class="site-drawer-foot"><span>ONE PROMPT. THREE WAYS TO PLAY.</span></div></aside>`;
+    const demoControl = location.pathname.startsWith('/play')
+      ? '<a href="/demo-access?logout=1">Lock demo on this device</a>'
+      : '';
+    return `<div class="site-drawer-backdrop" data-site-drawer-backdrop hidden></div><aside class="site-drawer" data-site-drawer aria-hidden="true"><div class="site-drawer-head"><a class="brand" href="/">GET THE POINT</a><button class="site-drawer-close" type="button" aria-label="Close menu">×</button></div><nav aria-label="Site menu">${LINKS.map(([label,href])=>`<a href="${href}">${label}</a>`).join('')}<a class="site-drawer-feature" href="/playtest">Join a playtest</a>${demoControl}</nav><div class="site-drawer-foot"><span>ONE PROMPT. THREE WAYS TO PLAY.</span></div></aside>`;
   }
 
   function setupHeader() {
@@ -46,6 +57,7 @@
 
   function setupGameMenu() {
     if (!document.getElementById('app') || document.querySelector('.site-header')) return;
+    if (document.querySelector('.game-site-menu')) return;
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'game-site-menu';
@@ -86,6 +98,7 @@
   }
 
   window.addEventListener('DOMContentLoaded', () => {
+    ensureStyles();
     setupHeader();
     setupGameMenu();
     setupDrawer();
