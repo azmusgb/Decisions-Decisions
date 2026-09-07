@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'gtp-pwa-v2';
+const CACHE = 'gtp-pwa-v3';
 const CORE = ['/play.html','/play.css','/play.js','/manifest.webmanifest','/icon.svg'];
 
 self.addEventListener('install', event => {
