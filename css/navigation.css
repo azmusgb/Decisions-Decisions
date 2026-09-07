@@ -3,6 +3,35 @@
   --nav-border: rgba(255, 247, 232, .14);
 }
 
+html {
+  scroll-padding-top: calc(var(--gtp-header, 68px) + 18px);
+}
+
+button,
+a,
+summary {
+  touch-action: manipulation;
+}
+
+.skip-link {
+  position: fixed;
+  left: 14px;
+  top: 10px;
+  z-index: 1400;
+  padding: 11px 14px;
+  border-radius: 12px;
+  background: var(--gtp-yellow, #ffd93b);
+  color: #101112;
+  font-weight: 900;
+  text-decoration: none;
+  transform: translateY(-150%);
+  transition: transform .14s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .site-menu-toggle,
 .game-site-menu {
   display: none;
@@ -88,7 +117,10 @@
   top: calc(100% + 9px);
   z-index: 90;
   width: 220px;
+  max-height: min(72vh, 520px);
   padding: 7px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   border: 1px solid var(--nav-border);
   border-radius: 16px;
   background: rgba(17, 20, 22, .99);
@@ -131,12 +163,13 @@
   bottom: 0;
   z-index: 999;
   width: min(90vw, 390px);
-  padding: max(18px, env(safe-area-inset-top)) 18px max(20px, env(safe-area-inset-bottom));
+  padding: max(18px, env(safe-area-inset-top)) 18px max(24px, calc(env(safe-area-inset-bottom) + 8px));
   display: flex;
   flex-direction: column;
   gap: 20px;
   overflow-y: auto;
   overscroll-behavior: contain;
+  scrollbar-gutter: stable;
   background: var(--nav-panel);
   color: var(--gtp-cream, #fff7e8);
   border-left: 1px solid var(--nav-border);
@@ -401,7 +434,6 @@ body:has(.game) .game-site-menu {
   display: none !important;
 }
 
-/* Site-wide contrast guard for choice callouts used on warm light surfaces. */
 .section--cream .choice-callout {
   border-color: var(--gtp-dark-line, #d9cfbf);
 }
@@ -436,6 +468,20 @@ body:has(.game) .game-site-menu {
   }
 }
 
+@media (max-height: 620px) {
+  .site-drawer {
+    gap: 12px;
+  }
+
+  .site-drawer-label {
+    margin-top: 7px;
+  }
+
+  .site-drawer nav a {
+    min-height: 48px;
+  }
+}
+
 @media (min-width: 961px) {
   .site-menu-toggle {
     display: none !important;
@@ -443,15 +489,19 @@ body:has(.game) .game-site-menu {
 }
 
 @media (pointer: coarse) {
+  .site-menu-toggle,
+  .site-drawer-close,
   .site-nav-primary > a,
   .site-more summary,
   .site-more-menu a {
+    min-width: 48px;
     min-height: 48px !important;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-drawer {
+  .site-drawer,
+  .skip-link {
     transition: none;
   }
 }
