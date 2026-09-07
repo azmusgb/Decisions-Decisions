@@ -3,12 +3,32 @@
 
 [[redirects]]
   from = "/"
-  to = "/play.html"
+  to = "/home.html"
   status = 200
 
 [[redirects]]
   from = "/play"
   to = "/play.html"
+  status = 200
+
+[[redirects]]
+  from = "/faq"
+  to = "/faq.html"
+  status = 200
+
+[[redirects]]
+  from = "/press"
+  to = "/press.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/thanks"
+  to = "/thanks.html"
   status = 200
 
 [[redirects]]
@@ -102,6 +122,11 @@
 
 [[headers]]
   for = "/index.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/thanks.html"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
