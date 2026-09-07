@@ -1,13 +1,26 @@
 'use strict';
-const CACHE = 'gtp-pwa-v8';
-const CORE = ['/play.html','/css/tokens.css?v=7','/css/game.css?v=7','/play-runtime.js?v=7','/play.js?v=7','/manifest.webmanifest','/icon.svg'];
+const CACHE = 'gtp-pwa-v9-private-demo';
+const CORE = [
+  '/css/tokens.css?v=8',
+  '/css/game.css?v=8',
+  '/css/navigation.css?v=8',
+  '/site-nav.js?v=8',
+  '/play-runtime.js?v=8',
+  '/play.js?v=8',
+  '/manifest.webmanifest',
+  '/icon.svg'
+];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim()));
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
+      .then(() => self.clients.claim())
+  );
 });
 
 self.addEventListener('fetch', event => {
@@ -15,17 +28,21 @@ self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
 
+  // Protected HTML must always reach Netlify's edge gate. Never satisfy it from cache.
   if (event.request.mode === 'navigate') {
-    event.respondWith(fetch(event.request).then(response => {
-      const copy = response.clone();
-      caches.open(CACHE).then(cache => cache.put(event.request, copy));
-      return response;
-    }).catch(() => caches.match(event.request).then(hit => hit || caches.match('/play.html'))));
+    event.respondWith(
+      fetch(event.request).catch(() => new Response(
+        '<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connection required</title><body style="margin:0;background:#101112;color:#fff7e8;font-family:system-ui;display:grid;place-items:center;min-height:100dvh;padding:24px;text-align:center"><main><h1>Connection required</h1><p>The private demo needs a connection to verify access.</p></main></body>',
+        { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } }
+      ))
+    );
     return;
   }
 
-  event.respondWith(fetch(event.request).then(response => {
-    if (response.ok) caches.open(CACHE).then(cache => cache.put(event.request, response.clone()));
-    return response;
-  }).catch(() => caches.match(event.request)));
+  event.respondWith(
+    caches.match(event.request).then(hit => hit || fetch(event.request).then(response => {
+      if (response.ok) caches.open(CACHE).then(cache => cache.put(event.request, response.clone()));
+      return response;
+    }))
+  );
 });
