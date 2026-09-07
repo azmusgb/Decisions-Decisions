@@ -1,9 +1,7 @@
 [build]
   publish = "."
 
-# Root must override the historical index.html file that is intentionally
-# retained for /legacy/v1 provenance. Netlify otherwise shadows this rewrite
-# with index.html and serves the old Tanner questionnaire at `/`.
+# Root must override the historical index.html file retained for /legacy/v1.
 [[redirects]]
   from = "/"
   to = "/home.html"
@@ -126,9 +124,21 @@
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
 [[headers]]
+  for = "/play.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+[[headers]]
   for = "/site.css"
   [headers.values]
-    Cache-Control = "no-cache, must-revalidate"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+[[headers]]
+  for = "/play.css"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+[[headers]]
+  for = "/play-polish.css"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
 [[headers]]
   for = "/sw.js"
   [headers.values]
