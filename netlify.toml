@@ -182,6 +182,10 @@
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
 [[headers]]
+  for = "/public-demo.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+[[headers]]
   for = "/demo-access.js"
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"

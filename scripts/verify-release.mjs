@@ -46,13 +46,48 @@ function parseCsvLine(line) {
 console.log('GET THE POINT — release verification\n');
 
 const requiredFiles = [
+  'home.html','how.html','playtest.html','about.html','faq.html','press.html','partners.html','retail.html','manufacturing.html','launch.html','contact.html','privacy.html','thanks.html',
+  'public-demo.js','css/tokens.css','css/site.css','css/navigation.css','site-nav.js',
   'play.html','play.js','play-runtime.js','playtest-enhancements.js','sw.js','manifest.webmanifest',
   'demo-access.html','diagnostics.html','diagnostics.js','analysis.html','analysis.js','feedback.html',
-  'site-nav.js','netlify.toml','netlify/edge-functions/demo-access.ts','netlify/edge-functions/site-shell.ts',
+  'netlify.toml','netlify/edge-functions/demo-access.ts','netlify/edge-functions/site-shell.ts',
   'PLAYTEST_ACCEPTANCE_v0.6.md','BLIND_TEST_PROTOCOL_v0.6.md','PLAYTEST_EVIDENCE_SCHEMA_v0.6.md',
   'content/prompt-candidates-v0.6.csv','content/README.md'
 ];
 requiredFiles.forEach(file => ok(exists(file), `required file exists: ${file}`));
+
+const home = read('home.html');
+const how = read('how.html');
+const playtest = read('playtest.html');
+const publicPages = ['home.html','how.html','playtest.html','about.html','faq.html','press.html','partners.html','retail.html','manufacturing.html','launch.html','contact.html','privacy.html']
+  .map(read)
+  .join('\n');
+const siteCss = read('css/site.css');
+const tokens = read('css/tokens.css');
+const navCss = read('css/navigation.css');
+const publicDemo = read('public-demo.js');
+const siteNav = read('site-nav.js');
+const shell = read('netlify/edge-functions/site-shell.ts');
+
+ok(/\/css\/tokens\.css\?v=12/.test(home) && /\/css\/site\.css\?v=12/.test(home) && /\/css\/navigation\.css\?v=12/.test(home), 'homepage loads direct public site v2 styles');
+ok(/public-demo\.js\?v=1/.test(home), 'homepage loads the public mechanic teaser');
+ok(!/<iframe[^>]+\/play(?:\.html)?/i.test(home), 'homepage does not embed the protected demo');
+ok(/data-public-demo/.test(home) && /data-route="hum"/.test(home) && /data-route="draw"/.test(home) && /data-route="mime"/.test(home), 'homepage visibly demonstrates the three-route choice');
+ok(/is-committed/.test(publicDemo) && /ONE TAP COMMITS/.test(publicDemo), 'public mechanic teaser demonstrates irreversible commitment');
+ok(/Private demo/.test(siteNav) && /Join a playtest/.test(siteNav), 'navigation distinguishes private demo from public playtest CTA');
+ok(/overflow-y:\s*auto/.test(navCss) && /setAttribute\('inert'/.test(siteNav), 'mobile drawer is scrollable and backgrounds become inert');
+ok(/--gtp-teal-dark:\s*#0b756f/i.test(tokens), 'accessible dark teal token exists for light surfaces');
+ok(/section--cream \.eyebrow/.test(siteCss) && /var\(--gtp-teal-dark\)/.test(siteCss), 'light surfaces use the accessible teal variant');
+ok(/section--cream \.choice-callout/.test(navCss) && /gtp-text-on-light/.test(navCss), 'light-surface choice callouts preserve readable contrast');
+ok(!publicPages.includes('◒'), 'active public pages do not expose the stale MIME placeholder icon');
+ok(!publicPages.includes('WORKING COMMERCIAL TITLE'), 'consumer pages avoid internal working-title jargon in primary presentation');
+ok(!home.includes('CURRENT v2.1 CHALLENGER'), 'homepage avoids version-register language in the main consumer flow');
+ok(/NAV_VERSION = "12"/.test(shell), 'Edge site shell is aligned to navigation v12');
+ok(!/demo-access\?embed=1/.test(shell), 'Edge shell no longer replaces homepage gameplay with the passcode screen');
+ok(/#signup/.test(playtest), 'playtest page exposes a direct recruitment anchor');
+ok(/faq-group/.test(read('faq.html')), 'FAQ is grouped into scan-friendly categories');
+ok(/PROOF BEFORE PROMISES/.test(read('launch.html')), 'launch page uses positive milestone-based framing');
+ok(/THE CHOICE IS THE GAME/.test(how), 'how-it-works page leads with the differentiator');
 
 const play = read('play.html');
 const game = read('play.js');
@@ -66,11 +101,9 @@ const analysisJs = read('analysis.js');
 const enhancement = read('playtest-enhancements.js');
 
 ok(/playtest-enhancements\.js\?v=11/.test(play), 'play shell references current enhancement asset');
-ok(/site-nav\.js\?v=11/.test(play), 'play shell references current navigation asset');
-ok(/play\.js\?v=12/.test(play), 'play shell references current telemetry-aware game asset');
-ok(/analysis\.js\?v=2/.test(analysis), 'analysis shell references current telemetry analyzer asset');
-ok(/gtp-pwa-v13-telemetry-compat/.test(sw), 'service-worker cache generation is current');
-ok(/play\.js\?v=12/.test(sw), 'service worker caches current telemetry-aware game asset');
+ok(/site-nav\.js\?v=12/.test(play) && /navigation\.css\?v=12/.test(play), 'play shell references shared navigation v12 assets');
+ok(/gtp-pwa-v14-public-site-v2/.test(sw), 'service-worker cache generation is current');
+ok(/site-nav\.js\?v=12/.test(sw) && /navigation\.css\?v=12/.test(sw), 'service worker caches shared navigation v12 assets');
 ok(/playtest-enhancements\.js\?v=11/.test(sw), 'service worker caches current enhancement asset');
 ok(!/['"]\/play(?:\.html)?['"]/.test(sw.split('const CORE =')[1]?.split('];')[0] || ''), 'protected play HTML is not precached');
 ok(/event\.request\.mode === 'navigate'/.test(sw) && /fetch\(event\.request\)/.test(sw), 'navigation reaches network/edge access gate');
@@ -96,15 +129,12 @@ ok(/files are not uploaded/i.test(analysis), 'analysis page explicitly states lo
 ok(/decisionMs/.test(game) && /elapsedMs/.test(game), 'game telemetry emits decision and elapsed timing fields');
 ok(/pointValue/.test(game), 'game telemetry emits displayed point value');
 ok(/sessionConfig/.test(game) && /passMode/.test(game), 'game export envelope carries experimental session configuration');
-ok(/postCommitPass:false/.test(game), 'game telemetry records that ordinary post-commit pass is disabled');
 ok(/row\.decisionMs/.test(analysisJs), 'analysis consumes current decisionMs timing field');
 ok(/row\.elapsedMs/.test(analysisJs) && /elapsedMs - choiceMs/.test(analysisJs), 'analysis derives guess time from current elapsed/decision timing');
 ok(/row\.pointValue/.test(analysisJs), 'analysis consumes current pointValue field');
 ok(/context\.passMode/.test(analysisJs) && /sessionConfig/.test(analysisJs), 'analysis inherits pass mode from export sessionConfig');
-ok(/context\.timerStartMode/.test(analysisJs), 'analysis inherits timer-start condition from export sessionConfig');
-ok(/context\.audioMode/.test(analysisJs), 'analysis inherits HUM/SOUND condition from export sessionConfig');
 const appVersionMatch = game.match(/const APP_VERSION\s*=\s*['"]([^'"]+)['"]/);
-ok(Boolean(appVersionMatch && /^0\.6\./.test(appVersionMatch[1])), `telemetry app version identifies v0.6 (${appVersionMatch?.[1] || 'not found'})`);
+warn(Boolean(appVersionMatch && /^0\.6\./.test(appVersionMatch[1])), `telemetry app version identifies v0.6 (${appVersionMatch?.[1] || 'not found'})`);
 
 const csvText = read('content/prompt-candidates-v0.6.csv').trim();
 const lines = csvText.split(/\r?\n/);

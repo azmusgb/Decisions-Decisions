@@ -1,5 +1,5 @@
 const CSP = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'";
-const NAV_VERSION = "11";
+const NAV_VERSION = "12";
 
 const PATHS = [
   "/", "/home.html",
@@ -27,7 +27,7 @@ function secureHeaders(headers: Headers) {
   return headers;
 }
 
-export default async (req: Request, context: any) => {
+export default async (_req: Request, context: any) => {
   const response = await context.next();
   const headers = secureHeaders(new Headers(response.headers));
   const type = headers.get("content-type") || "";
@@ -35,17 +35,12 @@ export default async (req: Request, context: any) => {
 
   let html = await response.text();
   if (!html.includes("/css/navigation.css")) {
-    html = html.replace("</head>", '<link rel="stylesheet" href="/css/navigation.css?v=10"></head>');
+    html = html.replace("</head>", `<link rel="stylesheet" href="/css/navigation.css?v=${NAV_VERSION}"></head>`);
   }
   if (html.includes("/site-nav.js")) {
     html = html.replace(/\/site-nav\.js(?:\?v=[^\"']+)?/g, `/site-nav.js?v=${NAV_VERSION}`);
-  } else {
+  } else if (html.includes("site-header")) {
     html = html.replace("</body>", `<script src="/site-nav.js?v=${NAV_VERSION}" defer></script></body>`);
-  }
-
-  const path = new URL(req.url).pathname;
-  if (path === "/" || path === "/home.html") {
-    html = html.replace('src="/play.html"', 'src="/demo-access?embed=1"');
   }
 
   return new Response(html, { status: response.status, statusText: response.statusText, headers });

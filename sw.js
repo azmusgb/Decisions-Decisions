@@ -1,11 +1,11 @@
 'use strict';
-const CACHE = 'gtp-pwa-v13-telemetry-compat';
+const CACHE = 'gtp-pwa-v14-public-site-v2';
 const CORE = [
   '/css/tokens.css?v=10',
   '/css/game.css?v=10',
-  '/css/navigation.css?v=10',
+  '/css/navigation.css?v=12',
   '/css/diagnostics.css?v=10',
-  '/site-nav.js?v=11',
+  '/site-nav.js?v=12',
   '/play-runtime.js?v=10',
   '/play.js?v=12',
   '/playtest-enhancements.js?v=11',

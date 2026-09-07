@@ -7,9 +7,9 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="description" content="Structured GET THE POINT playtest session feedback.">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/css/tokens.css?v=10">
-  <link rel="stylesheet" href="/css/site.css?v=10">
-  <link rel="stylesheet" href="/css/navigation.css?v=10">
+  <link rel="stylesheet" href="/css/tokens.css?v=12">
+  <link rel="stylesheet" href="/css/site.css?v=12">
+  <link rel="stylesheet" href="/css/navigation.css?v=12">
   <title>Session Feedback — GET THE POINT</title>
 </head>
 <body>
@@ -22,11 +22,11 @@
         <input type="hidden" name="build" value="v0.6-blind-test-candidate">
         <p class="honeypot"><label>Do not fill this out <input name="bot-field"></label></p>
         <div class="field"><label for="session">Session ID / shorthand</label><input id="session" name="session_id" placeholder="Example: 2026-09-07-A"></div>
-        <div class="grid grid-2">
+        <div class="form-grid">
           <div class="field"><label for="players">Players</label><input id="players" name="player_count" type="number" min="2" max="20"></div>
           <div class="field"><label for="group">Group type</label><select id="group" name="group_type"><option value="">Choose one</option><option>Family / mixed ages</option><option>Adult friends</option><option>Teens</option><option>Party-game fans</option><option>Casual / non-gamers</option><option>Other</option></select></div>
         </div>
-        <div class="grid grid-2">
+        <div class="form-grid">
           <div class="field"><label for="audio">Audio condition</label><select id="audio" name="audio_condition"><option>HUM</option><option>SOUND</option><option>Unknown</option></select></div>
           <div class="field"><label for="timer">Timer start</label><select id="timer" name="timer_start"><option>Commit</option><option>Reveal</option><option>Unknown</option></select></div>
         </div>
@@ -39,7 +39,7 @@
         <div class="field"><label for="impossible">6. Which prompt felt impossible or unfair?</label><textarea id="impossible" name="impossible_prompts" placeholder="Prompt(s) + route if remembered"></textarea></div>
         <div class="field"><label for="replay">7. Would you play again?</label><select id="replay" name="replay_interest" required><option value="">Choose one</option><option>Definitely</option><option>Probably</option><option>Maybe</option><option>Probably not</option><option>Definitely not</option></select></div>
         <div class="field"><label for="with">8. Who would you play this with?</label><textarea id="with" name="who_with"></textarea></div>
-        <div class="grid grid-2">
+        <div class="form-grid">
           <div class="field"><label for="rules">Rule questions asked</label><input id="rules" name="rule_question_count" type="number" min="0" placeholder="0"></div>
           <div class="field"><label for="rescues">Facilitator rescues</label><input id="rescues" name="facilitator_rescue_count" type="number" min="0" placeholder="0"></div>
         </div>
@@ -50,6 +50,6 @@
       </form>
     </div></section>
   </main>
-  <script src="/site-nav.js?v=11" defer></script>
+  <script src="/site-nav.js?v=12" defer></script>
 </body>
 </html>
