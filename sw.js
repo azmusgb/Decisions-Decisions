@@ -1,6 +1,6 @@
 'use strict';
-const CACHE = 'gtp-pwa-v4';
-const CORE = ['/play.html','/play.css','/play-polish.css','/play.js','/manifest.webmanifest','/icon.svg'];
+const CACHE = 'gtp-pwa-v5';
+const CORE = ['/play.html','/play.css?v=4','/play-polish.css?v=4','/play.js?v=4','/manifest.webmanifest','/icon.svg'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
@@ -24,11 +24,8 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  event.respondWith(caches.match(event.request).then(cached => {
-    const network = fetch(event.request).then(response => {
-      if (response.ok) caches.open(CACHE).then(cache => cache.put(event.request, response.clone()));
-      return response;
-    }).catch(() => cached);
-    return cached || network;
-  }));
+  event.respondWith(fetch(event.request).then(response => {
+    if (response.ok) caches.open(CACHE).then(cache => cache.put(event.request, response.clone()));
+    return response;
+  }).catch(() => caches.match(event.request)));
 });
