@@ -26,6 +26,18 @@ This file exists to stop historical prototype code and creative-direction artifa
 - Method controls are approximately 10–15% larger than the prior prototype.
 - Digital interaction: **one tap = select + commit**; no second confirmation step.
 
+## SMART-CARD UX CHALLENGER — PROPOSED / NEEDS PLAYTESTING
+
+- Active gameplay should feel like a stack of smart cards rather than a dashboard.
+- The prompt remains the dominant element during both choice and performance.
+- Visible `LOCKED` / `COMMITTED` ceremony is intentionally minimized or removed from normal play.
+- Removing the ceremony does **not** remove the underlying irreversible commitment rule.
+- A deliberate right-swipe after a correct guess may score the already-selected prompt-specific points and advance immediately.
+- The existing Correct control remains as an accessible/failsafe scoring path while the swipe interaction is tested.
+- DRAW must protect canvas/tool gestures from accidental scoring swipes.
+- Live score may be visually suppressed during the timed turn and shown at natural breaks/results.
+- Swipe-to-score, reduced active-turn chrome, and hidden live score are interaction challengers, not settled commercial behavior.
+
 ## TEST BASELINE — NOT FINAL COMMERCIAL RULES
 
 - Round timing: **60 sec → 30 sec → 15 sec**.
@@ -42,6 +54,8 @@ Do not invent or silently lock:
 - final round/team structure
 - final method labels/order/colors/icons
 - timer start on reveal vs commit
+- smart-card swipe-to-score interaction
+- live-score visibility during turns
 - commercial name
 - pricing/economics
 - package dimensions/materials
