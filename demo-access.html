@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101112">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Private playtest access for the GET THE POINT working demo.">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/tokens.css?v=8">
+  <link rel="stylesheet" href="/css/site.css?v=8">
+  <title>Demo Access — GET THE POINT</title>
+</head>
+<body class="demo-access-page">
+  <header class="site-header"><div class="wrap nav"><a class="brand" href="/">GET THE POINT</a><nav class="nav-links" aria-label="Main navigation"></nav></div></header>
+  <main class="access-shell">
+    <section class="access-card">
+      <div class="access-signal" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="eyebrow">PRIVATE PLAYTEST BUILD</div>
+      <h1>ENTER THE<br>DEMO.</h1>
+      <p class="access-copy">The working game prototype is currently shared by invitation. Enter the playtest passcode to continue.</p>
+      <div id="accessStatus" class="access-status" hidden role="status"></div>
+      <form class="access-form" method="POST" action="/demo-access">
+        <input id="next" type="hidden" name="next" value="/play">
+        <label for="passcode">Playtest passcode</label>
+        <div class="access-input-row">
+          <input id="passcode" name="passcode" type="password" autocomplete="current-password" autocapitalize="characters" spellcheck="false" required autofocus placeholder="Enter passcode">
+          <button class="button button--primary" type="submit">Unlock demo</button>
+        </div>
+      </form>
+      <div class="access-meta"><span>One tap commits</span><span>Local playtest data</span><span>No camera or microphone</span></div>
+      <a class="access-back" href="/">← Back to the website</a>
+    </section>
+  </main>
+  <script src="/site-nav.js?v=8" defer></script>
+  <script src="/demo-access.js?v=8" defer></script>
+</body>
+</html>
