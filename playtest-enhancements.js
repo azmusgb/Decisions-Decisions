@@ -32,9 +32,24 @@
     });
   }
 
+  function addFeedbackCta(root = document) {
+    root.querySelectorAll('.results-screen').forEach(screen => {
+      if (screen.querySelector('[data-feedback-cta]')) return;
+      const actions = screen.querySelector('.stack:last-of-type') || screen;
+      const link = document.createElement('a');
+      link.href = '/feedback';
+      link.dataset.feedbackCta = '1';
+      link.className = 'btn btn--teal btn--small';
+      link.textContent = 'Give session feedback';
+      link.setAttribute('aria-label', 'Open structured post-game playtest feedback');
+      actions.appendChild(link);
+    });
+  }
+
   function enhance() {
     polishMimeIcons();
     markBlindTestCandidate();
+    addFeedbackCta();
   }
 
   const observer = new MutationObserver(enhance);
