@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'gtp-pwa-v12-evidence-pipeline';
+const CACHE = 'gtp-pwa-v13-telemetry-compat';
 const CORE = [
   '/css/tokens.css?v=10',
   '/css/game.css?v=10',
@@ -7,7 +7,7 @@ const CORE = [
   '/css/diagnostics.css?v=10',
   '/site-nav.js?v=11',
   '/play-runtime.js?v=10',
-  '/play.js?v=10',
+  '/play.js?v=12',
   '/playtest-enhancements.js?v=11',
   '/diagnostics.js?v=10',
   '/manifest.webmanifest',
