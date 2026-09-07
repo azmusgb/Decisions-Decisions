@@ -1,4 +1,5 @@
 const CSP = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'";
+const NAV_VERSION = "11";
 
 const PATHS = [
   "/", "/home.html",
@@ -36,8 +37,10 @@ export default async (req: Request, context: any) => {
   if (!html.includes("/css/navigation.css")) {
     html = html.replace("</head>", '<link rel="stylesheet" href="/css/navigation.css?v=10"></head>');
   }
-  if (!html.includes("/site-nav.js")) {
-    html = html.replace("</body>", '<script src="/site-nav.js?v=10" defer></script></body>');
+  if (html.includes("/site-nav.js")) {
+    html = html.replace(/\/site-nav\.js(?:\?v=[^\"']+)?/g, `/site-nav.js?v=${NAV_VERSION}`);
+  } else {
+    html = html.replace("</body>", `<script src="/site-nav.js?v=${NAV_VERSION}" defer></script></body>`);
   }
 
   const path = new URL(req.url).pathname;

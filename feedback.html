@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101112">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Structured GET THE POINT playtest session feedback.">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/tokens.css?v=10">
+  <link rel="stylesheet" href="/css/site.css?v=10">
+  <link rel="stylesheet" href="/css/navigation.css?v=10">
+  <title>Session Feedback — GET THE POINT</title>
+</head>
+<body>
+  <header class="site-header"><div class="wrap nav"><a class="brand" href="/">GET THE POINT</a><nav class="nav-links" aria-label="Main navigation"></nav></div></header>
+  <main>
+    <section class="hero hero--compact"><div class="wrap"><div class="eyebrow">PRIVATE PLAYTEST · POST-GAME</div><h1>CAPTURE THE<br>EVIDENCE.</h1><div class="accent-bars"><span></span><span></span><span></span></div><p class="hero-lede">Complete this immediately after a game, before explaining the product intent. Behavioral telemetry and participant feedback answer different questions; we need both.</p></div></section>
+    <section class="section"><div class="wrap">
+      <form class="contact-form" name="playtest-session-feedback" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="playtest-session-feedback">
+        <input type="hidden" name="build" value="v0.6-blind-test-candidate">
+        <p class="honeypot"><label>Do not fill this out <input name="bot-field"></label></p>
+        <div class="field"><label for="session">Session ID / shorthand</label><input id="session" name="session_id" placeholder="Example: 2026-09-07-A"></div>
+        <div class="grid grid-2">
+          <div class="field"><label for="players">Players</label><input id="players" name="player_count" type="number" min="2" max="20"></div>
+          <div class="field"><label for="group">Group type</label><select id="group" name="group_type"><option value="">Choose one</option><option>Family / mixed ages</option><option>Adult friends</option><option>Teens</option><option>Party-game fans</option><option>Casual / non-gamers</option><option>Other</option></select></div>
+        </div>
+        <div class="grid grid-2">
+          <div class="field"><label for="audio">Audio condition</label><select id="audio" name="audio_condition"><option>HUM</option><option>SOUND</option><option>Unknown</option></select></div>
+          <div class="field"><label for="timer">Timer start</label><select id="timer" name="timer_start"><option>Commit</option><option>Reveal</option><option>Unknown</option></select></div>
+        </div>
+        <div class="field"><label for="skip">Skip condition</label><select id="skip" name="skip_condition"><option>1 before commit</option><option>No skip</option><option>Unknown</option></select></div>
+        <div class="field"><label for="sentence">1. In one sentence, what is this game?</label><textarea id="sentence" name="game_description" required></textarea></div>
+        <div class="field"><label for="fun">2. What was the most fun part?</label><textarea id="fun" name="most_fun"></textarea></div>
+        <div class="field"><label for="confusing">3. What was confusing?</label><textarea id="confusing" name="confusing"></textarea></div>
+        <div class="field"><label for="points">4. Did the point values change what you chose?</label><select id="points" name="points_influenced_choice" required><option value="">Choose one</option><option>Yes — clearly</option><option>Sometimes</option><option>No</option><option>Not sure</option></select></div>
+        <div class="field"><label for="avoided">5. Was there a route you avoided? Why?</label><textarea id="avoided" name="route_avoided"></textarea></div>
+        <div class="field"><label for="impossible">6. Which prompt felt impossible or unfair?</label><textarea id="impossible" name="impossible_prompts" placeholder="Prompt(s) + route if remembered"></textarea></div>
+        <div class="field"><label for="replay">7. Would you play again?</label><select id="replay" name="replay_interest" required><option value="">Choose one</option><option>Definitely</option><option>Probably</option><option>Maybe</option><option>Probably not</option><option>Definitely not</option></select></div>
+        <div class="field"><label for="with">8. Who would you play this with?</label><textarea id="with" name="who_with"></textarea></div>
+        <div class="grid grid-2">
+          <div class="field"><label for="rules">Rule questions asked</label><input id="rules" name="rule_question_count" type="number" min="0" placeholder="0"></div>
+          <div class="field"><label for="rescues">Facilitator rescues</label><input id="rescues" name="facilitator_rescue_count" type="number" min="0" placeholder="0"></div>
+        </div>
+        <div class="field"><label for="reaction">Strong reactions / laughter moments</label><textarea id="reaction" name="strong_reactions"></textarea></div>
+        <div class="field"><label for="validity">Session validity</label><select id="validity" name="session_validity" required><option>VALID — primary data</option><option>INVALID — build failure</option><option>INVALID — facilitator intervention</option><option>INVALID — settings changed</option><option>INVALID — rule ambiguity</option><option>INVALID — other</option></select></div>
+        <div class="field"><label for="notes">Observer notes</label><textarea id="notes" name="observer_notes"></textarea></div>
+        <button class="button button--primary" type="submit">Submit session evidence</button>
+      </form>
+    </div></section>
+  </main>
+  <script src="/site-nav.js?v=11" defer></script>
+</body>
+</html>

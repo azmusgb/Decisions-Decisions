@@ -25,6 +25,14 @@
   to = "/diagnostics.html"
   status = 200
 [[redirects]]
+  from = "/analysis"
+  to = "/analysis.html"
+  status = 200
+[[redirects]]
+  from = "/feedback"
+  to = "/feedback.html"
+  status = 200
+[[redirects]]
   from = "/playtest"
   to = "/playtest.html"
   status = 200
@@ -148,6 +156,16 @@
     Cache-Control = "no-cache, no-store, must-revalidate"
     X-Robots-Tag = "noindex, nofollow"
 [[headers]]
+  for = "/analysis.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    X-Robots-Tag = "noindex, nofollow"
+[[headers]]
+  for = "/feedback.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    X-Robots-Tag = "noindex, nofollow"
+[[headers]]
   for = "/site.css"
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
@@ -169,6 +187,10 @@
     Cache-Control = "no-cache, no-store, must-revalidate"
 [[headers]]
   for = "/diagnostics.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+[[headers]]
+  for = "/analysis.js"
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
 [[headers]]

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101112">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Local-only GET THE POINT playtest telemetry analysis.">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/tokens.css?v=10">
+  <link rel="stylesheet" href="/css/site.css?v=10">
+  <link rel="stylesheet" href="/css/navigation.css?v=10">
+  <link rel="stylesheet" href="/css/analysis.css?v=1">
+  <title>Playtest Analysis — GET THE POINT</title>
+</head>
+<body>
+  <header class="site-header"><div class="wrap nav"><a class="brand" href="/">GET THE POINT</a><nav class="nav-links" aria-label="Main navigation"></nav></div></header>
+  <main class="analysis-shell">
+    <section class="analysis-hero wrap">
+      <div>
+        <div class="eyebrow">PRIVATE PLAYTEST TOOL · v0.6</div>
+        <h1>EVIDENCE,<br>NOT VIBES.</h1>
+        <p>Drop one or more exported GET THE POINT telemetry JSON files here. Analysis happens entirely in this browser; files are not uploaded.</p>
+      </div>
+      <div class="analysis-drop" id="dropZone">
+        <input id="files" type="file" accept="application/json,.json" multiple>
+        <label for="files"><strong>Choose telemetry files</strong><span>or drag JSON exports onto this panel</span></label>
+        <small id="fileStatus">No files loaded.</small>
+      </div>
+    </section>
+
+    <section class="wrap analysis-results" id="results" hidden>
+      <div class="analysis-toolbar">
+        <div><div class="eyebrow">NORMALIZED DATA</div><h2 id="datasetTitle">Playtest evidence</h2></div>
+        <div class="analysis-actions"><button class="button button--ghost" id="copySummary">Copy summary</button><button class="button button--primary" id="downloadCsv">Download normalized CSV</button></div>
+      </div>
+      <div class="kpi-grid" id="kpis"></div>
+      <div class="analysis-grid">
+        <section class="analysis-card"><div class="card-head"><h3>Route choice</h3><span>Share of committed attempts</span></div><div id="routeMix"></div></section>
+        <section class="analysis-card"><div class="card-head"><h3>Route outcomes</h3><span>Observed, not calibrated difficulty</span></div><div id="routeOutcomes"></div></section>
+      </div>
+      <section class="analysis-card analysis-wide">
+        <div class="card-head"><h3>Prompt triage</h3><span>Automatic flags are review cues, not deletion decisions</span></div>
+        <div class="table-wrap"><table><thead><tr><th>Prompt</th><th>Attempts</th><th>Correct</th><th>Success</th><th>Pass/timeout</th><th>Top route</th><th>Flag</th></tr></thead><tbody id="promptRows"></tbody></table></div>
+      </section>
+      <div class="analysis-grid">
+        <section class="analysis-card"><div class="card-head"><h3>Experimental conditions</h3><span>Use for cohort separation</span></div><div id="conditions"></div></section>
+        <section class="analysis-card"><div class="card-head"><h3>Quality warnings</h3><span>Do not mix incompatible evidence</span></div><div id="warnings"></div></section>
+      </div>
+      <section class="analysis-card analysis-wide">
+        <div class="card-head"><h3>Next decisions suggested by data</h3><span>Heuristics only · human/playtest judgment remains required</span></div>
+        <div id="recommendations" class="recommendations"></div>
+      </section>
+    </section>
+  </main>
+  <script src="/site-nav.js?v=11" defer></script>
+  <script src="/analysis.js?v=1" defer></script>
+</body>
+</html>

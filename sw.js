@@ -1,14 +1,14 @@
 'use strict';
-const CACHE = 'gtp-pwa-v11-blind-test-candidate';
+const CACHE = 'gtp-pwa-v12-evidence-pipeline';
 const CORE = [
   '/css/tokens.css?v=10',
   '/css/game.css?v=10',
   '/css/navigation.css?v=10',
   '/css/diagnostics.css?v=10',
-  '/site-nav.js?v=10',
+  '/site-nav.js?v=11',
   '/play-runtime.js?v=10',
   '/play.js?v=10',
-  '/playtest-enhancements.js?v=10',
+  '/playtest-enhancements.js?v=11',
   '/diagnostics.js?v=10',
   '/manifest.webmanifest',
   '/icon.svg'

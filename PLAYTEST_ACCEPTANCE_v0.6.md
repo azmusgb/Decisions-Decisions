@@ -55,6 +55,20 @@ These remain **NEEDS PLAYTESTING**.
 - [ ] No ordinary post-commit pass exists.
 - [ ] 60 → 30 → 15 baseline behaves consistently.
 
+## P1 evidence pipeline
+
+- [ ] Game telemetry exports as valid JSON.
+- [ ] `/analysis` accepts a current telemetry export without uploading the file.
+- [ ] `/analysis` separates HUM vs SOUND when the condition is identifiable.
+- [ ] `/analysis` warns when incompatible experimental conditions are mixed.
+- [ ] `/analysis` can export normalized CSV.
+- [ ] Game-over surface offers structured session feedback.
+- [ ] `/feedback` submits to the `playtest-session-feedback` Netlify form.
+- [ ] Feedback records session validity, replay interest, point-value influence, rule questions, and facilitator rescues.
+- [ ] `/analysis` and `/feedback` are inaccessible without private-demo authorization.
+- [ ] Candidate prompt pool contains 150 unique IDs/prompts with only 1–3 point hypotheses.
+- [ ] No candidate is labeled `VALIDATED_CORE` from desk review alone.
+
 ## P1 device matrix
 
 - [ ] Current iPhone / Safari.
@@ -76,6 +90,16 @@ Use `/diagnostics` when a device fails. Copy the report into the defect record.
 - [ ] Site navigation never overlays an active timed turn.
 - [ ] Reduced-motion mode removes nonessential animation.
 
+## Automated checks
+
+Run:
+
+```bash
+node scripts/verify-release.mjs
+```
+
+GitHub Actions also syntax-checks browser JavaScript and validates repository/release invariants. Automated checks reduce regression risk but do not substitute for the device and blind-play gates above.
+
 ## Exit gate
 
 v0.6 is acceptable for structured blind testing when:
@@ -84,3 +108,4 @@ v0.6 is acceptable for structured blind testing when:
 2. A complete game can be finished on iPhone Safari without creator intervention.
 3. Unresolved mechanics remain configurable and explicitly labeled as test variables.
 4. Device problems can be captured using the diagnostics page.
+5. Telemetry and qualitative feedback can be captured without silently mixing incompatible experimental conditions.
