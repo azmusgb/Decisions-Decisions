@@ -5,94 +5,96 @@
   from = "/"
   to = "/home.html"
   status = 200
-
 [[redirects]]
   from = "/play"
   to = "/play.html"
   status = 200
-
 [[redirects]]
   from = "/faq"
   to = "/faq.html"
   status = 200
-
 [[redirects]]
   from = "/press"
   to = "/press.html"
   status = 200
-
 [[redirects]]
   from = "/contact"
   to = "/contact.html"
   status = 200
-
 [[redirects]]
   from = "/thanks"
   to = "/thanks.html"
   status = 200
-
+[[redirects]]
+  from = "/playtest"
+  to = "/playtest.html"
+  status = 200
+[[redirects]]
+  from = "/retail"
+  to = "/retail.html"
+  status = 200
+[[redirects]]
+  from = "/manufacturing"
+  to = "/manufacturing.html"
+  status = 200
+[[redirects]]
+  from = "/launch"
+  to = "/launch.html"
+  status = 200
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
 [[redirects]]
   from = "/archive"
   to = "/archive.html"
   status = 200
 
-# Historical Tanner creative-direction routes. These are provenance artifacts,
-# not current product truth.
+# Historical Tanner creative-direction routes. Provenance only.
 [[redirects]]
   from = "/survey"
   to = "/archive.html"
   status = 302
-
 [[redirects]]
   from = "/round2"
   to = "/archive.html"
   status = 302
-
 [[redirects]]
   from = "/v4"
   to = "/archive.html"
   status = 302
-
 [[redirects]]
   from = "/v3"
   to = "/archive.html"
   status = 302
-
 [[redirects]]
   from = "/v2"
   to = "/archive.html"
   status = 302
-
 [[redirects]]
   from = "/v1"
   to = "/archive.html"
   status = 302
-
 [[redirects]]
   from = "/legacy/round2"
   to = "/creative-direction-round2.html"
   status = 200
-
 [[redirects]]
   from = "/legacy/v3"
   to = "/creative-direction-v3.html"
   status = 200
-
 [[redirects]]
   from = "/legacy/v2"
   to = "/creative-direction-v2.html"
   status = 200
-
 [[redirects]]
   from = "/legacy/v1"
   to = "/index.html"
   status = 200
-
 [[redirects]]
   from = "/thank-you"
-  to = "/thank-you-v3.html"
-  status = 200
-
+  to = "/thanks.html"
+  status = 302
 [[redirects]]
   from = "/round2-thank-you"
   to = "/round2-thank-you.html"
@@ -103,33 +105,27 @@
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
     Service-Worker-Allowed = "/"
-
 [[headers]]
   for = "/manifest.webmanifest"
   [headers.values]
     Content-Type = "application/manifest+json; charset=utf-8"
     Cache-Control = "public, max-age=3600"
-
 [[headers]]
   for = "/archive.html"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
-
 [[headers]]
   for = "/creative-direction-*.html"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
-
 [[headers]]
   for = "/index.html"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
-
 [[headers]]
   for = "/thanks.html"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
-
 [[headers]]
   for = "/*"
   [headers.values]
