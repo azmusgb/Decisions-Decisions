@@ -126,12 +126,13 @@
       const hint = document.createElement('div');
       hint.className = 'swipe-hint';
       hint.setAttribute('aria-hidden', 'true');
-      hint.textContent = 'Swipe right when guessed';
+      hint.textContent = 'GUESSED IT? SWIPE RIGHT';
       actions.prepend(hint);
     });
 
     root.querySelectorAll('.game--perform .prompt-card').forEach(card => {
       if (!card.hasAttribute('data-swipe-to-score')) card.setAttribute('data-swipe-to-score', 'true');
+      card.setAttribute('aria-description', 'When your team guesses correctly, use the Correct button. Swipe right is an optional shortcut.');
     });
 
     root.querySelectorAll('.game--choose .prompt-meta > span:last-child').forEach(node => {
