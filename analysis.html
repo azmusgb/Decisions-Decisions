@@ -7,8 +7,8 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="description" content="Local-only GET THE POINT playtest telemetry analysis.">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/css/tokens.css?v=8">
-  <link rel="stylesheet" href="/css/site.css?v=8">
+  <link rel="stylesheet" href="/css/tokens.css?v=10">
+  <link rel="stylesheet" href="/css/site.css?v=10">
   <link rel="stylesheet" href="/css/navigation.css?v=10">
   <link rel="stylesheet" href="/css/analysis.css?v=1">
   <title>Playtest Analysis — GET THE POINT</title>
@@ -34,31 +34,26 @@
         <div><div class="eyebrow">NORMALIZED DATA</div><h2 id="datasetTitle">Playtest evidence</h2></div>
         <div class="analysis-actions"><button class="button button--ghost" id="copySummary">Copy summary</button><button class="button button--primary" id="downloadCsv">Download normalized CSV</button></div>
       </div>
-
       <div class="kpi-grid" id="kpis"></div>
-
       <div class="analysis-grid">
         <section class="analysis-card"><div class="card-head"><h3>Route choice</h3><span>Share of committed attempts</span></div><div id="routeMix"></div></section>
         <section class="analysis-card"><div class="card-head"><h3>Route outcomes</h3><span>Observed, not calibrated difficulty</span></div><div id="routeOutcomes"></div></section>
       </div>
-
       <section class="analysis-card analysis-wide">
         <div class="card-head"><h3>Prompt triage</h3><span>Automatic flags are review cues, not deletion decisions</span></div>
         <div class="table-wrap"><table><thead><tr><th>Prompt</th><th>Attempts</th><th>Correct</th><th>Success</th><th>Pass/timeout</th><th>Top route</th><th>Flag</th></tr></thead><tbody id="promptRows"></tbody></table></div>
       </section>
-
       <div class="analysis-grid">
         <section class="analysis-card"><div class="card-head"><h3>Experimental conditions</h3><span>Use for cohort separation</span></div><div id="conditions"></div></section>
         <section class="analysis-card"><div class="card-head"><h3>Quality warnings</h3><span>Do not mix incompatible evidence</span></div><div id="warnings"></div></section>
       </div>
-
       <section class="analysis-card analysis-wide">
         <div class="card-head"><h3>Next decisions suggested by data</h3><span>Heuristics only · human/playtest judgment remains required</span></div>
         <div id="recommendations" class="recommendations"></div>
       </section>
     </section>
   </main>
-  <script src="/site-nav.js?v=10" defer></script>
+  <script src="/site-nav.js?v=11" defer></script>
   <script src="/analysis.js?v=1" defer></script>
 </body>
 </html>
