@@ -60,8 +60,9 @@ export default async (req: Request, context: any) => {
 
   const expected = `v1.${await signature(secret)}`;
   const granted = cookieValue(req, COOKIE_NAME) === expected;
+  const isAccessPage = url.pathname === "/demo-access" || url.pathname === "/demo-access.html";
 
-  if (url.pathname === "/demo-access") {
+  if (isAccessPage) {
     if (url.searchParams.get("logout") === "1") {
       const cleared = `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`;
       return redirect("/demo-access?locked=1", cleared);
@@ -91,5 +92,5 @@ export default async (req: Request, context: any) => {
 };
 
 export const config = {
-  path: ["/play", "/play.html", "/demo-access"],
+  path: ["/play", "/play.html", "/demo-access", "/demo-access.html"],
 };
