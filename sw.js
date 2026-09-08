@@ -16,8 +16,23 @@ const CORE = [
   '/icon.svg'
 ];
 
+/* The visual-system upgrade keeps public asset URLs stable for compatibility.
+   Delete those shared entries before precaching so an installed PWA cannot
+   pin an older token/navigation stylesheet behind the existing cache name. */
+const REFRESH_ON_INSTALL = [
+  '/css/tokens.css?v=10',
+  '/css/navigation.css?v=12'
+];
+
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
+  event.waitUntil(
+    caches.open(CACHE)
+      .then(async cache => {
+        await Promise.all(REFRESH_ON_INSTALL.map(url => cache.delete(url)));
+        await cache.addAll(CORE);
+      })
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', event => {

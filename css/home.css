@@ -1,42 +1,34 @@
-/* GET THE POINT homepage composition.
-   Page-specific layout only; shared public components remain owned by /css/site.css. */
+/* GET THE POINT homepage v3
+   Product-first composition layered on the shared public visual system. */
 
 .home-page .hero--product {
-  min-height: min(860px, calc(100svh - var(--gtp-header)));
-  padding-block: clamp(56px, 7vw, 82px);
+  min-height: min(880px, calc(100svh - var(--gtp-header)));
+  padding-block: clamp(58px, 7vw, 88px);
   display: grid;
   align-items: center;
 }
 
 .home-page .hero-grid {
-  grid-template-columns: minmax(0, 1.04fr) minmax(360px, .76fr);
-  gap: clamp(38px, 5vw, 66px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, .72fr);
+  gap: clamp(42px, 5.5vw, 74px);
 }
 
 .home-page .hero-copy h1,
 .home-page .section-head h2,
-.home-page .final-cta h2 {
-  text-wrap: balance;
-}
+.home-page .final-cta h2 { text-wrap: balance; }
 
-.home-page .hero-lede {
-  max-width: 56ch !important;
-}
+.home-page .hero-lede { max-width: 55ch !important; }
 
-.home-page .hero-actions .button--primary {
-  box-shadow: 0 12px 30px rgba(255, 217, 59, .14);
-}
-
-.home-page .hero-proof span {
-  background: rgba(255, 255, 255, .025);
-}
+.home-page .hero-proof span:first-child { border-color: rgba(53,207,195,.3); }
+.home-page .hero-proof span:nth-child(2) { border-color: rgba(255,217,59,.28); }
+.home-page .hero-proof span:nth-child(3) { border-color: rgba(143,92,230,.30); }
 
 .home-page .product-stage {
-  min-height: 540px;
+  min-height: 560px;
   isolation: isolate;
 }
 
-/* A restrained physical-card stack behind the hero card. */
+/* Visible deck stack: physical-game cue, not generic floating-phone polish. */
 .home-page .product-stage::before,
 .home-page .product-stage::after {
   top: 50%;
@@ -45,343 +37,236 @@
   width: min(84%, 370px);
   height: auto;
   aspect-ratio: 2.5 / 3.5;
-  border-radius: 28px;
+  border-radius: var(--gtp-radius-xl);
   filter: none;
   transform-origin: center;
 }
 
 .home-page .product-stage::before {
   z-index: 0;
-  border: 1px solid rgba(255, 247, 232, .13);
-  background: #17191b;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, .28);
-  transform: translate(-57%, -48%) rotate(-5deg);
+  border: 2px solid rgba(255,247,232,.14);
+  background: #202326;
+  box-shadow: 0 18px 0 rgba(0,0,0,.16);
+  transform: translate(-58%, -48%) rotate(-6deg);
 }
 
 .home-page .product-stage::after {
   z-index: 1;
-  border: 1px solid rgba(255, 247, 232, .2);
-  background: rgba(255, 247, 232, .08);
-  transform: translate(-43%, -49%) rotate(4deg);
+  border: 2px solid rgba(255,247,232,.14);
+  background: #2a2e31;
+  transform: translate(-42%, -49%) rotate(5deg);
 }
 
 .home-page .game-card {
   width: min(100%, 380px);
-  transform: rotate(.7deg);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, .35);
+  transform: rotate(.9deg);
 }
 
-.home-page .game-prompt {
-  font-size: clamp(3.2rem, 6.4vw, 5.25rem);
+.home-page .game-prompt { font-size: clamp(3.2rem, 6.4vw, 5.25rem); }
+.home-page .brand-mark--a { top: 9%; right: -1%; }
+.home-page .brand-mark--b { left: -1%; bottom: 16%; }
+
+.home-page .demo-teaser { gap: clamp(38px, 6vw, 78px); }
+
+.home-page .choice-callout {
+  position: relative;
+  padding-left: 18px;
+  border-left: 4px solid var(--gtp-teal-dark);
 }
 
-.home-page .brand-mark--a {
-  top: 10%;
+.home-page .choice-callout::after {
+  content: "CHOICE";
+  position: absolute;
   right: 0;
+  top: 20px;
+  color: rgba(16,17,18,.10);
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: -.07em;
+  pointer-events: none;
 }
 
-.home-page .brand-mark--b {
-  left: -1%;
-  bottom: 16%;
-}
-
-.home-page .demo-teaser {
-  gap: clamp(34px, 6vw, 72px);
-}
-
-.home-page .teaser-frame {
-  border-radius: 30px;
-  box-shadow: 0 22px 55px rgba(37, 28, 16, .09);
-}
-
-.home-page .teaser-card {
-  overflow: hidden;
-}
+.home-page .teaser-frame { transform: rotate(.35deg); }
+.home-page .teaser-card { overflow: hidden; }
 
 .home-page .teaser-card.is-committed .teaser-method:not(.is-selected) {
-  opacity: .16;
-  transform: scale(.96);
+  opacity: .15;
+  transform: scale(.955);
 }
 
-.home-page .teaser-method.is-selected {
-  transform: translateY(-2px) scale(1.02);
-}
+.home-page .teaser-method.is-selected { transform: translateY(-3px) scale(1.015); }
 
-.home-page .mechanic-strip > div {
-  transition: transform .16s ease, background-color .16s ease;
-}
-
-.home-page .route-card {
-  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+.home-page .mechanic-strip > div,
+.home-page .route-card,
+.home-page .product-pair > article,
+.home-page .link-grid a {
+  transition: transform .14s ease, background-color .14s ease, border-color .14s ease, box-shadow .14s ease;
 }
 
 .home-page .route-card:hover {
-  transform: translateY(-4px);
+  z-index: 1;
+  transform: translateY(-5px);
   border-color: var(--gtp-line-strong);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, .16);
+  box-shadow: 0 10px 0 rgba(0,0,0,.20), 0 22px 50px rgba(0,0,0,.14);
 }
 
-.home-page .product-pair > article,
-.home-page .link-grid a {
-  transition: transform .16s ease, background-color .16s ease;
-}
+.home-page .product-pair > article:hover { background: #fff4df; }
+.home-page .link-grid a:hover { transform: translateY(-2px); }
 
-.home-page .product-pair > article:hover {
-  background: #fffaf0;
-}
+.home-page .route-showcase .section-head .eyebrow { color: var(--gtp-teal); }
 
-.home-page .final-cta {
-  padding-block: clamp(70px, 8vw, 104px);
-}
+.home-page .final-cta { padding-block: clamp(76px, 9vw, 112px); }
 
 @media (max-width: 960px) {
-  .home-page .hero--product {
-    min-height: 0;
-  }
-
-  .home-page .product-stage {
-    min-height: 470px;
-  }
+  .home-page .hero--product { min-height: 0; }
+  .home-page .product-stage { min-height: 490px; }
 }
 
 @media (max-width: 720px) {
-  .home-page .hero--product {
-    padding: 34px 0 46px;
-  }
+  .home-page .hero--product { padding: 34px 0 50px; }
+  .home-page .hero-grid { gap: 0; }
 
-  .home-page .hero-grid {
-    gap: 0;
-  }
-
-  /* Interleave the hero visual with the copy so the product appears before the CTA stack. */
-  .home-page .hero-copy {
-    display: contents;
-  }
-
-  .home-page .hero-copy > .eyebrow {
-    order: 1;
-  }
+  /* On phones: promise → product → explanation → actions. */
+  .home-page .hero-copy { display: contents; }
+  .home-page .hero-copy > .eyebrow { order: 1; }
 
   .home-page .hero-copy > h1 {
     order: 2;
     margin-top: 10px;
-    font-size: clamp(3.15rem, 15.2vw, 4.35rem);
-    line-height: .86;
+    font-size: clamp(3.05rem, 15vw, 4.25rem);
+    line-height: .84;
   }
 
   .home-page .hero-copy > .accent-bars {
     order: 3;
-    margin: 17px 0 14px;
+    width: 160px;
+    margin: 18px 0 12px;
   }
 
   .home-page .product-stage {
     order: 4;
-    min-height: 354px;
-    margin: 2px 0 10px;
+    min-height: 372px;
+    margin: 0 0 12px;
   }
 
   .home-page .hero-copy > .hero-lede {
     order: 5;
     margin: 0 0 2px;
-    font-size: 1.03rem !important;
-    line-height: 1.48;
+    font-size: 1.02rem !important;
+    line-height: 1.5;
   }
 
-  .home-page .hero-copy > .hero-actions {
-    order: 6;
-    margin-top: 20px;
-  }
-
-  .home-page .hero-copy > .hero-subaction {
-    order: 7;
-    margin-top: 12px;
-  }
-
-  .home-page .hero-copy > .hero-proof {
-    order: 8;
-  }
+  .home-page .hero-copy > .hero-actions { order: 6; margin-top: 21px; }
+  .home-page .hero-copy > .hero-subaction { order: 7; margin-top: 11px; }
+  .home-page .hero-copy > .hero-proof { order: 8; }
 
   .home-page .product-stage::before,
   .home-page .product-stage::after {
-    width: min(76vw, 292px);
-    border-radius: 23px;
+    width: min(76vw, 298px);
+    border-radius: 19px;
   }
 
   .home-page .game-card {
-    width: min(74vw, 286px);
-    padding: 18px;
-    border-radius: 23px;
+    width: min(74vw, 290px);
+    padding: 17px;
+    border-radius: 19px;
+    box-shadow: 0 11px 0 rgba(0,0,0,.22), 0 30px 60px rgba(0,0,0,.26);
   }
 
-  .home-page .game-card-top {
-    font-size: .58rem;
-  }
-
-  .home-page .game-prompt {
-    font-size: clamp(2.7rem, 13vw, 3.65rem);
-  }
+  .home-page .game-card::before { inset: 8px; border-radius: 13px; }
+  .home-page .game-card-top { font-size: .56rem; }
+  .home-page .game-prompt { font-size: clamp(2.7rem, 13vw, 3.7rem); }
 
   .home-page .mini-method {
-    min-height: 80px;
-    border-radius: 13px;
+    min-height: 82px;
+    border-radius: 11px;
   }
 
-  .home-page .mini-method span {
-    min-height: 24px;
-    font-size: 1.45rem;
-  }
-
-  .home-page .mini-method strong {
-    font-size: 1.65rem;
-  }
-
-  .home-page .game-note {
-    margin-top: 9px;
-    font-size: .52rem;
-  }
+  .home-page .mini-method span { min-height: 24px; font-size: 1.4rem; }
+  .home-page .mini-method strong { font-size: 1.65rem; }
+  .home-page .game-note { margin-top: 9px; font-size: .5rem; }
 
   .home-page .brand-mark--a {
-    width: 46px;
-    height: 46px;
-    top: 8%;
-    right: 2%;
+    width: 45px;
+    height: 45px;
+    top: 7%;
+    right: 1%;
   }
 
   .home-page .brand-mark--b {
-    width: 50px;
+    width: 49px;
     height: 30px;
     left: 1%;
     bottom: 14%;
   }
 
   .home-page .hero-proof {
-    margin: 18px -12px 0;
-    padding: 0 12px 3px;
+    margin: 18px -14px 0;
+    padding: 0 14px 4px;
     flex-wrap: nowrap;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     scrollbar-width: none;
   }
 
-  .home-page .hero-proof::-webkit-scrollbar {
-    display: none;
-  }
+  .home-page .hero-proof::-webkit-scrollbar { display: none; }
+  .home-page .hero-proof span { flex: 0 0 auto; }
+  .home-page .section-head { margin-bottom: 27px; }
 
-  .home-page .hero-proof span {
-    flex: 0 0 auto;
-  }
+  .home-page .mechanic-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-page .mechanic-strip > div { min-height: 142px; padding: 18px; }
+  .home-page .mechanic-strip span { margin-bottom: 15px; }
+  .home-page .mechanic-strip b { font-size: 1.08rem; }
+  .home-page .mechanic-strip p { font-size: .88rem; line-height: 1.42; }
 
-  .home-page .section-head {
-    margin-bottom: 26px;
-  }
-
-  .home-page .mechanic-strip,
-  .home-page .mechanic-strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .home-page .mechanic-strip > div {
-    min-height: 128px;
-    padding: 17px;
-  }
-
-  .home-page .mechanic-strip span {
-    width: 34px;
-    height: 34px;
-    margin-bottom: 18px;
-  }
-
-  .home-page .mechanic-strip b {
-    font-size: 1.05rem;
-  }
-
-  .home-page .mechanic-strip p {
-    font-size: .88rem;
-    line-height: 1.4;
-  }
-
-  /* On phones, the three routes become a swipeable shelf instead of a long stack. */
+  /* Horizontal route shelf: keeps all three methods visible as peer choices. */
   .home-page .route-showcase .grid-3 {
     grid-template-columns: none;
     grid-auto-flow: column;
     grid-auto-columns: min(82vw, 330px);
     gap: 12px;
-    margin-right: -12px;
-    padding: 2px 12px 12px 0;
+    margin-right: -14px;
+    padding: 2px 14px 14px 0;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     overscroll-behavior-inline: contain;
     scrollbar-width: none;
   }
 
-  .home-page .route-showcase .grid-3::-webkit-scrollbar {
-    display: none;
-  }
-
-  .home-page .route-card {
-    min-height: 218px;
-    scroll-snap-align: start;
-  }
+  .home-page .route-showcase .grid-3::-webkit-scrollbar { display: none; }
+  .home-page .route-card { min-height: 232px; scroll-snap-align: start; }
 
   .home-page .teaser-frame {
     margin-inline: 0;
-    padding: 10px;
-    border-radius: 24px;
+    padding: 9px;
+    transform: none;
   }
 
-  .home-page .teaser-card {
-    min-height: 430px;
-    padding: 18px;
-  }
+  .home-page .teaser-card { min-height: 430px; padding: 18px; }
+  .home-page .teaser-prompt { font-size: clamp(3rem, 16vw, 4.4rem); }
+  .home-page .teaser-method { min-height: 96px; }
+  .home-page .teaser-status { padding-inline: 2px; font-size: .67rem; }
 
-  .home-page .teaser-prompt {
-    font-size: clamp(3rem, 16vw, 4.4rem);
-  }
+  .home-page .choice-callout { padding-left: 14px; }
+  .home-page .choice-callout::after { display: none; }
 
-  .home-page .teaser-method {
-    min-height: 96px;
-  }
-
-  .home-page .teaser-status {
-    padding-inline: 4px;
-    font-size: .68rem;
-  }
-
-  .home-page .product-pair > article {
-    min-height: 230px;
-    padding: 24px;
-  }
-
-  .home-page .link-grid a {
-    min-height: 112px;
-  }
-
-  .home-page .final-cta {
-    padding-block: 64px;
-  }
+  .home-page .product-pair > article { min-height: 238px; padding: 25px; }
+  .home-page .link-grid a { min-height: 116px; }
+  .home-page .final-cta { padding-block: 68px; }
 }
 
 @media (max-width: 430px) {
-  .home-page .mechanic-strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .home-page .mechanic-strip > div {
-    min-height: 132px;
-  }
-
-  .home-page .teaser-methods {
-    gap: 5px;
-  }
-
-  .home-page .teaser-method {
-    min-height: 92px;
-  }
+  .home-page .mechanic-strip { grid-template-columns: 1fr; }
+  .home-page .mechanic-strip > div { min-height: 132px; }
+  .home-page .teaser-methods { gap: 5px; }
+  .home-page .teaser-method { min-height: 92px; }
 }
 
 @media (hover: none) {
   .home-page .route-card:hover,
-  .home-page .product-pair > article:hover {
+  .home-page .product-pair > article:hover,
+  .home-page .link-grid a:hover {
     transform: none;
     box-shadow: none;
   }
@@ -392,7 +277,5 @@
   .home-page .product-pair > article,
   .home-page .link-grid a,
   .home-page .mechanic-strip > div,
-  .home-page .teaser-method {
-    transition: none;
-  }
+  .home-page .teaser-method { transition: none; }
 }

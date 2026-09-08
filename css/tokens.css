@@ -1,27 +1,33 @@
 :root {
+  /* GET THE POINT — visual system v3
+     Premium game-show structure + modern card-game tactility. */
   --gtp-ink: #101112;
-  --gtp-ink-2: #181a1b;
-  --gtp-ink-3: #222527;
+  --gtp-ink-2: #17191b;
+  --gtp-ink-3: #202326;
+  --gtp-ink-soft: #2a2e31;
   --gtp-cream: #fff7e8;
-  --gtp-cream-2: #f6eddc;
-  --gtp-paper: #fffaf0;
+  --gtp-cream-2: #f5ead8;
+  --gtp-paper: #fffaf1;
+  --gtp-paper-2: #f4ead9;
 
   --gtp-teal: #35cfc3;
   --gtp-teal-dark: #0b756f;
   --gtp-yellow: #ffd93b;
+  --gtp-yellow-deep: #e6b900;
   --gtp-purple: #8f5ce6;
-  --gtp-purple-deep: #7042c8;
+  --gtp-purple-deep: #6840bd;
   --gtp-danger: #ff746e;
 
-  --gtp-muted: #9da1a4;
-  --gtp-muted-on-light: #626668;
-  --gtp-text-on-light: #202224;
-  --gtp-line: rgba(255, 247, 232, .14);
+  --gtp-muted: #a7abad;
+  --gtp-muted-on-light: #62615f;
+  --gtp-text-on-light: #1d1f20;
+  --gtp-line: rgba(255, 247, 232, .13);
   --gtp-line-strong: rgba(255, 247, 232, .24);
-  --gtp-dark-line: #d9cfbf;
+  --gtp-dark-line: #d8cbb7;
+  --gtp-dark-line-strong: #bba98f;
 
-  --gtp-surface-dark: #111416;
-  --gtp-surface-dark-2: #171a1c;
+  --gtp-surface-dark: #101112;
+  --gtp-surface-dark-2: #17191b;
   --gtp-surface-light: var(--gtp-cream);
   --gtp-surface-paper: var(--gtp-paper);
 
@@ -34,21 +40,29 @@
   --gtp-space-7: 48px;
   --gtp-space-8: 64px;
   --gtp-space-9: 88px;
+  --gtp-space-10: 112px;
 
-  --gtp-radius-sm: 12px;
-  --gtp-radius-md: 18px;
-  --gtp-radius-lg: 26px;
-  --gtp-radius-xl: 34px;
+  --gtp-radius-xs: 8px;
+  --gtp-radius-sm: 10px;
+  --gtp-radius-md: 14px;
+  --gtp-radius-lg: 18px;
+  --gtp-radius-xl: 24px;
 
-  --gtp-shadow-sm: 0 8px 22px rgba(0, 0, 0, .14);
-  --gtp-shadow-md: 0 20px 50px rgba(0, 0, 0, .24);
-  --gtp-shadow-lg: 0 30px 80px rgba(0, 0, 0, .34);
+  --gtp-shadow-sm: 0 6px 0 rgba(0, 0, 0, .18);
+  --gtp-shadow-md: 0 12px 0 rgba(0, 0, 0, .18), 0 28px 56px rgba(0, 0, 0, .18);
+  --gtp-shadow-lg: 0 18px 0 rgba(0, 0, 0, .22), 0 38px 90px rgba(0, 0, 0, .26);
+  --gtp-shadow-paper: 0 10px 0 rgba(77, 57, 29, .10), 0 28px 60px rgba(77, 57, 29, .14);
 
-  --gtp-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --gtp-max: 1160px;
+  --gtp-font: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  --gtp-max: 1180px;
   --gtp-reading: 760px;
-  --gtp-touch: 48px;
-  --gtp-header: 68px;
+  --gtp-touch: 50px;
+  --gtp-header: 70px;
+  --gtp-gutter: clamp(16px, 3vw, 28px);
+
+  --gtp-display-1: clamp(3.35rem, 8.9vw, 7.5rem);
+  --gtp-display-2: clamp(2.35rem, 5.3vw, 4.85rem);
+  --gtp-display-3: clamp(1.55rem, 2.7vw, 2.1rem);
 
   /* Backward-compatible aliases while historical/current surfaces coexist. */
   --ink: var(--gtp-ink);
