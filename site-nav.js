@@ -8,13 +8,10 @@
     ['About', '/about']
   ];
 
+  // Keep development/commercial workstream pages live by direct URL, but do not
+  // surface them in the public navigation until they are relevant to visitors.
   const MORE = [
     ['Private demo', '/play'],
-    ['Updates', '/launch'],
-    ['Press', '/press'],
-    ['Partners', '/partners'],
-    ['Retail', '/retail'],
-    ['Manufacturing', '/manufacturing'],
     ['Contact', '/contact']
   ];
 
