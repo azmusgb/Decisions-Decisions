@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  // Product invariant: one tap chooses and commits the route.
+  // Product invariant: one tap chooses and commits the method.
   const root = document.querySelector('[data-public-demo]');
   if (!root) return;
 
@@ -36,7 +36,7 @@
     const item = current();
     promptNode.textContent = item.prompt;
     if (question) {
-      question.textContent = `HUM — ${item.hum} ${item.hum === 1 ? 'point' : 'points'}. DRAW — ${item.draw} ${item.draw === 1 ? 'point' : 'points'}. MIME — ${item.mime} ${item.mime === 1 ? 'point' : 'points'}. Which route would you choose?`;
+      question.textContent = `HUM — ${item.hum} ${item.hum === 1 ? 'point' : 'points'}. DRAW — ${item.draw} ${item.draw === 1 ? 'point' : 'points'}. MIME — ${item.mime} ${item.mime === 1 ? 'point' : 'points'}. What would you choose?`;
     }
 
     methodButtons.forEach(button => {
@@ -56,7 +56,7 @@
     if (reset) {
       card.classList.remove('is-committed');
       card.removeAttribute('data-selected-route');
-      status.innerHTML = '<span>CHOOSE ONE</span><strong>TAP TO CHOOSE</strong>';
+      status.innerHTML = '<span>CHOOSE ONE</span><strong>TAP ONE TO CHOOSE</strong>';
       setNextState(false);
     }
   }
@@ -77,7 +77,7 @@
       if (!selected) item.setAttribute('tabindex', '-1');
     });
 
-    status.innerHTML = `<span>${label[route]} · ${points} ${points === 1 ? 'PT' : 'PTS'}</span><strong>LOCKED · GET THEM TO GUESS</strong>`;
+    status.innerHTML = `<span>${label[route]} · ${points} ${points === 1 ? 'PT' : 'PTS'}</span><strong>CHOICE LOCKED · GET THEM TO GUESS</strong>`;
     setNextState(true);
   }
 
