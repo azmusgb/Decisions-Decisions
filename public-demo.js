@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  // Product invariant retained underneath the lighter public copy: ONE TAP COMMITS.
+  // Product invariant: one tap chooses and commits the route.
   const root = document.querySelector('[data-public-demo]');
   if (!root) return;
 
@@ -36,12 +36,14 @@
     const item = current();
     promptNode.textContent = item.prompt;
     if (question) {
-      question.textContent = `HUM for ${item.hum}, DRAW for ${item.draw}, or MIME for ${item.mime}. What would you pick?`;
+      question.textContent = `HUM — ${item.hum} ${item.hum === 1 ? 'point' : 'points'}. DRAW — ${item.draw} ${item.draw === 1 ? 'point' : 'points'}. MIME — ${item.mime} ${item.mime === 1 ? 'point' : 'points'}. Which route would you choose?`;
     }
+
     methodButtons.forEach(button => {
       const route = button.dataset.route;
       const points = item[route];
-      button.querySelector('[data-points]').textContent = points;
+      const pointsNode = button.querySelector('[data-points]');
+      if (pointsNode) pointsNode.textContent = points;
       button.setAttribute('aria-label', `${label[route]}, ${points} ${points === 1 ? 'point' : 'points'}`);
       if (reset) {
         button.classList.remove('is-selected');
@@ -50,10 +52,11 @@
         button.removeAttribute('tabindex');
       }
     });
+
     if (reset) {
       card.classList.remove('is-committed');
       card.removeAttribute('data-selected-route');
-      status.innerHTML = '<span>PICK ONE</span><strong>TAP A WAY AND GO</strong>';
+      status.innerHTML = '<span>CHOOSE ONE</span><strong>TAP TO CHOOSE</strong>';
       setNextState(false);
     }
   }
@@ -61,9 +64,11 @@
   function commit(button) {
     const route = button.dataset.route;
     if (!route || card.classList.contains('is-committed')) return;
+
     const points = current()[route];
     card.classList.add('is-committed');
     card.dataset.selectedRoute = route;
+
     methodButtons.forEach(item => {
       const selected = item === button;
       item.classList.toggle('is-selected', selected);
@@ -71,7 +76,8 @@
       item.setAttribute('aria-disabled', 'true');
       if (!selected) item.setAttribute('tabindex', '-1');
     });
-    status.innerHTML = `<span>${label[route]} · ${points} ${points === 1 ? 'PT' : 'PTS'}</span><strong>NOW GET THEM TO GUESS</strong>`;
+
+    status.innerHTML = `<span>${label[route]} · ${points} ${points === 1 ? 'PT' : 'PTS'}</span><strong>LOCKED · GET THEM TO GUESS</strong>`;
     setNextState(true);
   }
 
