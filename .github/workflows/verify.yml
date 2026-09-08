@@ -31,3 +31,28 @@ jobs:
           node --check sw.js
       - name: Verify product and release invariants
         run: node scripts/verify-release.mjs
+
+  browser-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned browser-test tooling
+        run: npm install --no-save --package-lock=false @playwright/test@1.55.0
+      - name: Install Chromium + WebKit runtimes
+        run: npx playwright install --with-deps chromium webkit
+      - name: Run desktop and touch-browser acceptance matrix
+        run: npx playwright test --config=playwright.config.mjs
+      - name: Preserve browser failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-acceptance-artifacts
+          path: |
+            playwright-report
+            test-results
+          if-no-files-found: ignore
+          retention-days: 7
