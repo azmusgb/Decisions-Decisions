@@ -238,6 +238,29 @@
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
+# Retain future-facing workstream pages by direct URL, but keep them out of
+# public search until their content is current and appropriate to expose.
+[[headers]]
+  for = "/launch.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+[[headers]]
+  for = "/press.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+[[headers]]
+  for = "/partners.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+[[headers]]
+  for = "/retail.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+[[headers]]
+  for = "/manufacturing.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
 [[headers]]
   for = "/*"
   [headers.values]
