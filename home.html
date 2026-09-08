@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#101112">
-  <meta name="description" content="GET THE POINT — one prompt, three ways to play. Choose a route with its own points, commit, clue, and get your team to guess before time runs out.">
+  <meta name="description" content="GET THE POINT — one prompt, three ways to play. Choose how you'll clue it, chase the points, and get your team to guess before time runs out.">
   <meta property="og:title" content="GET THE POINT — One prompt. Three ways to play.">
   <meta property="og:description" content="A fast social party game built around choice under time pressure.">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -18,16 +18,7 @@
 <header class="site-header">
   <div class="wrap nav">
     <a class="brand" href="/" aria-label="GET THE POINT home">GET THE POINT</a>
-    <nav class="nav-links" aria-label="Main navigation">
-      <div class="site-nav-primary">
-        <a href="/how">How it works</a>
-        <a href="/playtest">Playtest</a>
-        <a href="/faq">FAQ</a>
-        <a href="/about">About</a>
-        <details class="site-more"><summary>More</summary><div class="site-more-menu"><a href="/play">Private demo</a><a href="/contact">Contact</a></div></details>
-      </div>
-      <a class="button button--primary site-nav-cta" href="/playtest#signup">Join a playtest</a>
-    </nav>
+    <nav class="nav-links" aria-label="Main navigation"></nav>
   </div>
 </header>
 
@@ -38,13 +29,13 @@
         <div class="eyebrow">FAST SOCIAL PARTY GAME · IN PLAYTEST</div>
         <h1>ONE PROMPT.<br>THREE WAYS<br>TO PLAY.</h1>
         <div class="accent-bars" aria-hidden="true"><span></span><span></span><span></span></div>
-        <p class="hero-lede">Every prompt shows three routes with different point values. Choose one before you clue. If your team guesses correctly, you score the points you chose and keep moving while time remains.</p>
+        <p class="hero-lede">Every prompt gives you three ways to play, each worth different points. Choose one before you start clueing. If your team gets it, take those points and go again while time remains.</p>
         <div class="hero-actions">
           <a class="button button--primary button--large" href="#try">Try a prompt</a>
           <a class="button button--ghost button--large" href="/playtest#signup">Join a playtest</a>
         </div>
         <a class="hero-subaction" href="/play">Already invited? Enter the private demo →</a>
-        <div class="hero-proof"><span>Choose before clueing</span><span>Points change by prompt</span><span>Correct guess = selected points</span></div>
+        <div class="hero-proof"><span>Choose before clueing</span><span>Points change every prompt</span><span>Correct guess = chosen points</span></div>
       </div>
 
       <div class="product-stage" aria-label="Example GET THE POINT prompt card">
@@ -67,12 +58,12 @@
   <section class="section section--cream" id="try">
     <div class="wrap demo-teaser" data-public-demo>
       <div class="split-copy">
-        <div class="eyebrow">TRY THE DECISION</div>
-        <h2>SAME PROMPT. DIFFERENT TRADEOFF.</h2>
-        <p>The point values change with the prompt. A route that feels safer may be worth less; a harder route may be worth more. Choose before you clue.</p>
+        <div class="eyebrow">TRY THE CHOICE</div>
+        <h2>SAME PROMPT. DIFFERENT POINTS.</h2>
+        <p>Sometimes the easiest way is worth less. Sometimes the harder way is worth more. You decide which way is worth it before you start.</p>
         <div class="choice-callout">
-          <strong>Which route would you choose?</strong>
-          <p data-teaser-question>HUM — 3 points. DRAW — 1 point. MIME — 2 points. Which route would you choose?</p>
+          <strong>What would you choose?</strong>
+          <p data-teaser-question>HUM — 3 points. DRAW — 1 point. MIME — 2 points. What would you choose?</p>
         </div>
         <div class="teaser-controls">
           <button class="button button--dark" type="button" data-teaser-next>New prompt</button>
@@ -84,12 +75,12 @@
         <article class="teaser-card" data-teaser-card>
           <div class="teaser-top"><span>GET THE POINT</span><span>CHOOSE ONE</span></div>
           <div class="teaser-prompt" data-teaser-prompt>VOLCANO</div>
-          <div class="teaser-methods" aria-label="Choose a sample route">
+          <div class="teaser-methods" aria-label="Choose a sample way to play">
             <button class="teaser-method" type="button" data-route="hum"><span>♫</span><b>HUM</b><strong data-points>3</strong></button>
             <button class="teaser-method" type="button" data-route="draw"><span>✎</span><b>DRAW</b><strong data-points>1</strong></button>
             <button class="teaser-method" type="button" data-route="mime"><span><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M11 13.5C17 8.8 24.2 7 32 7s15 1.8 21 6.5v17.2c0 13.1-8.6 23.6-21 27.3C19.6 54.3 11 43.8 11 30.7V13.5Z" fill="none" stroke="currentColor" stroke-width="4.2" stroke-linejoin="round"/><path d="M19.5 25.2c2.7-2.2 5.5-2.2 8.2 0M36.3 25.2c2.7-2.2 5.5-2.2 8.2 0M23 41.4c5.9 3.8 12.1 3.8 18 0" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/></svg></span><b>MIME</b><strong data-points>2</strong></button>
           </div>
-          <div class="teaser-status" data-teaser-status role="status" aria-live="polite" aria-atomic="true"><span>CHOOSE ONE</span><strong>TAP TO CHOOSE</strong></div>
+          <div class="teaser-status" data-teaser-status role="status" aria-live="polite" aria-atomic="true"><span>CHOOSE ONE</span><strong>TAP ONE TO CHOOSE</strong></div>
         </article>
       </div>
     </div>
@@ -99,13 +90,13 @@
     <div class="wrap">
       <div class="section-head">
         <div><div class="eyebrow">THE LOOP</div><h2>REVEAL. CHOOSE. CLUE. SCORE.</h2></div>
-        <p>The decision happens before the performance. Once clueing begins, that route is locked for the prompt.</p>
+        <p>The decision happens before the performance. Once clueing begins, your choice is locked for that prompt.</p>
       </div>
       <div class="mechanic-strip">
         <div><span>1</span><b>REVEAL</b><p>See one prompt and three point values.</p></div>
-        <div><span>2</span><b>CHOOSE</b><p>Select the route you want before clueing.</p></div>
+        <div><span>2</span><b>CHOOSE</b><p>Pick how you want to clue it.</p></div>
         <div><span>3</span><b>CLUE</b><p>Hum, draw, or mime while your team guesses.</p></div>
-        <div><span>4</span><b>SCORE</b><p>Correct? Take the selected points and move on.</p></div>
+        <div><span>4</span><b>SCORE</b><p>Correct? Take your chosen points and go again.</p></div>
       </div>
     </div>
   </section>
@@ -114,7 +105,7 @@
     <div class="wrap">
       <div class="section-head">
         <div><div class="eyebrow">CURRENT PROTOTYPE</div><h2>HUM. DRAW. MIME.</h2></div>
-        <p>These are the current playtest routes. The labels are still being tested; the choice-before-clueing mechanic is not.</p>
+        <p>These are the three ways to play in the current prototype. The final labels are still being tested; the choice-before-clueing mechanic is not.</p>
       </div>
       <div class="grid grid-3">
         <article class="route-card route-hum"><span class="route-icon">♫</span><div><div class="eyebrow">01</div><h3>HUM</h3><p>Hum a melody. No spoken words or lyrics.</p></div></article>
@@ -132,17 +123,14 @@
       </div>
       <div class="product-pair">
         <article><span class="kicker">PHYSICAL</span><h3>A compact table game.</h3><p>Cards, a reusable drawing surface, quick-start rules, and simple scoring. Components stay lean until playtesting proves they add value.</p><a class="text-link" href="/about">About the game →</a></article>
-        <article><span class="kicker">DIGITAL</span><h3>Pass the phone. Keep the pace.</h3><p>The current direction is offline, pass-and-play, local-first, with the phone handling timing, scoring, and drawing without taking over the room.</p><a class="text-link" href="/playtest">Join a playtest →</a></article>
+        <article><span class="kicker">DIGITAL</span><h3>Pass the phone. Keep the pace.</h3><p>The current direction is offline, pass-and-play, with the phone handling timing, scoring, and drawing without taking over the room.</p><a class="text-link" href="/playtest">Join a playtest →</a></article>
       </div>
     </div>
   </section>
 
   <section class="final-cta">
     <div class="wrap split">
-      <div>
-        <div class="eyebrow">PLAYTESTING NOW</div>
-        <h2>HELP US TEST THE CHOICE.</h2>
-      </div>
+      <div><div class="eyebrow">PLAYTESTING NOW</div><h2>HELP US TEST THE CHOICE.</h2></div>
       <div class="split-copy">
         <p>We need groups who can learn it quickly, make real choices, laugh when attempts miss, and tell us whether they want another round.</p>
         <div class="hero-actions"><a class="button button--primary button--large" href="/playtest#signup">Join a playtest</a><a class="button button--ghost button--large" href="/how">How it works</a></div>
@@ -160,11 +148,8 @@
   </section>
 </main>
 
-<footer class="footer">
-  <div class="wrap footer-row"><span>© 2026 GET THE POINT · Working title</span><span><a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/contact">Contact</a></span></div>
-</footer>
-
+<footer class="footer"><div class="wrap footer-row"><span>© 2026 GET THE POINT · IN PLAYTEST</span><span><a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/contact">Contact</a></span></div></footer>
 <script src="/site-nav.js?v=12" defer></script>
-<script src="/public-demo.js?v=3" defer></script>
+<script src="/public-demo.js?v=4" defer></script>
 </body>
 </html>
