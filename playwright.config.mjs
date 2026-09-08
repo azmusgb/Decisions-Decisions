@@ -3,16 +3,16 @@ import { defineConfig } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   testMatch: /browser-smoke\.spec\.mjs/,
-  fullyParallel: false,
-  workers: 1,
-  retries: process.env.CI ? 1 : 0,
-  timeout: 30_000,
-  expect: { timeout: 6_000 },
+  fullyParallel: true,
+  workers: process.env.CI ? 4 : undefined,
+  retries: 0,
+  timeout: 20_000,
+  expect: { timeout: 5_000 },
   reporter: process.env.CI ? [['line'], ['html', { outputFolder: 'playwright-report', open: 'never' }]] : 'line',
   use: {
     baseURL: 'http://127.0.0.1:4173',
-    actionTimeout: 6_000,
-    navigationTimeout: 10_000,
+    actionTimeout: 5_000,
+    navigationTimeout: 8_000,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure'
   },
