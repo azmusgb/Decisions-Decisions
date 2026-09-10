@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="GET THE POINT — Tanner Product + UX Decisions Round 3" />
+  <title>GET THE POINT — Tanner Product + UX Decisions Round 3</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root{--ink:#101112;--cream:#fff7e8;--teal:#2db7ad;--yellow:#ffd93b;--purple:#8b5cf6}
+    body{background:var(--cream);color:var(--ink)}
+    .r3-hero{background:var(--ink);color:var(--cream);padding:48px 20px 36px}
+    .r3-hero-inner{max-width:920px;margin:0 auto}
+    .r3-hero h1{font-size:clamp(2.2rem,7vw,4.6rem);line-height:.95;margin:.25rem 0 1rem;letter-spacing:-.04em}
+    .r3-kicker{font-weight:900;letter-spacing:.12em;font-size:.78rem;text-transform:uppercase}
+    .r3-lede{max-width:760px;font-size:1.1rem;line-height:1.6;color:#f4ead8}
+    .method-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:580px;margin-top:24px}
+    .method-chip{padding:12px 14px;border-radius:14px;color:var(--ink);font-weight:900;text-align:center}
+    .hum{background:var(--teal)}.draw{background:var(--yellow)}.mime{background:var(--purple);color:white}
+    .survey-shell{max-width:920px;margin:0 auto;padding:24px 16px 72px}
+    .section-card{background:#fffdf7;border:1px solid rgba(16,17,18,.13);border-radius:24px;padding:24px;margin:18px 0;box-shadow:0 8px 26px rgba(16,17,18,.05)}
+    .section-label{font-weight:900;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:#5d5d5d;margin:0 0 4px}
+    .section-card h2{font-size:clamp(1.45rem,3vw,2rem);margin:.1rem 0 .35rem}
+    .section-card>p{margin-top:0;color:#5d5d5d;line-height:1.5}
+    fieldset{border:0;padding:0;margin:26px 0 0}
+    legend{font-weight:850;font-size:1.05rem;line-height:1.35;margin-bottom:12px}
+    .options{display:grid;gap:10px}
+    .option{display:flex;align-items:flex-start;gap:12px;border:1px solid rgba(16,17,18,.14);border-radius:14px;padding:13px 14px;background:#fff;cursor:pointer;transition:border-color .15s,transform .15s,background .15s}
+    .option:hover{border-color:rgba(16,17,18,.38);transform:translateY(-1px)}
+    .option:has(input:checked){border-color:var(--ink);background:#fff8d9;box-shadow:0 0 0 2px rgba(16,17,18,.08)}
+    .option input{margin-top:3px;accent-color:var(--ink);width:18px;height:18px;flex:0 0 auto}
+    .option span{line-height:1.35}
+    textarea,input[type=text],input[type=date]{width:100%;box-sizing:border-box;border:1px solid rgba(16,17,18,.2);border-radius:14px;background:#fff;padding:13px 14px;font:inherit;color:inherit}
+    textarea:focus,input:focus{outline:3px solid rgba(45,183,173,.28);outline-offset:2px;border-color:var(--teal)}
+    .field{display:block;margin-top:16px}.field>span{display:block;font-weight:800;margin-bottom:8px}
+    .submit-wrap{background:var(--ink);color:var(--cream);border-radius:24px;padding:24px;margin-top:20px}
+    .submit-wrap button{width:100%;min-height:58px;border:0;border-radius:16px;background:var(--yellow);color:var(--ink);font:inherit;font-weight:950;font-size:1.06rem;cursor:pointer}
+    .submit-wrap button:hover{filter:brightness(.98)}
+    .fineprint{font-size:.88rem;color:#d8cfbf;line-height:1.45}
+    .honeypot{position:absolute;left:-9999px}
+    .progress{position:sticky;top:0;z-index:10;height:6px;background:#e9dfcf}.progress>div{height:100%;width:0;background:var(--teal);transition:width .2s}
+    @media(max-width:640px){.r3-hero{padding-top:34px}.section-card{padding:18px;border-radius:18px}.method-strip{gap:7px}.method-chip{font-size:.86rem;padding:10px 8px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
+  <header class="r3-hero">
+    <div class="r3-hero-inner">
+      <p class="r3-kicker">GET THE POINT · PRODUCT + UX REVIEW · ROUND 3</p>
+      <h1>Tanner, make the calls.</h1>
+      <p class="r3-lede">This round is intentionally specific. Pick what you think makes the game easiest to understand, fastest to play, funniest at the table, and strongest as a real commercial product. There are no “right” answers and you do not need to agree with the current direction.</p>
+      <div class="method-strip" aria-label="Current challenger methods"><div class="method-chip hum">HUM</div><div class="method-chip draw">DRAW</div><div class="method-chip mime">MIME</div></div>
+    </div>
+  </header>
+
+  <main class="survey-shell">
+    <form id="round3Form" name="tanner-product-ux-round3" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="tanner-product-ux-round3" />
+      <input type="hidden" name="form_version" value="round3-v1" />
+      <p class="honeypot" aria-hidden="true"><label>Do not fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+      <section class="section-card">
+        <p class="section-label">Start</p><h2>Who is answering?</h2>
+        <label class="field"><span>Name</span><input type="text" name="respondent_name" value="Tanner" autocomplete="name" required /></label>
+        <label class="field"><span>Date</span><input type="date" name="response_date" id="responseDate" required /></label>
+      </section>
+
+      <section class="section-card">
+        <p class="section-label">01 · Core mechanic</p><h2>What is the actual hook?</h2><p>The game lives or dies on what feels special every few seconds.</p>
+        <fieldset><legend>1. What should feel like the MAIN hook?</legend><div class="options">
+          <label class="option"><input required type="radio" name="main_hook" value="Choosing how to communicate for different points"><span>Choosing HOW to communicate for different points</span></label>
+          <label class="option"><input type="radio" name="main_hook" value="Performing HUM DRAW MIME"><span>Performing HUM / DRAW / MIME</span></label>
+          <label class="option"><input type="radio" name="main_hook" value="Racing the timer"><span>Racing the timer</span></label>
+          <label class="option"><input type="radio" name="main_hook" value="Getting teammates to guess"><span>Getting teammates to guess</span></label>
+          <label class="option"><input type="radio" name="main_hook" value="Funny failures and reactions"><span>The funny failures / reactions</span></label>
+        </div></fieldset>
+        <fieldset><legend>2. How important should the point difference feel when choosing?</legend><div class="options">
+          <label class="option"><input required type="radio" name="point_tradeoff_importance" value="Extremely important"><span>Extremely important — it should make me stop and choose</span></label>
+          <label class="option"><input type="radio" name="point_tradeoff_importance" value="Important but fast"><span>Important — but the decision should still be fast</span></label>
+          <label class="option"><input type="radio" name="point_tradeoff_importance" value="Moderate"><span>Moderately important</span></label>
+          <label class="option"><input type="radio" name="point_tradeoff_importance" value="Mostly cosmetic"><span>Mostly cosmetic — speed matters more</span></label>
+        </div></fieldset>
+      </section>
+
+      <section class="section-card">
+        <p class="section-label">02 · HUM vs SOUND</p><h2>Which route should survive?</h2><p>HUM is more distinctive. SOUND is broader and may work with more prompts.</p>
+        <fieldset><legend>3. Which would you rather PLAY?</legend><div class="options">
+          <label class="option"><input required type="radio" name="hum_vs_sound_play" value="HUM"><span><strong>HUM</strong></span></label>
+          <label class="option"><input type="radio" name="hum_vs_sound_play" value="SOUND"><span><strong>SOUND</strong></span></label>
+          <label class="option"><input type="radio" name="hum_vs_sound_play" value="No preference"><span>No preference</span></label>
+        </div></fieldset>
+        <fieldset><legend>4. Which is easier to understand immediately without reading rules?</legend><div class="options">
+          <label class="option"><input required type="radio" name="hum_vs_sound_comprehension" value="HUM"><span>HUM</span></label>
+          <label class="option"><input type="radio" name="hum_vs_sound_comprehension" value="SOUND"><span>SOUND</span></label>
+          <label class="option"><input type="radio" name="hum_vs_sound_comprehension" value="About the same"><span>About the same</span></label>
+          <label class="option"><input type="radio" name="hum_vs_sound_comprehension" value="Neither"><span>Neither is immediately clear</span></label>
+        </div></fieldset>
+        <fieldset><legend>5. Which do you think works with MORE one-word prompts?</legend><div class="options">
+          <label class="option"><input required type="radio" name="hum_vs_sound_representability" value="HUM"><span>HUM</span></label>
+          <label class="option"><input type="radio" name="hum_vs_sound_representability" value="SOUND"><span>SOUND</span></label>
+          <label class="option"><input type="radio" name="hum_vs_sound_representability" value="About the same"><span>About the same</span></label>
+          <label class="option"><input type="radio" name="hum_vs_sound_representability" value="Not sure"><span>Not sure</span></label>
+        </div></fieldset>
+        <fieldset><legend>6. If SOUND wins, what should it allow?</legend><div class="options">
+          <label class="option"><input required type="radio" name="sound_rule" value="Humming sound effects rhythm no words"><span>Humming + sound effects + rhythm, but no words</span></label>
+          <label class="option"><input type="radio" name="sound_rule" value="Sound effects only"><span>Sound effects only, no humming</span></label>
+          <label class="option"><input type="radio" name="sound_rule" value="Humming and rhythm only"><span>Humming and rhythm only</span></label>
+          <label class="option"><input type="radio" name="sound_rule" value="Prefer HUM"><span>I prefer HUM instead</span></label>
+        </div></fieldset>
+      </section>
+
+      <section class="section-card">
+        <p class="section-label">03 · MIME / ACT</p><h2>Name it and show it.</h2>
+        <fieldset><legend>7. Best label for the silent body/gesture method?</legend><div class="options">
+          <label class="option"><input required type="radio" name="mime_label" value="MIME"><span>MIME</span></label>
+          <label class="option"><input type="radio" name="mime_label" value="ACT"><span>ACT</span></label>
+          <label class="option"><input type="radio" name="mime_label" value="CHARADES"><span>CHARADES</span></label>
+        </div></fieldset>
+        <fieldset><legend>8. Which icon direction communicates it fastest?</legend><div class="options">
+          <label class="option"><input required type="radio" name="mime_icon" value="Body gesture"><span>Person/body making a gesture</span></label>
+          <label class="option"><input type="radio" name="mime_icon" value="Hand gesture"><span>Hand / gesture symbol</span></label>
+          <label class="option"><input type="radio" name="mime_icon" value="Theatrical masks"><span>Theatrical masks</span></label>
+          <label class="option"><input type="radio" name="mime_icon" value="Body motion lines"><span>Body silhouette with motion lines</span></label>
+        </div></fieldset>
+        <fieldset><legend>9. If you saw theatrical masks with NO instructions, what would you assume they meant?</legend><div class="options">
+          <label class="option"><input required type="radio" name="mask_association" value="Mime silent gestures"><span>Mime / silent gestures</span></label>
+          <label class="option"><input type="radio" name="mask_association" value="Acting"><span>Acting</span></label>
+          <label class="option"><input type="radio" name="mask_association" value="Theater drama"><span>Theater / drama</span></label>
+          <label class="option"><input type="radio" name="mask_association" value="Performance generally"><span>Performance generally</span></label>
+          <label class="option"><input type="radio" name="mask_association" value="Unclear"><span>I wouldn't know</span></label>
+        </div></fieldset>
+      </section>
+
+      <section class="section-card">
+        <p class="section-label">04 · Method system</p><h2>Teal HUM · Yellow DRAW · Purple MIME</h2>
+        <fieldset><legend>10. Reaction to this current challenger combination?</legend><div class="options">
+          <label class="option"><input required type="radio" name="method_combo_reaction" value="Keep exactly"><span>Keep it exactly</span></label>
+          <label class="option"><input type="radio" name="method_combo_reaction" value="Strong adjust slightly"><span>Strong — adjust it slightly</span></label>
+          <label class="option"><input type="radio" name="method_combo_reaction" value="Average"><span>Average</span></label>
+          <label class="option"><input type="radio" name="method_combo_reaction" value="Needs significant improvement"><span>Needs significant improvement</span></label>
+          <label class="option"><input type="radio" name="method_combo_reaction" value="Replace"><span>Replace it</span></label>
+        </div></fieldset>
+        <fieldset><legend>11. Best left-to-right order?</legend><div class="options">
+          <label class="option"><input required type="radio" name="method_order" value="HUM DRAW MIME"><span>HUM → DRAW → MIME</span></label>
+          <label class="option"><input type="radio" name="method_order" value="DRAW MIME HUM"><span>DRAW → MIME → HUM</span></label>
+          <label class="option"><input type="radio" name="method_order" value="DRAW HUM MIME"><span>DRAW → HUM → MIME</span></label>
+          <label class="option"><input type="radio" name="method_order" value="MIME DRAW HUM"><span>MIME → DRAW → HUM</span></label>
+          <label class="option"><input type="radio" name="method_order" value="No preference"><span>Order does not matter to me</span></label>
+        </div></fieldset>
+        <fieldset><legend>12. Should each method stay in the same position every time?</legend><div class="options">
+          <label class="option"><input required type="radio" name="stable_positions" value="Definitely yes"><span>Definitely yes</span></label>
+          <label class="option"><input type="radio" name="stable_positions" value="Probably yes"><span>Probably yes</span></label>
+          <label class="option"><input type="radio" name="stable_positions" value="No preference"><span>No preference</span></label>
+          <label class="option"><input type="radio" name="stable_positions" value="Probably no"><span>Probably no</span></label>
+        </div></fieldset>
+      </section>
+
+      <section class="section-card">
+        <p class="section-label">05 · Card UX</p><h2>The card is a decision surface.</h2><p>Example: <strong>VOLCANO · HUM 3 · DRAW 1 · MIME 2</strong></p>
+        <fieldset><legend>13. On a physical card, what should your eye notice FIRST?</legend><div class="options">
+          <label class="option"><input required type="radio" name="card_first_notice" value="Prompt"><span>The word / prompt</span></label>
+          <label class="option"><input type="radio" name="card_first_notice" value="Methods"><span>The three methods</span></label>
+          <label class="option"><input type="radio" name="card_first_notice" value="Point values"><span>The point values</span></label>
+          <label class="option"><input type="radio" name="card_first_notice" value="Highest value"><span>The highest-value option</span></label>
+          <label class="option"><input type="radio" name="card_first_notice" value="Methods and points together"><span>All methods + points together</span></label>
+        </div></fieldset>
+        <fieldset><legend>14. After the prompt, what should be visually strongest?</legend><div class="options">
+          <label class="option"><input required type="radio" name="secondary_visual_priority" value="Method icons"><span>Method icons</span></label>
+          <label class="option"><input type="radio" name="secondary_visual_priority" value="Method names"><span>Method names</span></label>
+          <label class="option"><input type="radio" name="secondary_visual_priority" value="Point numbers"><span>Point numbers</span></label>
+          <label class="option"><input type="radio" name="secondary_visual_priority" value="Method and point equal"><span>Method + point should have equal weight</span></label>
+        </div></fieldset>
+        <fieldset><legend>15. Should the point numbers get bigger?</legend><div class="options">
+          <label class="option"><input required type="radio" name="point_size" value="Much larger"><span>Much larger</span></label>
+          <label class="option"><input type="radio" name="point_size" value="Slightly larger"><span>Slightly larger</span></label>
+          <label class="option"><input type="radio" name="point_size" value="Keep"><span>Keep them about as-is</span></label>
+          <label class="option"><input type="radio" name="point_size" value="Smaller"><span>Smaller</span></label>
+        </div></fieldset>
+        <fieldset><legend>16. How much personality belongs on the gameplay side of a card?</legend><div class="options">
+          <label class="option"><input required type="radio" name="card_front_personality" value="Almost none"><span>Almost none — extremely clean</span></label>
+          <label class="option"><input type="radio" name="card_front_personality" value="A little"><span>A little</span></label>
+          <label class="option"><input type="radio" name="card_front_personality" value="Moderate"><span>Moderate</span></label>
+          <label class="option"><input type="radio" name="card_front_personality" value="A lot"><span>A lot</span></label>
+          <label class="option"><input type="radio" name="card_front_personality" value="Wild"><span>Make it wild</span></label>
+        </div></fieldset>
+      </section>
+
+      <section class="section-card">
+        <p class="section-label">06 · iPhone UX</p><h2>Tap, commit, go.</h2>
+        <fieldset><legend>17. You tap MIME. What should happen?</legend><div class="options">
+          <label class="option"><input required type="radio" name="commit_behavior" value="Commit immediately"><span>It commits immediately and the timer starts</span></label>
+          <label class="option"><input type="radio" name="commit_behavior" value="Tap twice"><span>It highlights; tap again to confirm</span></label>
+          <label class="option"><input type="radio" name="commit_behavior" value="Separate go"><span>It highlights, then press a separate GO button</span></label>
+        </div></fieldset>
+        <fieldset><legend>18. After choosing MIME, what should happen to HUM and DRAW?</legend><div class="options">
+          <label class="option"><input required type="radio" name="unselected_methods" value="Disappear"><span>Disappear</span></label>
+          <label class="option"><input type="radio" name="unselected_methods" value="Fade heavily"><span>Fade heavily into the background</span></label>
+          <label class="option"><input type="radio" name="unselected_methods" value="Visible disabled"><span>Stay visible but disabled</span></label>
+          <label class="option"><input type="radio" name="unselected_methods" value="Stay unchanged"><span>Stay unchanged</span></label>
+        </div></fieldset>
+        <fieldset><legend>19. How should the timer look for most of the turn?</legend><div class="options">
+          <label class="option"><input required type="radio" name="timer_visual" value="Small quiet then urgent"><span>Small and quiet until the last 10 seconds</span></label>
+          <label class="option"><input type="radio" name="timer_visual" value="Always large"><span>Always large / prominent</span></label>
+          <label class="option"><input type="radio" name="timer_visual" value="Progress ring"><span>Progress ring around the screen</span></label>
+          <label class="option"><input type="radio" name="timer_visual" value="Mostly hidden"><span>Mostly hidden until nearly finished</span></label>
+        </div></fieldset>
+        <fieldset><legend>20. Final 3 seconds?</legend><div class="options">
+          <label class="option"><input required type="radio" name="final_three" value="Pulse haptic"><span>Number pulse + haptic</span></label>
+          <label class="option"><input type="radio" name="final_three" value="Pulse sound"><span>Number pulse + sound</span></label>
+          <label class="option"><input type="radio" name="final_three" value="Haptic sound"><span>Haptic + sound</span></label>
+          <label class="option"><input type="radio" name="final_three" value="All three"><span>Pulse + haptic + sound</span></label>
+          <label class="option"><input type="radio" name="final_three" value="Subtle"><span>Keep it subtle</span></label>
+        </div></fieldset>
+      </section>
+
+      <section class="section-card">
+        <p class="section-label">07 · Pass + rounds</p><h2>What keeps the pace moving?</h2>
+        <fieldset><legend>21. Should players be allowed to pass a bad/impossible prompt?</legend><div class="options">
+          <label class="option"><input required type="radio" name="pass_rule" value="Unlimited"><span>Yes — unlimited passes</span></label>
+          <label class="option"><input type="radio" name="pass_rule" value="One per turn"><span>Yes — one pass per turn</span></label>
+          <label class="option"><input type="radio" name="pass_rule" value="Penalty"><span>Yes — but passing should have a penalty</span></label>
+          <label class="option"><input type="radio" name="pass_rule" value="No voluntary pass"><span>No voluntary passes</span></label>
+          <label class="option"><input type="radio" name="pass_rule" value="Need playtest"><span>Need to playtest it</span></label>
+        </div></fieldset>
+        <fieldset><legend>22. If passing exists, what should the button say?</legend><div class="options">
+          <label class="option"><input required type="radio" name="pass_wording" value="PASS"><span>PASS</span></label>
+          <label class="option"><input type="radio" name="pass_wording" value="SKIP"><span>SKIP</span></label>
+          <label class="option"><input type="radio" name="pass_wording" value="NEXT"><span>NEXT</span></label>
+          <label class="option"><input type="radio" name="pass_wording" value="GIVE UP"><span>GIVE UP</span></label>
+        </div></fieldset>
+        <fieldset><legend>23. Which round structure sounds most fun?</legend><div class="options">
+          <label class="option"><input required type="radio" name="round_structure" value="60 30 15"><span>Round 1: 60 sec → Round 2: 30 sec → Round 3: 15 sec</span></label>
+          <label class="option"><input type="radio" name="round_structure" value="Same every round"><span>Same timer every round</span></label>
+          <label class="option"><input type="radio" name="round_structure" value="Normal plus blitz"><span>Mostly normal rounds + a special 15-second final round</span></label>
+          <label class="option"><input type="radio" name="round_structure" value="Players choose"><span>Let players choose a timer</span></label>
+        </div></fieldset>
+        <fieldset><legend>24. A 15-second round sounds…</legend><div class="options">
+          <label class="option"><input required type="radio" name="fifteen_seconds_feel" value="Exciting"><span>Exciting</span></label>
+          <label class="option"><input type="radio" name="fifteen_seconds_feel" value="Funny chaos"><span>Funny / chaotic in a good way</span></label>
+          <label class="option"><input type="radio" name="fifteen_seconds_feel" value="Too short"><span>Too short</span></label>
+          <label class="option"><input type="radio" name="fifteen_seconds_feel" value="Frustrating"><span>Frustrating</span></label>
+          <label class="option"><input type="radio" name="fifteen_seconds_feel" value="Need play"><span>I need to play it before deciding</span></label>
+        </div></fieldset>
+      </section>
+
+      <section class="section-card">
+        <p class="section-label">08 · Brand + packaging</p><h2>How loud should the product be?</h2>
+        <fieldset><legend>25. Which overall direction should win?</legend><div class="options">
+          <label class="option"><input required type="radio" name="overall_visual_direction" value="More premium cleaner"><span>More premium / cleaner</span></label>
+          <label class="option"><input type="radio" name="overall_visual_direction" value="Current balance"><span>Current balance</span></label>
+          <label class="option"><input type="radio" name="overall_visual_direction" value="More colorful"><span>More colorful</span></label>
+          <label class="option"><input type="radio" name="overall_visual_direction" value="More game show"><span>More game-show energy</span></label>
+          <label class="option"><input type="radio" name="overall_visual_direction" value="More weird personality"><span>More weird / personality</span></label>
+          <label class="option"><input type="radio" name="overall_visual_direction" value="More traditional"><span>More traditional party-game</span></label>
+        </div></fieldset>
+        <fieldset><legend>26. Where should MOST visual personality live?</legend><div class="options">
+          <label class="option"><input required type="radio" name="personality_location" value="Box"><span>Box</span></label>
+          <label class="option"><input type="radio" name="personality_location" value="Card backs"><span>Card backs</span></label>
+          <label class="option"><input type="radio" name="personality_location" value="Card fronts"><span>Card fronts</span></label>
+          <label class="option"><input type="radio" name="personality_location" value="App animations"><span>App animations</span></label>
+          <label class="option"><input type="radio" name="personality_location" value="Doodles throughout"><span>Doodles / illustrations throughout</span></label>
+        </div></fieldset>
+        <fieldset><legend>27. Which philosophy sounds most right?</legend><div class="options">
+          <label class="option"><input required type="radio" name="visual_philosophy" value="Quiet cards loud moments"><span><strong>Quiet cards, loud moments</strong></span></label>
+          <label class="option"><input type="radio" name="visual_philosophy" value="Loud cards loud moments"><span>Loud cards, loud moments</span></label>
+          <label class="option"><input type="radio" name="visual_philosophy" value="Clean premium everywhere"><span>Clean and premium everywhere</span></label>
+          <label class="option"><input type="radio" name="visual_philosophy" value="Weird expressive everywhere"><span>Weird and expressive everywhere</span></label>
+        </div></fieldset>
+        <fieldset><legend>28. What should the front of the box communicate in about 3 seconds?</legend><div class="options">
+          <label class="option"><input required type="radio" name="box_three_second_message" value="Game name"><span>The game name</span></label>
+          <label class="option"><input type="radio" name="box_three_second_message" value="One prompt three ways"><span>“One prompt. Three ways to play.”</span></label>
+          <label class="option"><input type="radio" name="box_three_second_message" value="Different point values"><span>The different point values</span></label>
+          <label class="option"><input type="radio" name="box_three_second_message" value="Real prompt and choices"><span>A real example prompt + three choices</span></label>
+          <label class="option"><input type="radio" name="box_three_second_message" value="Funny party imagery"><span>Funny party imagery</span></label>
+        </div></fieldset>
+        <fieldset><legend>29. Which box concept sounds strongest?</legend><div class="options">
+          <label class="option"><input required type="radio" name="box_concept" value="Logo plus methods"><span>Mostly logo/title + three method icons</span></label>
+          <label class="option"><input type="radio" name="box_concept" value="Real prompt decision"><span>Show a real prompt with its three methods / points</span></label>
+          <label class="option"><input type="radio" name="box_concept" value="Doodle personality"><span>Big illustrated / doodle personality</span></label>
+          <label class="option"><input type="radio" name="box_concept" value="People reacting"><span>People visibly playing / reacting</span></label>
+          <label class="option"><input type="radio" name="box_concept" value="Hybrid"><span>Hybrid of prompt decision + branding</span></label>
+        </div></fieldset>
+      </section>
+
+      <section class="section-card">
+        <p class="section-label">09 · Final calls</p><h2>Prioritize the next move.</h2>
+        <fieldset><legend>30. If Bill could improve only ONE thing right now, what should it be?</legend><div class="options">
+          <label class="option"><input required type="radio" name="top_priority" value="Card design"><span>Card design</span></label>
+          <label class="option"><input type="radio" name="top_priority" value="HUM SOUND"><span>HUM / SOUND method</span></label>
+          <label class="option"><input type="radio" name="top_priority" value="MIME ACT"><span>MIME / ACT presentation</span></label>
+          <label class="option"><input type="radio" name="top_priority" value="Colors icons"><span>Colors / icons</span></label>
+          <label class="option"><input type="radio" name="top_priority" value="Point presentation"><span>Point-value presentation</span></label>
+          <label class="option"><input type="radio" name="top_priority" value="iPhone gameplay"><span>iPhone gameplay</span></label>
+          <label class="option"><input type="radio" name="top_priority" value="Timer rounds"><span>Timer / rounds</span></label>
+          <label class="option"><input type="radio" name="top_priority" value="Box branding"><span>Box / branding</span></label>
+          <label class="option"><input type="radio" name="top_priority" value="Prompts content"><span>Prompts / content</span></label>
+          <label class="option"><input type="radio" name="top_priority" value="Rules"><span>Rules</span></label>
+        </div></fieldset>
+        <fieldset><legend>31. How confident are you that this concept is worth continuing?</legend><div class="options">
+          <label class="option"><input required type="radio" name="concept_confidence" value="10"><span>10 — absolutely</span></label>
+          <label class="option"><input type="radio" name="concept_confidence" value="9"><span>9</span></label>
+          <label class="option"><input type="radio" name="concept_confidence" value="8"><span>8</span></label>
+          <label class="option"><input type="radio" name="concept_confidence" value="7"><span>7</span></label>
+          <label class="option"><input type="radio" name="concept_confidence" value="6"><span>6</span></label>
+          <label class="option"><input type="radio" name="concept_confidence" value="5"><span>5</span></label>
+          <label class="option"><input type="radio" name="concept_confidence" value="4 or lower"><span>4 or lower</span></label>
+        </div></fieldset>
+        <fieldset><legend>32. Which statement is closest to your current reaction?</legend><div class="options">
+          <label class="option"><input required type="radio" name="commercial_reaction" value="Real retail game"><span>This could become a real retail party game</span></label>
+          <label class="option"><input type="radio" name="commercial_reaction" value="Strong needs refinement"><span>Strong concept, but it needs substantial refinement</span></label>
+          <label class="option"><input type="radio" name="commercial_reaction" value="Fun uncertain commercial"><span>Fun side project, uncertain commercial potential</span></label>
+          <label class="option"><input type="radio" name="commercial_reaction" value="Mechanic needs major work"><span>The mechanic still needs major work</span></label>
+          <label class="option"><input type="radio" name="commercial_reaction" value="Would not pursue"><span>I would not pursue it commercially</span></label>
+        </div></fieldset>
+        <label class="field"><span>33. What should Bill absolutely NOT change?</span><textarea name="must_not_change" rows="4" placeholder="Optional"></textarea></label>
+        <label class="field"><span>34. Anything I haven't asked that you think I'm getting wrong?</span><textarea name="anything_wrong" rows="5" placeholder="Optional — be blunt"></textarea></label>
+      </section>
+
+      <div class="submit-wrap">
+        <button type="submit">Submit Tanner's Round 3 answers</button>
+        <p class="fineprint">Your answers are sent to the GET THE POINT Netlify project so Bill can review them as one response set.</p>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    (() => {
+      const form = document.getElementById('round3Form');
+      const bar = document.getElementById('progressBar');
+      const date = document.getElementById('responseDate');
+      if (date && !date.value) date.value = new Date().toISOString().slice(0,10);
+      const update = () => {
+        if (!form || !bar) return;
+        const requiredGroups = [...new Set([...form.querySelectorAll('input[required][type="radio"]')].map(i => i.name))];
+        const completedGroups = requiredGroups.filter(name => form.querySelector(`input[name="${CSS.escape(name)}"]:checked`)).length;
+        const requiredOther = [...form.querySelectorAll('input[required]:not([type="radio"])')];
+        const otherDone = requiredOther.filter(i => String(i.value || '').trim()).length;
+        const total = requiredGroups.length + requiredOther.length;
+        const done = completedGroups + otherDone;
+        bar.style.width = `${total ? Math.round(done / total * 100) : 0}%`;
+      };
+      form?.addEventListener('change', update);
+      form?.addEventListener('input', update);
+      update();
+    })();
+  </script>
+</body>
+</html>
